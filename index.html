@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Conference Registration</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="conference-header">
+
+            <img src="cl.png" alt="Cave Aullam Logo" class="Cave-logo">
+            <img src="ccm.png" alt="Cave Camp Meeting Logo" class="Camp-logo">
+
+           <!----> <p class="meeting-name"CAVE CAMP MEETING 2026 -->
+
+            <div class="theme-artwork">
+                <img src="J6.png" alt="JESUS">
+            </div>
+
+            <p class="theme-line">ONE NAME. ONE FOCUS. JESUS.</p>
+
+        </div>
+
+        <p class="subtitle">
+            Conference Registration
+            <span>Be part of the experience</span>
+        </p>
+
+        <div class="event-details">
+
+            <div>
+                <span class="detail-label">DATE</span>
+                <strong>DECEMBER 10 — 13, 2026</strong>
+            </div>
+
+            <div>
+                <span class="detail-label">VENUE</span>
+                <strong>Oshoffa Miracle Fortress</strong>
+                <small>Abule Oke, Ifo, Ogun State, Nigeria</small>
+            </div>
+
+        </div>
+
+        <div class="form-heading">
+            <span>ATTENDEE DETAILS</span>
+        </div>
+
+        
+<form id="registrationForm">
+
+    <!-- 01. PERSONAL INFORMATION -->
+    <section class="form-section">
+        <div class="section-heading">
+            <span class="section-number">01</span>
+            <div>
+                <h3>Personal Information</h3>
+                <p>Tell us a little about yourself.</p>
+            </div>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-field">
+                <label for="first_name">First Name <span class="required">*</span></label>
+                <input type="text" id="first_name"
+                    placeholder="Enter your first name" required>
+            </div>
+
+            <div class="form-field">
+                <label for="last_name">Last Name <span class="required">*</span></label>
+                <input type="text" id="last_name"
+                    placeholder="Enter your last name" required>
+            </div>
+
+            <div class="form-field">
+                <label for="gender">Gender <span class="required">*</span></label>
+                <select id="gender" required>
+                    <option value="" disabled selected>Select your gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input type="email" id="email"
+                    placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-field">
+                <label for="phone">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="phone"
+                    placeholder="Enter your phone number" required>
+            </div>
+
+            <div class="form-field">
+                <label for="residential_city_state">
+                    Residential City / State <span class="required">*</span>
+                </label>
+                <input type="text" id="residential_city_state"
+                    placeholder="e.g. Abuja, FCT" required>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02. CHURCH INFORMATION -->
+    <section class="form-section">
+        <div class="section-heading">
+            <span class="section-number">02</span>
+            <div>
+                <h3>Church Information</h3>
+                <p>Let us know your church or fellowship.</p>
+            </div>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-field">
+                <label for="church_name">Name of Church <span class="required">*</span></label>
+                <input type="text" id="church_name"
+                    placeholder="Enter the name of your church" required>
+            </div>
+
+            <div class="form-field">
+                <label for="church_position">Position in Church <span class="required">*</span></label>
+                <input type="text" id="church_position"
+                    placeholder="e.g. Member, Choir, Pastor, Youth Leader" required>
+            </div>
+        </div>
+    </section>
+
+    <!-- 03. CONFERENCE ATTENDANCE -->
+    <section class="form-section">
+        <div class="section-heading">
+            <span class="section-number">03</span>
+            <div>
+                <h3>Conference Attendance</h3>
+                <p>Tell us how you plan to participate.</p>
+            </div>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-field">
+                <label for="attendance_type">
+                    Attendance Mode <span class="required">*</span>
+                </label>
+                <select id="attendance_type" required>
+                    <option value="" disabled selected>Select attendance mode</option>
+                    <option value="Physical">Physical</option>
+                    <option value="Online">Online</option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="how_heard">
+                    How did you hear about the conference?
+                    <span class="required">*</span>
+                </label>
+                <select id="how_heard" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="Social Media">Social Media</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                    <option value="Friend / Family">Friend / Family</option>
+                    <option value="Church">Church</option>
+                    <option value="Campus Fellowship">Campus Fellowship</option>
+                    <option value="Cave Adullam">Cave Adullam</option>
+                    <option value="Previous Conference">Previous Conference</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04. EXPECTATIONS -->
+    <section class="form-section">
+        <div class="section-heading">
+            <span class="section-number">04</span>
+            <div>
+                <h3>Your Expectations</h3>
+                <p>Share what you hope to experience at JESUS 2026.</p>
+            </div>
+        </div>
+
+        <div class="form-field">
+            <label for="expectations">
+                What are your expectations for the conference?
+                <span class="required">*</span>
+            </label>
+            <textarea id="expectations"
+                placeholder="Tell us what you are expecting from the conference..."
+                rows="5" required></textarea>
+        </div>
+    </section>
+
+    <!-- 05. CONSENT AND REGISTRATION -->
+    <section class="form-section consent-section">
+        <div class="section-heading">
+            <span class="section-number">05</span>
+            <div>
+                <h3>Consent & Registration</h3>
+                <p>One final step before you register.</p>
+            </div>
+        </div>
+
+        <label class="consent-label" for="consent_given">
+            <input type="checkbox" id="consent_given" required>
+            <span>
+                By submitting this form, I consent to the use of my
+                information for conference registration and communication.
+            </span>
+        </label>
+
+        <p class="privacy-note">
+            Your information will be handled responsibly and used for
+            conference registration and related communication.
+        </p>
+
+        <button type="submit">Register for Conference</button>
+    </section>
+
+</form>
+
+
+
+        <p class="registration-note">
+            🔒 Your details are securely used to generate your conference QR code.
+        </p>
+
+        
+<button
+    type="button"
+    onclick="window.location.href='homepage-index.html'"
+    style="
+        width: 100%;
+        margin-top: 12px;
+        padding: 13px;
+        border: 1px solid #d4a72c;
+        border-radius: 8px;
+        background: transparent;
+        color: #063da5;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.7px;
+        cursor: pointer;
+    "
+>
+    ← BACK TO HOMEPAGE
+</button>
+
+
+        <div id="result"></div>
+
+
+        <p class="footer-brand">
+            CAVE ADULLAM • CAVE CAMP MEETING 2026 • JESUS
+        </p>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

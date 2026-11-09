@@ -1,0 +1,750 @@
+/* =========================================
+   CAVE ADULLAM
+   TESTIMONY PAGE
+   FONT: MONTSERRAT
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+
+/* =========================================
+   GENERAL RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(24, 83, 170, 0.25),
+            transparent 40%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(111, 70, 190, 0.18),
+            transparent 40%
+        ),
+
+        #05070d;
+
+    color: #ffffff;
+
+    line-height: 1.7;
+
+    min-height: 100vh;
+
+    font-weight: 400;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    min-height: 85px;
+
+    padding: 18px 7%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+}
+
+.logo-link {
+    display: flex;
+
+    align-items: center;
+}
+
+.logo {
+    width: 200px;
+
+    height: 200px;
+
+    object-fit: contain;
+}
+
+.brand h1 {
+    font-size: 18px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.brand p {
+    font-size: 10px;
+
+    font-weight: 500;
+
+    letter-spacing: 2px;
+
+    opacity: 0.6;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.page-container {
+    width: 100%;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 90px 25px 100px;
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+.intro {
+    max-width: 700px;
+
+    margin-bottom: 50px;
+}
+
+.section-label {
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 4px;
+
+    opacity: 0.5;
+
+    margin-bottom: 15px;
+}
+
+.intro h2 {
+    font-size:
+        clamp(42px, 7vw, 75px);
+
+    line-height: 1;
+
+    font-weight: 700;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 25px;
+}
+
+.intro p:last-child {
+    color:
+        rgba(255, 255, 255, 0.65);
+
+    font-size: 16px;
+
+    font-weight: 400;
+
+    max-width: 650px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.form-section {
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+
+    padding: 45px;
+
+    backdrop-filter: blur(10px);
+}
+
+
+/* =========================================
+   FORM GROUP
+========================================= */
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   LABEL
+========================================= */
+
+.form-group label {
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+
+    margin-bottom: 9px;
+}
+
+.form-group label span {
+    font-size: 11px;
+
+    font-weight: 400;
+
+    opacity: 0.5;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.form-group input,
+.form-group textarea {
+
+    width: 100%;
+
+    padding: 15px 16px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+
+    background:
+        rgba(0, 0, 0, 0.25);
+
+    color: #ffffff;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    outline: none;
+
+    transition: 0.3s ease;
+}
+
+
+/* =========================================
+   TEXTAREA
+========================================= */
+
+.form-group textarea {
+
+    resize: vertical;
+
+    min-height: 220px;
+}
+
+
+/* =========================================
+   PLACEHOLDER
+========================================= */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+
+    color:
+        rgba(255, 255, 255, 0.3);
+}
+
+
+/* =========================================
+   INPUT FOCUS
+========================================= */
+
+.form-group input:focus,
+.form-group textarea:focus {
+
+    border-color:
+        rgba(255, 255, 255, 0.5);
+
+    background:
+        rgba(255, 255, 255, 0.04);
+}
+
+
+/* =========================================
+   PERMISSION
+========================================= */
+
+.permission {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin: 30px 0;
+
+    color:
+        rgba(255, 255, 255, 0.65);
+
+    font-size: 13px;
+
+    font-weight: 400;
+}
+
+.permission input {
+
+    width: 17px;
+
+    height: 17px;
+
+    margin-top: 3px;
+
+    flex-shrink: 0;
+}
+
+.permission label {
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   SUBMIT BUTTON
+========================================= */
+
+.submit-button {
+
+    width: 100%;
+
+    padding: 17px;
+
+    border: none;
+
+    background: #ffffff;
+
+    color: #05070d;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.submit-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================
+   FORM MESSAGE
+========================================= */
+
+.form-message {
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+.form-message.success {
+
+    color:
+        rgba(255, 255, 255, 0.85);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    padding: 50px 7% 25px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    background: #03050a;
+}
+
+.footer-logo img {
+
+    width: 150px;
+
+    margin-bottom: 10px;
+}
+
+.footer-logo h3 {
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.footer-logo p {
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    letter-spacing: 2px;
+
+    opacity: 0.5;
+}
+
+
+/* =========================================
+   BACK HOME
+========================================= */
+
+.back-home {
+
+    margin-top: 30px;
+}
+
+.back-home a {
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    letter-spacing: 1.5px;
+
+    opacity: 0.7;
+}
+
+.back-home a:hover {
+
+    opacity: 1;
+}
+
+
+/* =========================================
+   FOOTER BOTTOM
+========================================= */
+
+.footer-bottom {
+
+    margin-top: 40px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    font-size: 10px;
+
+    font-weight: 400;
+
+    color:
+        rgba(255, 255, 255, 0.35);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .header {
+
+        padding: 15px 5%;
+    }
+
+    .page-container {
+
+        padding:
+            60px 18px 70px;
+    }
+
+    .intro h2 {
+
+        letter-spacing: -1px;
+    }
+
+    .form-section {
+
+        padding: 25px 20px;
+    }
+
+    .intro p:last-child {
+
+        font-size: 14px;
+    }
+
+}
+/*========================================
+   STATUS MESSAGE
+==========================================*/
+.form-message.success {
+    color: #168a45;
+}
+/* =========================================
+   PUBLIC TESTIMONIES
+========================================= */
+
+.public-testimonies {
+    margin-top: 70px;
+    padding-top: 50px;
+    border-top: 1px solid #ddd;
+}
+
+.testimonies-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 35px;
+}
+
+.testimonies-heading h2 {
+    margin: 10px 0 15px;
+}
+
+.testimonies-heading p {
+    line-height: 1.7;
+    color: #666;
+}
+
+.approved-testimonies {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.testimony-card {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.testimony-card h3 {
+    margin-bottom: 10px;
+}
+
+.testimony-card .testimony-author {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 18px;
+}
+
+.testimony-card .testimony-text {
+    color: #444;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+.loading-testimonies,
+.no-testimonies {
+    text-align: center;
+    color: #666;
+    padding: 30px;
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 700px) {
+
+    .approved-testimonies {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================================
+   PUBLIC TESTIMONIES
+========================================= */
+
+.public-testimonies {
+    margin-top: 70px;
+    padding-top: 50px;
+    border-top: 1px solid #ddd;
+}
+
+.testimonies-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 35px;
+}
+
+.testimonies-heading h2 {
+    margin: 10px 0 15px;
+}
+
+.testimonies-heading p {
+    line-height: 1.7;
+    color: #666;
+}
+
+.approved-testimonies {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.testimony-card {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.testimony-card h3 {
+    margin-bottom: 10px;
+}
+
+.testimony-card .testimony-author {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 18px;
+}
+
+.testimony-card .testimony-text {
+    color: #444;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+.loading-testimonies,
+.no-testimonies {
+    text-align: center;
+    color: #666;
+    padding: 30px;
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 700px) {
+
+    .approved-testimonies {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* =========================================
+   PUBLIC TESTIMONIES PAGE
+========================================= */
+
+.testimonies-page {
+    min-height: 100vh;
+}
+
+.public-testimonies {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 70px 20px;
+}
+
+.testimonies-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 45px;
+}
+
+.testimonies-page .testimonies-heading h1 {
+    color: #625e6e !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 18px;
+    text-shadow: none;
+}
+
+.testimonies-heading p {
+    color: #666;
+    line-height: 1.7;
+}
+
+.approved-testimonies {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.testimony-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.testimony-card h3 {
+    color: #111827;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.testimony-card .testimony-author {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.testimony-card .testimony-text {
+    color: #333;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+.loading-testimonies,
+.no-testimonies {
+    text-align: center;
+    color: #666;
+    padding: 40px;
+    grid-column: 1 / -1;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .approved-testimonies {
+        grid-template-columns: 1fr;
+    }
+
+    .public-testimonies {
+        padding: 50px 15px;
+    }
+
+}

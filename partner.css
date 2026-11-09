@@ -1,0 +1,692 @@
+/* =========================================
+   CAVE ADULLAM
+   PARTNER PAGE
+   FONT: MONTSERRAT
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+
+/* =========================================
+   GENERAL RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(24, 83, 170, 0.25),
+            transparent 40%
+        ),
+
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(111, 70, 190, 0.18),
+            transparent 40%
+        ),
+
+        #05070d;
+
+    color: #ffffff;
+
+    line-height: 1.7;
+
+    font-weight: 400;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    width: 100%;
+
+    min-height: 85px;
+
+    padding: 18px 7%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    background:
+        rgba(5, 7, 13, 0.95);
+}
+
+.logo-link {
+    display: flex;
+
+    align-items: center;
+}
+
+.logo {
+    width: 200px;
+
+    height: 200px;
+
+    object-fit: contain;
+}
+
+.brand h1 {
+    font-size: 18px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.brand p {
+    font-size: 10px;
+
+    font-weight: 500;
+
+    letter-spacing: 2px;
+
+    opacity: 0.6;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.partner-hero {
+
+    padding:
+        110px 7% 100px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(20, 65, 130, 0.28),
+            transparent
+        );
+}
+
+.hero-content {
+
+    max-width: 800px;
+}
+
+.section-label {
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 4px;
+
+    opacity: 0.5;
+
+    margin-bottom: 15px;
+}
+
+.partner-hero h2 {
+
+    font-size:
+        clamp(45px, 7vw, 80px);
+
+    line-height: 1;
+
+    font-weight: 700;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 25px;
+}
+
+.partner-hero p:last-child {
+
+    max-width: 650px;
+
+    color:
+        rgba(255, 255, 255, 0.65);
+
+    font-size: 16px;
+
+    font-weight: 400;
+}
+
+
+/* =========================================
+   PARTNERSHIP OPTIONS
+========================================= */
+
+.partnership-section {
+
+    padding: 90px 7%;
+}
+
+.section-heading {
+
+    max-width: 750px;
+
+    margin-bottom: 45px;
+}
+
+.section-heading h2 {
+
+    font-size:
+        clamp(35px, 5vw, 60px);
+
+    line-height: 1.05;
+
+    font-weight: 700;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 20px;
+}
+
+.section-heading > p:last-child {
+
+    color:
+        rgba(255, 255, 255, 0.6);
+
+    font-size: 15px;
+
+    font-weight: 400;
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.partnership-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+
+    max-width: 1000px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.partner-card {
+
+    padding: 35px;
+
+    min-height: 230px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    transition: 0.3s ease;
+}
+
+.partner-card:hover {
+
+    transform: translateY(-6px);
+
+    border-color:
+        rgba(255, 255, 255, 0.3);
+
+    background:
+        rgba(255, 255, 255, 0.05);
+}
+
+
+/* =========================================
+   NUMBER
+========================================= */
+
+.card-number {
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    opacity: 0.4;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   CARD TITLE
+========================================= */
+
+.partner-card h3 {
+
+    font-size: 21px;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================================
+   CARD TEXT
+========================================= */
+
+.partner-card p {
+
+    color:
+        rgba(255, 255, 255, 0.58);
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   FORM SECTION
+========================================= */
+
+.form-section {
+
+    padding:
+        100px 7%;
+
+    background: #080b13;
+}
+
+.form-section .section-heading {
+
+    max-width: 800px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+form {
+
+    max-width: 800px;
+
+    padding: 45px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+
+    background:
+        rgba(255, 255, 255, 0.025);
+}
+
+
+/* =========================================
+   FORM GROUP
+========================================= */
+
+.form-group {
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   LABEL
+========================================= */
+
+.form-group label {
+
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-bottom: 9px;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+
+    width: 100%;
+
+    padding: 15px 16px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+
+    background:
+        rgba(0, 0, 0, 0.25);
+
+    color: #ffffff;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    outline: none;
+
+    transition: 0.3s ease;
+}
+
+
+/* =========================================
+   SELECT OPTIONS
+========================================= */
+
+.form-group select option {
+
+    background: #080b13;
+
+    color: #ffffff;
+}
+
+
+/* =========================================
+   TEXTAREA
+========================================= */
+
+.form-group textarea {
+
+    resize: vertical;
+
+    min-height: 160px;
+}
+
+
+/* =========================================
+   PLACEHOLDER
+========================================= */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+
+    color:
+        rgba(255, 255, 255, 0.3);
+}
+
+
+/* =========================================
+   FOCUS
+========================================= */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+
+    border-color:
+        rgba(255, 255, 255, 0.5);
+
+    background:
+        rgba(255, 255, 255, 0.04);
+}
+
+
+/* =========================================
+   SUBMIT BUTTON
+========================================= */
+
+.submit-button {
+
+    width: 100%;
+
+    padding: 17px;
+
+    border: none;
+
+    background: #ffffff;
+
+    color: #05070d;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.submit-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.form-message {
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+.form-message.success {
+
+    color:
+        rgba(255, 255, 255, 0.85);
+}
+
+
+/* =========================================
+   SOW A SEED ACCOUNT DETAILS
+========================================= */
+
+.account-details {
+
+    margin-top: 22px;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+}
+
+.account-details p {
+
+    margin-bottom: 7px;
+
+    color:
+        rgba(255, 255, 255, 0.65);
+
+    font-size: 13px;
+
+    font-weight: 400;
+}
+
+.account-details strong {
+
+    color: #ffffff;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    padding:
+        60px 7% 25px;
+
+    background: #03050a;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+}
+
+.footer-logo img {
+
+    width: 150px;
+
+    margin-bottom: 10px;
+}
+
+.footer-logo h3 {
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.footer-logo p {
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    letter-spacing: 2px;
+
+    opacity: 0.5;
+}
+
+
+/* =========================================
+   BACK HOME
+========================================= */
+
+.back-home {
+
+    margin-top: 30px;
+}
+
+.back-home a {
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    letter-spacing: 1.5px;
+
+    opacity: 0.7;
+}
+
+.back-home a:hover {
+
+    opacity: 1;
+}
+
+
+/* =========================================
+   FOOTER BOTTOM
+========================================= */
+
+.footer-bottom {
+
+    margin-top: 40px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    font-size: 10px;
+
+    font-weight: 400;
+
+    color:
+        rgba(255, 255, 255, 0.35);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .header {
+
+        padding: 15px 5%;
+    }
+
+    .partner-hero {
+
+        padding:
+            75px 6%;
+    }
+
+    .partnership-section {
+
+        padding:
+            70px 6%;
+    }
+
+    .partnership-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .form-section {
+
+        padding:
+            70px 6%;
+    }
+
+    form {
+
+        padding:
+            25px 20px;
+    }
+
+}

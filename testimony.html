@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Share Your Testimony | Cave Adullam</title>
+
+<link rel="stylesheet" href="testimony.css">
+
+</head>
+
+<body>
+
+<!-- =========================================
+     HEADER
+========================================== -->
+
+<header class="header">
+
+    <a href="homepage-index.html" class="logo-link">
+
+        <img
+            src="CAVE NEW LOGO.png"
+            alt="Cave Adullam Logo"
+            class="logo"
+        >
+
+    </a>
+
+    <div class="brand">
+
+        <h1>CAVE ADULLAM</h1>
+
+        <p>
+            ONE NAME. ONE FOCUS. JESUS.
+        </p>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     MAIN
+========================================== -->
+
+<main class="page-container">
+
+    <section class="intro">
+
+        <p class="section-label">
+            TESTIMONY
+        </p>
+
+        <h2>
+            Share Your Testimony
+        </h2>
+
+        <p>
+            Has God done something in your life that
+            you would like to share? Tell us what He
+            has done and let your testimony encourage
+            someone else.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================
+         TESTIMONY FORM
+    ====================================== -->
+
+    <section class="form-section">
+
+        <form id="testimonyForm">
+
+
+            <!-- FULL NAME -->
+
+            <div class="form-group">
+
+                <label for="fullName">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                    <span>(Optional)</span>
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email address"
+                >
+
+            </div>
+
+
+            <!-- TESTIMONY TITLE -->
+
+            <div class="form-group">
+
+                <label for="title">
+                    Testimony Title
+                </label>
+
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="Give your testimony a title"
+                    required
+                >
+
+            </div>
+
+
+            <!-- TESTIMONY -->
+
+            <div class="form-group">
+
+                <label for="testimony">
+                    Your Testimony
+                </label>
+
+                <textarea
+                    id="testimony"
+                    name="testimony"
+                    rows="10"
+                    placeholder="Tell us what God has done..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <!-- PUBLISHING PERMISSION -->
+
+            <div class="permission">
+
+                <input
+                    type="checkbox"
+                    id="permission"
+                    name="permission"
+                    required
+                >
+
+                <label for="permission">
+
+                    I give Cave Adullam permission to
+                    review and publish this testimony
+                    on its website and ministry platforms.
+
+                </label>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <button
+                type="submit"
+                class="submit-button"
+                id="submitButton"
+            >
+                SUBMIT TESTIMONY
+            </button>
+
+
+            <!-- STATUS MESSAGE -->
+
+            <div
+                id="formMessage"
+                class="form-message"
+            ></div>
+
+        </form>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================
+     FOOTER
+========================================== -->
+
+<footer class="footer">
+
+    <div class="footer-logo">
+
+        <img
+            src="CAVE NEW LOGO.png"
+            alt="Cave Adullam Logo"
+        >
+
+        <h3>
+            CAVE ADULLAM
+        </h3>
+
+        <p>
+            ONE NAME. ONE FOCUS. JESUS.
+        </p>
+
+    </div>
+
+
+    <div class="back-home">
+
+        <a href="homepage-index.html">
+            ← BACK TO HOMEPAGE
+        </a>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Cave Adullam. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================
+     SUPABASE
+========================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<!-- =========================================
+     TESTIMONY SUBMISSION
+========================================== -->
+
+<script>
+
+    /* =========================================
+       SUPABASE CONFIGURATION
+    ========================================== */
+
+    const SUPABASE_URL =
+        "https://ktwvbhdxszxmmmfoxzra.supabase.co";
+
+    const SUPABASE_KEY =
+        "sb_publishable_MysGHP42nsPZzFzp2aBR-g_VhFE0Idq";
+
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+    /* =========================================
+   LOAD APPROVED TESTIMONIES
+========================================= */
+
+async function loadApprovedTestimonies() {
+
+    const container =
+        document.getElementById(
+            "approvedTestimonies"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("testimonies")
+            .select(
+                "id, full_name, title, original_testimony, edited_testimony, created_at"
+            )
+            .eq(
+                "status",
+                "approved"
+            )
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+
+
+    if (error) {
+
+        console.error(
+            "Unable to load approved testimonies:",
+            error
+        );
+
+
+        container.innerHTML = `
+            <p class="no-testimonies">
+                Unable to load testimonies right now.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    if (!data || data.length === 0) {
+
+        container.innerHTML = `
+            <p class="no-testimonies">
+                No testimonies have been published yet.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    data.forEach(
+        function(testimony) {
+
+            const card =
+                document.createElement("article");
+
+
+            card.className =
+                "testimony-card";
+
+
+            const title =
+                document.createElement("h3");
+
+            title.textContent =
+                testimony.title ||
+                "Testimony";
+
+
+            const author =
+                document.createElement("p");
+
+            author.className =
+                "testimony-author";
+
+            author.textContent =
+                "Shared by " +
+                (
+                    testimony.full_name ||
+                    "Anonymous"
+                );
+
+
+            const text =
+                document.createElement("p");
+
+            text.className =
+                "testimony-text";
+
+            text.textContent =
+                testimony.edited_testimony ||
+                testimony.original_testimony ||
+                "";
+
+
+            card.appendChild(title);
+
+            card.appendChild(author);
+
+            card.appendChild(text);
+
+
+            container.appendChild(card);
+
+        }
+    );
+
+}
+    /* =========================================
+       FORM ELEMENTS
+    ========================================== */
+
+    const form =
+        document.getElementById("testimonyForm");
+
+    const message =
+        document.getElementById("formMessage");
+
+    const submitButton =
+        document.getElementById("submitButton");
+
+
+    /* =========================================
+       SUBMIT TESTIMONY
+    ========================================== */
+
+    form.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            /* ---------------------------------
+               GET FORM VALUES
+            --------------------------------- */
+
+            const fullName =
+                document.getElementById("fullName")
+                .value
+                .trim();
+
+            const email =
+                document.getElementById("email")
+                .value
+                .trim();
+
+            const title =
+                document.getElementById("title")
+                .value
+                .trim();
+
+            const testimony =
+                document.getElementById("testimony")
+                .value
+                .trim();
+
+            const permission =
+                document.getElementById("permission")
+                .checked;
+
+
+            /* ---------------------------------
+               BASIC VALIDATION
+            --------------------------------- */
+
+            if (
+                !fullName ||
+                !title ||
+                !testimony ||
+                !permission
+            ) {
+
+                message.textContent =
+                    "Please complete all required fields and give permission to publish.";
+
+                message.classList.remove("success");
+
+                message.classList.add("error");
+
+                return;
+            }
+
+
+            /* ---------------------------------
+               DISABLE BUTTON
+            --------------------------------- */
+
+            submitButton.disabled = true;
+
+            submitButton.textContent =
+                "SUBMITTING...";
+
+
+            message.textContent = "";
+
+            message.classList.remove(
+                "success",
+                "error"
+            );
+
+
+            /* ---------------------------------
+               SEND TO SUPABASE
+            --------------------------------- */
+
+           const {
+    error
+} = await supabaseClient
+    .from("testimonies")
+    .insert([{
+        full_name: fullName,
+        email: email || null,
+        title: title,
+        original_testimony: testimony,
+        edited_testimony: null,
+        permission_to_publish: true,
+        status: "pending"
+    }]);
+
+            /* ---------------------------------
+               HANDLE ERROR
+            --------------------------------- */
+
+            if (error) {
+
+                console.error(
+                    "Supabase testimony error:",
+                    error
+                );
+
+                message.textContent =
+                    "We could not submit your testimony right now. Please try again.";
+
+                message.classList.remove(
+                    "success"
+                );
+
+                message.classList.add(
+                    "error"
+                );
+
+                submitButton.disabled = false;
+
+                submitButton.textContent =
+                    "SUBMIT TESTIMONY";
+
+                return;
+            }
+
+
+            /* ---------------------------------
+               SUCCESS
+            --------------------------------- */
+
+            console.log(
+                "Testimony submitted succcessfully."
+            );
+
+
+            message.textContent =
+                "Your testimony has been received. Thank you for sharing what God has done! It will be reviewed before publication.";
+
+            message.classList.remove(
+                "error"
+            );
+
+            message.classList.add(
+                "success"
+            );
+
+
+            /* ---------------------------------
+               RESET FORM
+            --------------------------------- */
+
+            form.reset();
+
+
+            /* ---------------------------------
+               RESTORE BUTTON
+            --------------------------------- */
+
+            submitButton.disabled = false;
+
+            submitButton.textContent =
+                "SUBMIT TESTIMONY";
+
+        }
+    );
+  
+</script>
+
+</body>
+
+</html>

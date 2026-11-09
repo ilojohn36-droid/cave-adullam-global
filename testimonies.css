@@ -1,0 +1,446 @@
+/* =========================================
+   CAVE ADULLAM
+   PUBLIC TESTIMONIES PAGE
+   ========================================= */
+
+
+/* =========================================
+   GENERAL RESET
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   BODY
+   ========================================= */
+
+body {
+    font-family: Arial, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(24, 83, 170, 0.25),
+            transparent 40%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(111, 70, 190, 0.18),
+            transparent 40%
+        ),
+
+        #05070d;
+
+    color: #ffffff;
+
+    min-height: 100vh;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MAIN PAGE
+   ========================================= */
+
+.testimonies-page {
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   PUBLIC TESTIMONIES SECTION
+   ========================================= */
+
+.public-testimonies {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 40px 25px 80px;
+}
+
+
+/* =========================================
+   BACK HOME
+   ========================================= */
+
+.back-home {
+    margin-bottom: 55px;
+}
+
+
+.back-home a {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s ease;
+}
+
+
+.back-home a:hover {
+
+    color: #ffffff;
+
+    transform: translateX(-3px);
+}
+
+
+/* =========================================
+   PAGE HEADING
+   ========================================= */
+
+.testimonies-heading {
+
+    text-align: center;
+
+    max-width: 700px;
+
+    margin: 0 auto 50px;
+}
+
+
+.section-label {
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 4px;
+
+    color: rgba(255, 255, 255, 0.5);
+
+    margin-bottom: 15px;
+}
+
+
+.testimonies-heading h1 {
+
+    color: #ffffff;
+
+    font-size: clamp(
+        42px,
+        7vw,
+        68px
+    );
+
+    font-weight: 700;
+
+    line-height: 1.1;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 20px;
+}
+
+
+.testimonies-heading > p:last-child {
+
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    max-width: 650px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   TESTIMONY GRID
+   ========================================= */
+
+.approved-testimonies {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 25px;
+}
+
+
+/* =========================================
+   TESTIMONY CARD
+   ========================================= */
+
+.testimony-card {
+
+    background: #ffffff;
+
+    color: #222222;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    border-radius: 16px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.18);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.testimony-card:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 16px 40px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================
+   TESTIMONY TITLE
+   ========================================= */
+
+.testimony-card h3 {
+
+    color: #111827;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================
+   AUTHOR
+   ========================================= */
+
+.testimony-author {
+
+    color: #777777;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================
+   TESTIMONY TEXT
+   ========================================= */
+
+.testimony-text {
+
+    color: #333333;
+
+    font-size: 14px;
+
+    line-height: 1.85;
+
+    white-space: pre-line;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================
+   READ MORE / READ LESS
+   ========================================= */
+
+.read-more-button {
+
+    border: none;
+
+    background: transparent;
+
+    color: #111827;
+
+    padding: 0;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+.read-more-button:hover {
+
+    opacity: 0.55;
+
+    transform: translateX(2px);
+}
+
+
+/* =========================================
+   LOADING / EMPTY STATE
+   ========================================= */
+
+.loading-testimonies,
+.no-testimonies {
+
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    padding: 50px 20px;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    .public-testimonies {
+
+        padding:
+            30px
+            18px
+            60px;
+    }
+
+
+    .back-home {
+
+        margin-bottom: 45px;
+    }
+
+
+    .testimonies-heading {
+
+        margin-bottom: 35px;
+    }
+
+
+    .testimonies-heading h1 {
+
+        font-size: 42px;
+
+        letter-spacing: -1px;
+    }
+
+
+    .testimonies-heading > p:last-child {
+
+        font-size: 14px;
+    }
+
+
+    .approved-testimonies {
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .testimony-card {
+
+        padding: 24px;
+
+        border-radius: 14px;
+    }
+
+
+    .testimony-card h3 {
+
+        font-size: 18px;
+    }
+
+
+    .testimony-text {
+
+        font-size: 14px;
+
+        line-height: 1.8;
+    }
+
+}
+
+
+/* =========================================
+   SMALL PHONES
+   ========================================= */
+
+@media (max-width: 400px) {
+
+    .public-testimonies {
+
+        padding-left: 15px;
+
+        padding-right: 15px;
+    }
+
+
+    .testimonies-heading h1 {
+
+        font-size: 36px;
+    }
+
+
+    .testimony-card {
+
+        padding: 20px;
+    }
+
+}
+/* =========================================
+   PREVENT EXPANDED TESTIMONY OVERLAP
+========================================= */
+
+.approved-testimonies {
+    align-items: start;
+}
+
+.testimony-card {
+    min-width: 0;
+    height: fit-content;
+    overflow: visible;
+}
+
+.testimony-card .testimony-text {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}

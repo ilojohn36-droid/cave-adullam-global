@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Conference Check-In | JESUS 2026</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(0, 110, 255, 0.35),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 80% 80%,
+                    rgba(0, 40, 160, 0.4),
+                    transparent 40%
+                ),
+                linear-gradient(
+                    135deg,
+                    #020b2d,
+                    #063f9e 55%,
+                    #020b2d
+                );
+
+            min-height: 100vh;
+            color: #ffffff;
+            padding: 25px 15px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: -50%;
+
+            background: repeating-conic-gradient(
+                from 0deg,
+                rgba(255, 255, 255, 0.035) 0deg 8deg,
+                transparent 8deg 18deg
+            );
+
+            pointer-events: none;
+        }
+
+        /* ================================
+           MAIN CARD
+        ================================= */
+
+        .scanner-card {
+            position: relative;
+            z-index: 1;
+
+            width: 100%;
+            max-width: 520px;
+
+            margin: 20px auto;
+
+            background: rgba(255, 255, 255, 0.97);
+            color: #111827;
+
+            padding: 10px;
+            border-radius: 20px;
+
+            border: 1px solid rgba(255, 215, 90, 0.5);
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.35),
+                0 0 45px rgba(7, 94, 232, 0.22),
+                0 0 12px rgba(212, 167, 44, 0.12);
+
+            overflow: hidden;
+
+            animation: cardEnter 0.6s ease-out;
+        }
+
+        .scanner-card::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            height: 3px;
+
+            background: linear-gradient(
+                90deg,
+                #063da5,
+                #d4a72c,
+                #075ee8
+            );
+        }
+
+        /* ================================
+           CONFERENCE HEADER
+        ================================= */
+
+        .conference-header {
+            position: relative;
+
+            width: 100%;
+            min-height: 125px;
+
+            text-align: center;
+
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        /* CAVE LOGO - TOP LEFT */
+
+        .Cave-logo {
+            position: absolute;
+            display: block;
+            top: 20px;
+            left: 20px;
+            width: 85px;
+            height: 85px;
+            object-fit: contain;
+            z-index: 1000px;
+        }
+
+        /* CAMP MEETING LOGO - TOP RIGHT */
+
+        .Camp-logo {
+            position: absolute;
+            display: block;
+            top: 40px;
+            right: 20px;
+
+            width: 40px;
+            height: 40px;
+
+            object-fit: contain;
+
+            z-index: 20px;
+        }
+
+        /* MEETING NAME */
+
+        .meeting-name {
+            text-align: center;
+            display: block;
+
+            color: #64748b;
+
+            font-size: 10px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            margin-top: 3px;
+        }
+
+        /* JESUS ARTWORK */
+
+        .theme-artwork {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            margin-top: 4px;
+        }
+
+        .theme-artwork img {
+            display: block;
+
+            width: 100%;
+            max-width: 55%;
+
+            height: auto;
+
+            object-fit: contain;
+        }
+
+        /* THEME */
+
+        .theme-line {
+            text-align: center;
+
+            margin-top: 3px;
+
+            color: #102a68;
+
+            font-size: 10px;
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+        }
+
+        /* ================================
+           CONFERENCE NAME
+        ================================= */
+
+        .conference-name {
+            display: inline-block;
+
+            padding: 5px 12px;
+
+            border: 1px solid rgba(212, 167, 44, 0.55);
+            border-radius: 20px;
+
+            background: rgba(212, 167, 44, 0.08);
+
+            color: #075ee8;
+
+            font-size: 11px;
+            font-weight: 900;
+
+            letter-spacing: 2px;
+        }
+
+        /* ================================
+           MAIN TITLE
+        ================================= */
+
+        h1 {
+            text-align: center;
+
+            margin-top: 10px;
+            margin-bottom: 7px;
+
+            font-size: 30px;
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            background: linear-gradient(
+                90deg,
+                #b8860b,
+                #f5d76e,
+                #b8860b
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .title-line {
+            width: 45px;
+            height: 2px;
+
+            margin: 10px auto 12px;
+
+            background: #d4a72c;
+            border-radius: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+
+            color: #334155;
+
+            margin-bottom: 18px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            letter-spacing: 0.2px;
+        }
+
+        /* ================================
+           SESSION SELECTOR
+        ================================= */
+
+        .session-selector {
+            margin-bottom: 18px;
+
+            padding: 14px;
+
+            background: #f8faff;
+
+            border: 1px solid #dbe5f3;
+            border-radius: 14px;
+
+            box-shadow:
+                0 6px 18px rgba(6, 61, 165, 0.06);
+        }
+
+        .session-label {
+            text-align: center;
+
+            color: #102a68;
+
+            font-size: 10px;
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 8px;
+        }
+
+        #sessionSelect {
+            width: 100%;
+
+            min-height: 48px;
+
+            padding: 10px 12px;
+
+            border: 1px solid #cbd5e1;
+            border-radius: 9px;
+
+            background: #ffffff;
+
+            color: #172554;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: all 0.2s ease;
+        }
+
+        #sessionSelect:focus {
+            outline: none;
+
+            border-color: #075ee8;
+
+            box-shadow:
+                0 0 0 3px rgba(7, 94, 232, 0.12);
+        }
+
+        .session-current {
+            text-align: center;
+
+            margin-top: 8px;
+
+            color: #8a6a12;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: 0.7px;
+        }
+
+        /* ================================
+           SCANNER
+        ================================= */
+
+        .scanner-section {
+            background: #f8faff;
+
+            border: 1px solid #dbe5f3;
+            border-radius: 16px;
+
+            padding: 16px;
+
+            box-shadow:
+                0 6px 18px rgba(6, 61, 165, 0.06);
+        }
+
+        .scanner-title {
+            text-align: center;
+
+            color: #102a68;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 13px;
+        }
+
+        #reader {
+            width: 100%;
+            margin: auto;
+
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        #reader video {
+            width: 100% !important;
+            height: auto !important;
+
+            border-radius: 10px;
+        }
+
+        #reader img {
+            max-width: 100%;
+        }
+
+        #reader button {
+            width: auto;
+
+            min-width: 130px;
+
+            margin: 10px 5px;
+
+            padding: 10px 15px;
+
+            border: none;
+            border-radius: 8px;
+
+            background: #063da5;
+
+            color: white;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        #reader button:hover {
+            background: #075ee8;
+        }
+
+        #reader select {
+            max-width: 100%;
+
+            padding: 9px;
+
+            border-radius: 8px;
+
+            border: 1px solid #cbd5e1;
+        }
+
+        /* ================================
+           DIVIDER
+        ================================= */
+
+        .divider {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin: 24px 0 18px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+
+            flex: 1;
+
+            height: 1px;
+
+            background: #e2e8f0;
+        }
+
+        .divider span {
+            color: #64748b;
+
+            font-size: 10px;
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            white-space: nowrap;
+        }
+
+        /* ================================
+           EMAIL SEARCH
+        ================================= */
+
+        .email-search {
+            text-align: center;
+        }
+
+        .email-search p {
+            color: #64748b;
+
+            font-size: 12px;
+
+            margin-bottom: 10px;
+
+            font-weight: 600;
+        }
+
+        .email-search input {
+            width: 100%;
+
+            min-height: 48px;
+
+            padding: 13px;
+
+            border: 1px solid #d6dce8;
+            border-radius: 9px;
+
+            font-size: 14px;
+
+            background: #f8faff;
+            color: #172554;
+
+            transition: all 0.2s ease;
+        }
+
+        .email-search input::placeholder {
+            color: #94a3b8;
+        }
+
+        .email-search input:focus {
+            outline: none;
+
+            border-color: #075ee8;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 0 0 3px rgba(7, 94, 232, 0.12);
+        }
+
+        .email-search button {
+            width: 100%;
+
+            margin-top: 12px;
+
+            padding: 14px;
+
+            border: 1px solid #d4a72c;
+            border-radius: 9px;
+
+            background: linear-gradient(
+                135deg,
+                #063da5,
+                #075ee8
+            );
+
+            color: white;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            letter-spacing: 0.7px;
+
+            cursor: pointer;
+
+            transition: all 0.2s ease;
+        }
+
+        .email-search button:hover {
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 8px 20px rgba(6, 61, 165, 0.25);
+        }
+
+        /* ================================
+           RESULTS
+        ================================= */
+
+        #result {
+            margin-top: 22px;
+        }
+
+        .success,
+        .warning,
+        .error {
+            padding: 20px;
+
+            border-radius: 14px;
+
+            animation: resultEnter 0.35s ease-out;
+        }
+
+        .success {
+            background: #f0fff4;
+
+            border: 1px solid #28a745;
+
+            color: #172554;
+        }
+
+        .warning {
+            background: #fff8e1;
+
+            border: 1px solid #f0ad4e;
+
+            color: #172554;
+        }
+
+        .error {
+            background: #fff5f5;
+
+            border: 1px solid #dc3545;
+
+            color: #172554;
+        }
+
+        .success h2,
+        .warning h2,
+        .error h2 {
+            text-align: center;
+
+            font-size: 17px;
+
+            margin-bottom: 12px;
+        }
+
+        .success h2 {
+            color: #188038;
+        }
+
+        .warning h2 {
+            color: #a66a00;
+        }
+
+        .error h2 {
+            color: #c62828;
+        }
+
+        .details {
+            text-align: left;
+
+            margin-top: 12px;
+
+            line-height: 1.8;
+
+            font-size: 13px;
+
+            color: #475569;
+        }
+
+        .details strong {
+            color: #102a68;
+        }
+
+        .success button,
+        .warning button,
+        .error button {
+            width: 100%;
+
+            padding: 13px;
+
+            margin-top: 15px;
+
+            border: none;
+            border-radius: 9px;
+
+            background: linear-gradient(
+                135deg,
+                #063da5,
+                #075ee8
+            );
+
+            color: white;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            letter-spacing: 0.6px;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .success button:hover,
+        .warning button:hover,
+        .error button:hover {
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 8px 20px rgba(6, 61, 165, 0.25);
+        }
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        .footer-brand {
+            text-align: center;
+
+            margin-top: 22px;
+
+            padding-top: 15px;
+
+            border-top: 1px solid #e2e8f0;
+
+            color: #94a3b8;
+
+            font-size: 9px;
+            font-weight: 700;
+
+            letter-spacing: 1px;
+        }
+
+        /* ================================
+           ANIMATIONS
+        ================================= */
+
+        @keyframes cardEnter {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes resultEnter {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .scanner-card {
+                margin: 8px auto;
+
+                padding: 10px 17px 24px;
+
+                border-radius: 17px;
+            }
+
+            .conference-header {
+                min-height: 110px;
+
+                padding-top: 5px;
+            }
+
+            .Cave-logo,
+            .Camp-logo {
+                width: 45px;
+                height: 45px;
+            }
+
+            .Cave-logo {
+                left: 0;
+            }
+
+            .Camp-logo {
+                right: 0;
+            }
+
+            .conference-name {
+                font-size: 10px;
+                letter-spacing: 1.6px;
+            }
+
+            .meeting-name {
+                font-size: 9px;
+                letter-spacing: 1.5px;
+            }
+
+            .theme-artwork img {
+                width: 125px;
+                max-width: 50%;
+            }
+
+            .theme-line {
+                font-size: 9px;
+                letter-spacing: 1.2px;
+            }
+
+            h1 {
+                font-size: 26px;
+                letter-spacing: 0.5px;
+            }
+
+            .subtitle {
+                font-size: 13px;
+                margin-bottom: 18px;
+            }
+
+            .session-selector {
+                padding: 12px;
+            }
+
+            #sessionSelect {
+                font-size: 14px;
+            }
+
+            .scanner-section {
+                padding: 12px;
+                border-radius: 13px;
+            }
+
+            #reader {
+                width: 100%;
+            }
+
+            .email-search input {
+                font-size: 16px;
+            }
+
+            .success,
+            .warning,
+            .error {
+                padding: 17px;
+            }
+
+            .details {
+                font-size: 12px;
+            }
+        }
+
+        /* ================================
+           SMALL PHONES
+        ================================= */
+
+        @media (max-width: 380px) {
+
+            .scanner-card {
+                padding: 10px 14px 22px;
+            }
+
+            .Cave-logo,
+            .Camp-logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .theme-artwork img {
+                width: 110px;
+            }
+
+            h1 {
+                font-size: 23px;
+            }
+
+            .conference-name {
+                font-size: 9px;
+            }
+
+            .meeting-name {
+                font-size: 8px;
+            }
+
+            .theme-line {
+                font-size: 8px;
+            }
+
+            .scanner-section {
+                padding: 9px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="scanner-card">
+
+        <!-- CONFERENCE HEADER -->
+
+        <div class="conference-header">
+
+            <!-- TOP LEFT LOGO -->
+            <img
+                src="cl.png"
+                alt="Cave Aullam Logo"
+                class="Cave-logo"
+            >
+
+            <!-- TOP RIGHT LOGO -->
+            <img
+                src="ccm.png"
+                alt="Cave Camp Meeting Logo"
+                class="Camp-logo"
+            >
+
+            <!-- CENTER CONTENT -->
+            <p class="meeting-name">
+                CAVE CAMP MEETING 2026
+            </p>
+
+            <div class="theme-artwork">
+                <img
+                    src="J6.png"
+                    alt="JESUS"
+                >
+            </div>
+
+            <p class="theme-line">
+                ONE NAME. ONE FOCUS. JESUS.
+            </p>
+
+            
+<button
+    type="button"
+    onclick="window.location.href='admin.html'"
+    style="
+        padding: 12px 18px;
+        margin: 10px 0 18px;
+        border: 1px solid #d4a72c;
+        border-radius: 8px;
+        background: #063da5;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 800;
+        cursor: pointer;
+    "
+>
+    ← BACK TO ADMIN
+</button>
+
+        </div>
+
+
+        <!-- PAGE TITLE -->
+
+        <h1>
+            CHECK-IN
+        </h1>
+
+        <div class="title-line"></div>
+
+        <p class="subtitle">
+            Select the current session before scanning
+        </p>
+
+
+        <!-- SESSION SELECTOR -->
+
+        <div class="session-selector">
+
+            <div class="session-label">
+                CURRENT CHECK-IN SESSION
+            </div>
+
+            <select id="sessionSelect">
+
+                <option value="">
+                    Select current session
+                </option>
+
+                <option value="1">
+                    Thursday — Opening Night
+                </option>
+
+                <option value="2">
+                    Friday — Morning
+                </option>
+
+                <option value="3">
+                    Friday — Afternoon
+                </option>
+
+                <option value="4">
+                    Friday — Evening/Night
+                </option>
+
+                <option value="5">
+                    Saturday — Morning
+                </option>
+
+                <option value="6">
+                    Saturday — Afternoon
+                </option>
+
+                <option value="7">
+                    Saturday — Evening/Night
+                </option>
+
+            </select>
+
+            <div
+                id="sessionDisplay"
+                class="session-current"
+            >
+                No session selected
+            </div>
+
+        </div>
+
+
+        <!-- QR SCANNER -->
+
+        <div class="scanner-section">
+
+            <div class="scanner-title">
+                SCAN REGISTRATION QR CODE
+            </div>
+
+            <div id="reader"></div>
+
+        </div>
+
+
+        <!-- EMAIL SEARCH DIVIDER -->
+
+        <div class="divider">
+
+            <span>
+                OR SEARCH MANUALLY
+            </span>
+
+        </div>
+
+
+        <!-- EMAIL FALLBACK -->
+
+        <div class="email-search">
+
+            <p>
+                QR code unavailable?
+                Search using the attendee's email.
+            </p>
+
+            <input
+                type="email"
+                id="emailSearch"
+                placeholder="Enter attendee email"
+            >
+
+            <button onclick="searchByEmail()">
+                SEARCH BY EMAIL
+            </button>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div id="result"></div>
+
+
+        <!-- FOOTER -->
+
+        <div class="footer-brand">
+            ONE NAME. ONE FOCUS. JESUS.
+        </div>
+
+    </div>
+
+
+    <!-- QR SCANNER LIBRARY -->
+
+    <script src="https://unpkg.com/html5-qrcode"></script>
+
+
+    <!-- SUPABASE -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <script>
+
+        /* =========================================================
+           SUPABASE
+        ========================================================= */
+
+        const SUPABASE_URL =
+            "https://ktwvbhdxszxmmmfoxzra.supabase.co";
+
+        const SUPABASE_KEY =
+            "sb_publishable_MysGHP42nsPZzFzp2aBR-g_VhFE0Idq";
+
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+        /* =========================================================
+           7 CONFERENCE SESSIONS
+        ========================================================= */
+
+        const sessionNames = {
+
+            1: "Thursday — Opening Night",
+
+            2: "Friday — Morning",
+
+            3: "Friday — Afternoon",
+
+            4: "Friday — Evening/Night",
+
+            5: "Saturday — Morning",
+
+            6: "Saturday — Afternoon",
+
+            7: "Saturday — Evening/Night"
+
+        };
+
+
+        /* =========================================================
+           SESSION SELECTOR
+        ========================================================= */
+
+        const sessionSelect =
+            document.getElementById("sessionSelect");
+
+
+        const savedSession =
+            sessionStorage.getItem(
+                "currentCheckInSession"
+            );
+
+
+        if (
+            savedSession &&
+            sessionNames[savedSession]
+        ) {
+
+            sessionSelect.value =
+                savedSession;
+
+        }
+
+
+        function getSelectedSession() {
+
+            return sessionSelect.value;
+
+        }
+
+
+        function getSelectedSessionName() {
+
+            const sessionNumber =
+                getSelectedSession();
+
+            return (
+                sessionNames[sessionNumber] || ""
+            );
+
+        }
+
+
+        function updateSessionDisplay() {
+
+            const sessionNumber =
+                getSelectedSession();
+
+
+            const display =
+                document.getElementById(
+                    "sessionDisplay"
+                );
+
+
+            if (!sessionNumber) {
+
+                display.textContent =
+                    "No session selected";
+
+
+                sessionStorage.removeItem(
+                    "currentCheckInSession"
+                );
+
+                return;
+            }
+
+
+            sessionStorage.setItem(
+                "currentCheckInSession",
+                sessionNumber
+            );
+
+
+            display.textContent =
+                "CURRENT SESSION: " +
+                sessionNames[sessionNumber];
+
+        }
+
+
+        sessionSelect.addEventListener(
+            "change",
+            updateSessionDisplay
+        );
+
+
+        /* Restore saved session after reload */
+
+        if (
+            savedSession &&
+            sessionNames[savedSession]
+        ) {
+
+            updateSessionDisplay();
+
+        }
+
+
+        /* =========================================================
+           REQUIRE SESSION
+        ========================================================= */
+
+        function requireSession() {
+
+            const sessionNumber =
+                getSelectedSession();
+
+
+            if (!sessionNumber) {
+
+                document.getElementById(
+                    "result"
+                ).innerHTML = `
+
+                    <div class="warning">
+
+                        <h2>
+                            ⚠️ SELECT SESSION
+                        </h2>
+
+                        <p>
+                            Please select the current conference
+                            session before checking in an attendee.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return false;
+            }
+
+
+            return true;
+
+        }
+
+
+        /* =========================================================
+           ESCAPE HTML
+        ========================================================= */
+
+        function escapeHTML(value) {
+
+            if (
+                value === null ||
+                value === undefined
+            ) {
+
+                return "";
+
+            }
+
+
+            return String(value)
+
+                .replace(/&/g, "&amp;")
+
+                .replace(/</g, "&lt;")
+
+                .replace(/>/g, "&gt;")
+
+                .replace(/"/g, "&quot;")
+
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        /* =========================================================
+           CHECK SESSION STATUS
+        ========================================================= */
+
+        async function getSessionCheckIn(
+            attendeeId,
+            sessionNumber
+        ) {
+
+            const {
+                data,
+                error
+            } = await supabaseClient
+
+                .from("check_ins")
+
+                .select("*")
+
+                .eq(
+                    "attendee_id",
+                    attendeeId
+                )
+
+                .eq(
+                    "session_number",
+                    Number(sessionNumber)
+                )
+
+                .maybeSingle();
+
+
+            if (error) {
+
+                console.error(
+                    "Session check-in lookup error:",
+                    error
+                );
+
+                throw error;
+
+            }
+
+
+            return data;
+
+        }
+
+
+        /* =========================================================
+           SHOW ATTENDEE
+        ========================================================= */
+
+        async function showAttendeeForCheckIn(
+            attendee
+        ) {
+
+            if (!requireSession()) {
+
+                return;
+
+            }
+
+
+            const sessionNumber =
+                getSelectedSession();
+
+
+            const sessionName =
+                getSelectedSessionName();
+
+
+            try {
+
+                const existingCheckIn =
+                    await getSessionCheckIn(
+                        attendee.id,
+                        sessionNumber
+                    );
+
+
+                /* ALREADY CHECKED INTO THIS SESSION */
+
+                if (existingCheckIn) {
+
+                    document.getElementById(
+                        "result"
+                    ).innerHTML = `
+
+                        <div class="warning">
+
+                            <h2>
+                                ⚠️ ALREADY CHECKED IN
+                            </h2>
+
+                            <div class="details">
+
+                                <strong>Name:</strong>
+                                ${escapeHTML(attendee.name)}
+                                <br>
+
+                                <strong>Email:</strong>
+                                ${escapeHTML(attendee.email)}
+                                <br>
+
+                                <strong>Institution:</strong>
+                                ${escapeHTML(attendee.institution)}
+                                <br>
+
+                                <strong>Registration Code:</strong>
+                                ${escapeHTML(
+                                    attendee.registration_code
+                                )}
+                                <br>
+
+                                <strong>Session:</strong>
+                                ${escapeHTML(sessionName)}
+                                <br>
+
+                                <strong>Checked In:</strong>
+                                ${new Date(
+                                    existingCheckIn.check_in_time
+                                ).toLocaleString()}
+
+                            </div>
+
+                            <button
+                                onclick="location.reload()"
+                            >
+                                SCAN ANOTHER
+                            </button>
+
+                        </div>
+
+                    `;
+
+                    return;
+
+                }
+
+
+                /* REGISTRATION VERIFIED */
+
+                document.getElementById(
+                    "result"
+                ).innerHTML = `
+
+                    <div class="success">
+
+                        <h2>
+                            ✅ REGISTRATION VERIFIED
+                        </h2>
+
+                        <div class="details">
+
+                            <strong>Name:</strong>
+                            ${escapeHTML(attendee.name)}
+                            <br>
+
+                            <strong>Email:</strong>
+                            ${escapeHTML(attendee.email)}
+                            <br>
+
+                            <strong>Phone:</strong>
+                            ${escapeHTML(attendee.phone)}
+                            <br>
+
+                            <strong>Institution:</strong>
+                            ${escapeHTML(attendee.institution)}
+                            <br>
+
+                            <strong>Registration Code:</strong>
+                            ${escapeHTML(
+                                attendee.registration_code
+                            )}
+                            <br>
+
+                            <strong>Current Session:</strong>
+                            ${escapeHTML(sessionName)}
+                            <br>
+
+                            <strong>Status:</strong>
+                            NOT CHECKED IN
+
+                        </div>
+
+                        <button
+                            onclick='checkIn(${JSON.stringify(
+                                attendee.registration_code
+                            )})'
+                        >
+                            CHECK IN
+                        </button>
+
+                        <button
+                            onclick="location.reload()"
+                        >
+                            CANCEL
+                        </button>
+
+                    </div>
+
+                `;
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Session verification error:",
+                    error
+                );
+
+
+                document.getElementById(
+                    "result"
+                ).innerHTML = `
+
+                    <div class="error">
+
+                        <h2>
+                            ❌ CHECK-IN ERROR
+                        </h2>
+
+                        <p>
+                            Unable to verify this attendee's
+                            session status.
+                        </p>
+
+                        <button
+                            onclick="location.reload()"
+                        >
+                            TRY AGAIN
+                        </button>
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+
+
+        /* =========================================================
+           QR SCAN
+        ========================================================= */
+
+        async function onScanSuccess(
+            decodedText,
+            decodedResult
+        ) {
+
+            if (!requireSession()) {
+
+                return;
+
+            }
+
+
+            /* Stop scanner */
+
+            try {
+
+                await html5QrcodeScanner.clear();
+
+            }
+
+            catch (error) {
+
+                console.log(
+                    "Scanner already stopped."
+                );
+
+            }
+
+
+            /* Find attendee */
+
+            const {
+                data: attendee,
+                error
+            } = await supabaseClient
+
+                .from("attendees")
+
+                .select("*")
+
+                .eq(
+                    "registration_code",
+                    decodedText
+                )
+
+                .maybeSingle();
+
+
+            if (
+                error ||
+                !attendee
+            ) {
+
+                document.getElementById(
+                    "result"
+                ).innerHTML = `
+
+                    <div class="error">
+
+                        <h2>
+                            ❌ NOT REGISTERED
+                        </h2>
+
+                        <p>
+                            This QR code does not belong
+                            to a registered attendee.
+                        </p>
+
+                        <div class="details">
+
+                            <strong>Code:</strong>
+                            ${escapeHTML(decodedText)}
+
+                        </div>
+
+                        <button
+                            onclick="location.reload()"
+                        >
+                            SCAN AGAIN
+                        </button>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            await showAttendeeForCheckIn(
+                attendee
+            );
+
+        }
+
+
+        /* =========================================================
+           CREATE CHECK-IN
+        ========================================================= */
+
+        async function checkIn(
+            registrationCode
+        ) {
+
+            if (!requireSession()) {
+
+                return;
+
+            }
+
+
+            const sessionNumber =
+                Number(
+                    getSelectedSession()
+                );
+
+
+            const sessionName =
+                getSelectedSessionName();
+
+
+            /* Find attendee again */
+
+            const {
+                data: attendee,
+                error: attendeeError
+            } = await supabaseClient
+
+                .from("attendees")
+
+                .select("*")
+
+                .eq(
+                    "registration_code",
+                    registrationCode
+                )
+
+                .maybeSingle();
+
+
+            if (
+                attendeeError ||
+                !attendee
+            ) {
+
+                alert(
+                    "Attendee could not be found."
+                );
+
+                return;
+
+            }
+
+
+            try {
+
+                /* Double-check */
+
+                const existingCheckIn =
+                    await getSessionCheckIn(
+                        attendee.id,
+                        sessionNumber
+                    );
+
+
+                if (existingCheckIn) {
+
+                    document.getElementById(
+                        "result"
+                    ).innerHTML = `
+
+                        <div class="warning">
+
+                            <h2>
+                                ⚠️ ALREADY CHECKED IN
+                            </h2>
+
+                            <div class="details">
+
+                                <strong>Name:</strong>
+                                ${escapeHTML(attendee.name)}
+                                <br>
+
+                                <strong>Session:</strong>
+                                ${escapeHTML(sessionName)}
+                                <br>
+
+                                <strong>Checked In:</strong>
+                                ${new Date(
+                                    existingCheckIn.check_in_time
+                                ).toLocaleString()}
+
+                            </div>
+
+                            <button
+                                onclick="location.reload()"
+                            >
+                                SCAN ANOTHER
+                            </button>
+
+                        </div>
+
+                    `;
+
+                    return;
+
+                }
+
+
+                /* CREATE SESSION CHECK-IN */
+
+                const {
+                    data: newCheckIn,
+                    error: checkInError
+                } = await supabaseClient
+
+                    .from("check_ins")
+
+                    .insert({
+
+                        attendee_id:
+                            attendee.id,
+
+                        session_number:
+                            sessionNumber
+
+                    })
+
+                    .select()
+
+                    .single();
+
+
+                /* DATABASE DUPLICATE */
+
+                if (checkInError) {
+
+                    if (
+                        checkInError.code === "23505"
+                    ) {
+
+                        document.getElementById(
+                            "result"
+                        ).innerHTML = `
+
+                            <div class="warning">
+
+                                <h2>
+                                    ⚠️ ALREADY CHECKED IN
+                                </h2>
+
+                                <div class="details">
+
+                                    <strong>Name:</strong>
+                                    ${escapeHTML(
+                                        attendee.name
+                                    )}
+
+                                    <br>
+
+                                    <strong>Session:</strong>
+                                    ${escapeHTML(
+                                        sessionName
+                                    )}
+
+                                    <br>
+
+                                    This attendee has already
+                                    been checked into this session.
+
+                                </div>
+
+                                <button
+                                    onclick="location.reload()"
+                                >
+                                    SCAN ANOTHER
+                                </button>
+
+                            </div>
+
+                        `;
+
+                        return;
+
+                    }
+
+
+                    throw checkInError;
+
+                }
+
+
+                /*
+                    Keep old attendee fields updated.
+                    This keeps the current dashboard compatible.
+                */
+
+                const {
+                    error: legacyUpdateError
+                } = await supabaseClient
+
+                    .from("attendees")
+
+                    .update({
+
+                        checked_in: true,
+
+                        check_in_time:
+                            newCheckIn.check_in_time
+
+                    })
+
+                    .eq(
+                        "id",
+                        attendee.id
+                    );
+
+
+                if (legacyUpdateError) {
+
+                    console.warn(
+                        "Legacy attendee update failed:",
+                        legacyUpdateError
+                    );
+
+                }
+
+
+                /* SUCCESS */
+
+                document.getElementById(
+                    "result"
+                ).innerHTML = `
+
+                    <div class="success">
+
+                        <h2>
+                            🎉 CHECK-IN SUCCESSFUL!
+                        </h2>
+
+                        <div class="details">
+
+                            <strong>Name:</strong>
+                            ${escapeHTML(attendee.name)}
+
+                            <br>
+
+                            <strong>Registration Code:</strong>
+                            ${escapeHTML(
+                                attendee.registration_code
+                            )}
+
+                            <br>
+
+                            <strong>Session:</strong>
+                            ${escapeHTML(sessionName)}
+
+                            <br>
+
+                            <strong>Check-in Time:</strong>
+                            ${new Date(
+                                newCheckIn.check_in_time
+                            ).toLocaleString()}
+
+                        </div>
+
+                        <button
+                            onclick="location.reload()"
+                        >
+                            SCAN NEXT PERSON
+                        </button>
+
+                    </div>
+
+                `;
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Check-in error:",
+                    error
+                );
+
+
+                document.getElementById(
+                    "result"
+                ).innerHTML = `
+
+                    <div class="error">
+
+                        <h2>
+                            ❌ CHECK-IN FAILED
+                        </h2>
+
+                        <p>
+                            Something went wrong while
+                            recording the check-in.
+                        </p>
+
+                        <div class="details">
+
+                            ${escapeHTML(
+                                error.message ||
+                                "Please try again."
+                            )}
+
+                        </div>
+
+                        <button
+                            onclick="location.reload()"
+                        >
+                            TRY AGAIN
+                        </button>
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+
+
+        /* =========================================================
+           EMAIL SEARCH
+        ========================================================= */
+
+        async function searchByEmail() {
+
+            if (!requireSession()) {
+
+                return;
+
+            }
+
+
+            const email =
+                document
+                    .getElementById(
+                        "emailSearch"
+                    )
+                    .value
+                    .trim();
+
+
+            if (!email) {
+
+                alert(
+                    "Please enter the attendee's email."
+                );
+
+                return;
+
+            }
+
+
+            document.getElementById(
+                "result"
+            ).innerHTML = `
+
+                <div class="warning">
+
+                    <h2>
+                        🔍 SEARCHING...
+                    </h2>
+
+                    <p>
+                        Please wait.
+                    </p>
+
+                </div>
+
+            `;
+
+
+            const {
+                data: attendees,
+                error
+            } = await supabaseClient
+
+                .from("attendees")
+
+                .select("*")
+
+                .ilike(
+                    "email",
+                    email
+                )
+
+                .limit(1);
+
+
+            if (error) {
+
+                console.error(
+                    "Email search error:",
+                    error
+                );
+
+
+                document.getElementById(
+                    "result"
+                ).innerHTML = `
+
+                    <div class="error">
+
+                        <h2>
+                            ❌ SEARCH ERROR
+                        </h2>
+
+                        <p>
+                            ${escapeHTML(
+                                error.message
+                            )}
+                        </p>
+
+                        <button
+                            onclick="location.reload()"
+                        >
+                            TRY AGAIN
+                        </button>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            const attendee =
+                attendees &&
+                attendees.length > 0
+                    ? attendees[0]
+                    : null;
+
+
+            if (!attendee) {
+
+                document.getElementById(
+                    "result"
+                ).innerHTML = `
+
+                    <div class="error">
+
+                        <h2>
+                            ❌ NOT FOUND
+                        </h2>
+
+                        <p>
+                            No registration was found
+                            with this email address.
+                        </p>
+
+                        <button
+                            onclick="location.reload()"
+                        >
+                            TRY AGAIN
+                        </button>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            await showAttendeeForCheckIn(
+                attendee
+            );
+
+        }
+
+
+        /* =========================================================
+           QR SCANNER FAILURE
+        ========================================================= */
+
+        function onScanFailure(error) {
+
+            /*
+                Normal QR scanning failures are ignored.
+            */
+
+        }
+
+
+        /* =========================================================
+           START QR SCANNER
+        ========================================================= */
+
+        const html5QrcodeScanner =
+            new Html5QrcodeScanner(
+                "reader",
+                {
+                    fps: 10,
+
+                    qrbox: {
+                        width: 250,
+                        height: 250
+                    }
+                }
+            );
+
+
+        html5QrcodeScanner.render(
+            onScanSuccess,
+            onScanFailure
+        );
+
+    </script>
+
+</body>
+
+</html>

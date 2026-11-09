@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Testimonies | Cave Adullam</title>
+
+    <link
+        rel="stylesheet"
+        href="testimonies.css"
+    >
+
+</head>
+
+<body>
+
+    <main class="testimonies-page">
+
+        <section class="public-testimonies">
+
+            <!-- BACK HOME -->
+
+            <div class="back-home">
+                <a href="homepage-index.html">
+                    ← Back to Home
+                </a>
+            </div>
+
+
+            <!-- HEADING -->
+
+            <div class="testimonies-heading">
+
+                <p class="section-label">
+                    TESTIMONIES
+                </p>
+
+                <h1>
+                    What God Has Done
+                </h1>
+
+                <p>
+                    Read testimonies of God's faithfulness
+                    and what He is doing in the lives of His people.
+                </p>
+
+            </div>
+
+
+            <!-- TESTIMONIES -->
+
+            <div
+                id="approvedTestimonies"
+                class="approved-testimonies"
+            >
+
+                <p class="loading-testimonies">
+                    Loading testimonies...
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- SUPABASE -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <script>
+
+        const SUPABASE_URL =
+            "https://ktwvbhdxszxmmmfoxzra.supabase.co";
+
+
+        const SUPABASE_KEY =
+            "sb_publishable_MysGHP42nsPZzFzp2aBR-g_VhFE0Idq";
+
+
+        const supabaseClient =
+            supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+        /* =========================================
+           LOAD APPROVED TESTIMONIES
+        ========================================= */
+
+        async function loadApprovedTestimonies() {
+
+            const container =
+                document.getElementById(
+                    "approvedTestimonies"
+                );
+
+
+            if (!container) {
+                return;
+            }
+
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+                    .from("testimonies")
+                    .select(
+                        "id, full_name, title, original_testimony, created_at"
+                    )
+                    .eq(
+                        "status",
+                        "approved"
+                    )
+                    .order(
+                        "created_at",
+                        {
+                            ascending: false
+                        }
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    "Unable to load approved testimonies:",
+                    error
+                );
+
+
+                container.innerHTML = `
+                    <p class="no-testimonies">
+                        Unable to load testimonies right now.
+                    </p>
+                `;
+
+                return;
+            }
+
+
+            if (!data || data.length === 0) {
+
+                container.innerHTML = `
+                    <p class="no-testimonies">
+                        No testimonies have been published yet.
+                    </p>
+                `;
+
+                return;
+            }
+
+
+            container.innerHTML = "";
+
+
+            data.forEach(
+                function(testimony) {
+
+                    const card =
+                        document.createElement("article");
+
+
+                    card.className =
+                        "testimony-card";
+
+
+                    /* TITLE */
+
+                    const title =
+                        document.createElement("h3");
+
+                    title.textContent =
+                        testimony.title ||
+                        "Testimony";
+
+
+                    /* AUTHOR */
+
+                    const author =
+                        document.createElement("p");
+
+                    author.className =
+                        "testimony-author";
+
+                    author.textContent =
+                        "Shared by " +
+                        (
+                            testimony.full_name ||
+                            "Anonymous"
+                        );
+
+
+                    /* TESTIMONY TEXT */
+
+                    const text =
+                        document.createElement("p");
+
+                    text.className =
+                        "testimony-text";
+
+
+                    const fullText =
+                        testimony.original_testimony ||
+                        "";
+
+
+                    /*
+                        Show a shorter preview
+                        when the testimony is long.
+                    */
+
+                    const previewLength = 260;
+
+
+                    if (fullText.length > previewLength) {
+
+                        const preview =
+                            fullText.substring(
+                                0,
+                                previewLength
+                            ).trim();
+
+
+                        text.textContent =
+                            preview + "...";
+
+
+                        text.classList.add(
+                            "collapsed"
+                        );
+
+
+                        /* READ MORE BUTTON */
+
+                        const readMore =
+                            document.createElement("button");
+
+
+                        readMore.className =
+                            "read-more-button";
+
+
+                        readMore.textContent =
+                            "READ MORE";
+
+
+                        readMore.type =
+                            "button";
+
+
+                        readMore.addEventListener(
+                            "click",
+                            function() {
+
+                                if (
+                                    text.classList.contains(
+                                        "collapsed"
+                                    )
+                                ) {
+
+                                    text.textContent =
+                                        fullText;
+
+                                    text.classList.remove(
+                                        "collapsed"
+                                    );
+
+                                    readMore.textContent =
+                                        "READ LESS";
+
+                                } else {
+
+                                    text.textContent =
+                                        preview + "...";
+
+                                    text.classList.add(
+                                        "collapsed"
+                                    );
+
+                                    readMore.textContent =
+                                        "READ MORE";
+
+                                }
+
+                            }
+                        );
+
+
+                        card.appendChild(title);
+
+                        card.appendChild(author);
+
+                        card.appendChild(text);
+
+                        card.appendChild(readMore);
+
+
+                    } else {
+
+                        text.textContent =
+                            fullText;
+
+
+                        card.appendChild(title);
+
+                        card.appendChild(author);
+
+                        card.appendChild(text);
+
+                    }
+
+
+                    container.appendChild(card);
+
+                }
+            );
+
+        }
+
+
+        /* =========================================
+           START
+        ========================================= */
+
+        loadApprovedTestimonies();
+
+    </script>
+
+</body>
+
+</html>

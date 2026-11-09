@@ -1,0 +1,2006 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0, 110, 255, 0.35), transparent 35%),
+        radial-gradient(circle at 80% 80%, rgba(0, 40, 160, 0.4), transparent 40%),
+        linear-gradient(135deg, #020b2d, #063f9e 55%, #020b2d);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle light-ray effect */
+body::before {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    background: repeating-conic-gradient(
+        from 0deg,
+        rgba(255, 255, 255, 0.035) 0deg 8deg,
+        transparent 8deg 18deg
+    );
+    pointer-events: none;
+}
+
+/* =========================================
+   RESPONSIVE PAGE CONTAINER
+========================================= */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 40px 30px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================
+   REGISTRATION CARD — DESKTOP
+========================================= */
+
+.card {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    padding: 45px 55px;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(255, 215, 90, 0.5);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35),
+        0 0 45px rgba(7, 94, 232, 0.22),
+        0 0 12px rgba(212, 167, 44, 0.12);
+
+    color: #111827;
+}
+
+/* Main heading */
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #063da5;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+/* Subtitle */
+.subtitle {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 7px;
+    font-weight: bold;
+    color: #172554;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    font-size: 15px;
+    background: #f8fafc;
+    transition: 0.2s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #1261d6;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(18, 97, 214, 0.12);
+}
+
+/* Register button */
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px;
+    border: none;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #063da5, #075ee8);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease;
+    box-shadow: 0 8px 20px rgba(6, 61, 165, 0.3);
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba(6, 61, 165, 0.4);
+}
+
+/* Gold accent line */
+.card::before {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 4px;
+    margin: -15px auto 25px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #d4a72c, #ffd966);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    .card {
+        padding: 25px 20px;
+        border-radius: 16px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+}
+
+.theme-title {
+    font-size: 52px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-align: center;
+    margin-bottom: 8px;
+
+    background: linear-gradient(
+        90deg,
+        #b8860b,
+        #f5d76e,
+        #b8860b
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow: 0 2px 12px rgba(212, 167, 44, 0.25);
+}
+
+.subtitle {
+    text-align: center;
+    color: #334155;
+    margin-bottom: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.subtitle span {
+    display: block;
+    margin-top: 5px;
+    color: #8a6a12;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Premium form fields */
+
+input {
+    border: 1px solid #d6dce8;
+    background: #f8faff;
+    color: #172554;
+    transition: all 0.25s ease;
+}
+
+input::placeholder {
+    color: #94a3b8;
+}
+
+input:hover {
+    border-color: #8aa9df;
+}
+
+input:focus {
+    border-color: #075ee8;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(7, 94, 232, 0.12);
+}
+
+/* Form labels */
+
+label {
+    color: #102a68;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+}
+
+/* Premium register button */
+
+button {
+    width: 100%;
+    margin-top: 28px;
+    padding: 15px;
+    border: 1px solid #d4a72c;
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        #063da5,
+        #075ee8
+    );
+
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    box-shadow:
+        0 8px 22px rgba(6, 61, 165, 0.28);
+}
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 28px rgba(6, 61, 165, 0.38);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.conference-label {
+    text-align: center;
+    color: #075ee8;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    margin-bottom: 6px;
+}
+
+/* Premium card finish */
+
+.card {
+    position: relative;
+    overflow: hidden;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        #063da5,
+        #d4a72c,
+        #075ee8
+    );
+}
+
+/* Refined form spacing */
+
+form {
+    margin-top: 5px;
+}
+
+form label:first-of-type {
+    margin-top: 5px;
+}
+
+form input {
+    margin-bottom: 2px;
+}
+
+/* Subtle conference glow */
+
+.card {
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35),
+        0 0 45px rgba(7, 94, 232, 0.22),
+        0 0 12px rgba(212, 167, 44, 0.12);
+}
+
+/* Mobile optimization */
+
+@media (max-width: 600px) {
+
+    body {
+        align-items: flex-start;
+    }
+
+    .container {
+        padding: 20px 12px;
+        margin-top: 20px;
+    }
+
+    .card {
+        padding: 30px 20px;
+    }
+
+    .theme-title {
+        font-size: 44px;
+        letter-spacing: 3px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    input {
+        padding: 14px 12px;
+    }
+
+    button {
+        padding: 15px;
+    }
+}
+
+.theme-title {
+    position: relative;
+    line-height: 1;
+    text-shadow:
+        0 3px 15px rgba(212, 167, 44, 0.25);
+}
+
+.theme-title::after {
+    content: "";
+    display: block;
+    width: 45px;
+    height: 2px;
+    margin: 12px auto 0;
+
+    background: #d4a72c;
+    border-radius: 10px;
+}
+
+/* Smooth card entrance */
+
+.card {
+    animation: cardEnter 0.6s ease-out;
+}
+
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.registration-note {
+    text-align: center;
+    margin-top: 18px;
+    color: #64748b;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* Conference identity */
+
+.conference-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.conference-name {
+    color: #075ee8;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin-bottom: 5px;
+}
+
+.meeting-name {
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.theme-title {
+    margin-bottom: 0;
+}
+
+/* Header divider */
+
+.conference-header {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Cave Adullam identity badge */
+
+.conference-name {
+    display: inline-block;
+    padding: 5px 12px;
+    border: 1px solid rgba(212, 167, 44, 0.55);
+    border-radius: 20px;
+    background: rgba(212, 167, 44, 0.08);
+}
+
+/* Premium input styling */
+
+input {
+    min-height: 48px;
+    transition: all 0.2s ease;
+}
+
+input:focus {
+    transform: translateY(-1px);
+}
+
+/* Conference footer */
+
+.footer-brand {
+    text-align: center;
+    margin-top: 22px;
+    padding-top: 15px;
+    border-top: 1px solid #e2e8f0;
+
+    color: #94a3b8;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Refined labels */
+
+label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    margin-top: 18px;
+}
+
+/* Refined placeholders */
+
+input::placeholder {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.1px;
+}
+
+/* Input hover refinement */
+
+input:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.05);
+}
+
+.required {
+    color: #d4a72c;
+    font-weight: 900;
+}
+
+/* Form section heading */
+
+.form-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 22px 0 5px;
+}
+
+.form-heading::before,
+.form-heading::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #e2e8f0;
+}
+
+.form-heading span {
+    color: #64748b;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+}
+
+.form-heading + form {
+    margin-top: 12px;
+}
+
+/* Button shine effect */
+
+button {
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.18),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+}
+
+button:hover::before {
+    left: 130%;
+}
+
+/* Event details */
+
+.event-details {
+    margin: 20px 0 5px;
+    padding: 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #f8faff;
+    text-align: center;
+}
+
+.event-details > div + div {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.detail-label {
+    display: block;
+    color: #d4a72c;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+}
+
+.event-details strong {
+    display: block;
+    color: #102a68;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.event-details small {
+    display: block;
+    margin-top: 3px;
+    color: #64748b;
+    font-size: 11px;
+}
+
+/* Theme statement */
+
+.theme-line {
+    margin-top: 8px;
+    color: #8a6a12;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-align: center;
+}
+
+/* Compact mobile layout */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 12px 10px;
+        margin-top: 10px;
+    }
+
+    .card {
+        padding: 24px 18px;
+    }
+
+    .conference-header {
+        margin-bottom: 18px;
+        padding-bottom: 15px;
+    }
+
+    .event-details {
+        margin: 15px 0 2px;
+        padding: 12px;
+    }
+
+    .form-heading {
+        margin-top: 18px;
+    }
+
+    label {
+        margin-top: 14px;
+    }
+}
+
+/* Allow page scrolling */
+
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* =========================================================
+   QR SUCCESS PAGE
+   ========================================================= */
+
+.success-card {
+    max-width: 520px;
+}
+
+.success-message {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.success-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: #eaf7ee;
+    border: 2px solid #28a745;
+
+    color: #28a745;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.success-message h2 {
+    color: #063da5;
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.success-message p {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.qr-section {
+    margin-top: 25px;
+    padding: 20px 15px;
+
+    text-align: center;
+
+    background: #f8faff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+}
+
+.qr-title {
+    color: #102a68;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+}
+
+#qrcode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 15px;
+}
+
+#qrcode img,
+#qrcode canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+.qr-instruction {
+    margin-top: 10px;
+    color: #64748b;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.attendee-details {
+    margin-top: 20px;
+    padding: 18px 20px;
+    background: #f8faff;
+    border: 1px solid #dbe5f3;
+    border-radius: 14px;
+}
+
+.attendee-details p {
+    margin: 9px 0;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.attendee-details strong {
+    color: #102a68;
+    font-weight: 700;
+}
+
+.registration-code {
+    margin-top: 14px;
+    padding: 12px;
+    text-align: center;
+    background: #eef4ff;
+    border: 1px solid #cbdaf5;
+    border-radius: 10px;
+    color: #063da5;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.qr-section {
+    margin-top: 22px;
+    padding: 22px 15px;
+    background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
+    border: 1px solid #dbe5f3;
+    border-radius: 16px;
+}
+
+.qr-title {
+    color: #063da5;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    margin-bottom: 16px;
+}
+
+#qrcode {
+    background: #ffffff;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(6, 61, 165, 0.08);
+}
+
+.qr-instruction {
+    margin: 14px auto 0;
+    max-width: 300px;
+    color: #64748b;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.success-card > button {
+    margin-top: 22px;
+    width: 100%;
+}
+
+.success-card > button:hover {
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   JESUS 2026 DIGITAL REGISTRATION CARD
+   ========================================================= */
+
+#registrationCard {
+    position: absolute;
+    left: -99999px;
+    top: 0;
+
+    width: 1000px;
+    padding: 48px;
+
+    box-sizing: border-box;
+
+    background:
+        radial-gradient(
+            circle at 88% 10%,
+            rgba(241, 212, 119, 0.22),
+            transparent 24%
+        ),
+        radial-gradient(
+            circle at 5% 95%,
+            rgba(255, 255, 255, 0.07),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #02183f 0%,
+            #063da5 52%,
+            #031b4b 100%
+        );
+
+    color: #ffffff;
+
+    font-family: 'Montserrat', Arial, sans-serif;
+
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.digital-card-inner {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 24px;
+
+    padding: 38px;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    position: relative;
+}
+
+.digital-card-inner::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #f1d477,
+        transparent
+    );
+
+    opacity: 0.9;
+}
+
+/* Digital card header */
+
+.digital-card-top {
+    width: 100%;
+
+    text-align: center;
+
+    margin-bottom: 30px;
+
+    box-sizing: border-box;
+}
+
+.digital-card-church {
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    margin-bottom: 7px;
+
+    color: #ffffff;
+}
+
+.digital-card-meeting {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    opacity: 0.82;
+    margin-bottom: 19px;
+
+    color: #ffffff;
+}
+
+/*
+   IMPORTANT:
+   JESUS 2026 is deliberately WHITE.
+   This prevents the dark-blue-on-blue problem.
+*/
+
+.digital-card-title {
+    display: block;
+
+    width: 100%;
+
+    margin: 0;
+
+    font-family: 'Montserrat', Arial, sans-serif;
+
+    font-size: 58px;
+    line-height: 1.05;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    white-space: nowrap;
+
+    text-align: center;
+
+    color: #ffffff !important;
+
+    -webkit-text-fill-color: #ffffff !important;
+
+    background: none !important;
+
+    text-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.35),
+        0 0 2px rgba(241, 212, 119, 0.35);
+}
+
+.digital-card-tagline {
+    margin-top: 13px;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    color: #f1d477;
+
+    font-weight: 700;
+
+    text-align: center;
+}
+
+.digital-card-pass-label {
+    display: inline-block;
+
+    margin-top: 17px;
+
+    padding: 7px 13px;
+
+    border: 1px solid rgba(241, 212, 119, 0.55);
+
+    border-radius: 999px;
+
+    color: #f1d477;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+/* Digital card main content */
+
+.digital-card-content {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 50px;
+}
+
+.digital-card-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.digital-card-label {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #f1d477;
+
+    font-weight: 800;
+
+    margin-bottom: 7px;
+}
+
+.digital-card-name {
+    font-size: 36px;
+
+    font-weight: 900;
+
+    margin-bottom: 27px;
+
+    line-height: 1.08;
+
+    word-break: break-word;
+
+    color: #ffffff;
+}
+
+.digital-card-info {
+    margin-bottom: 18px;
+}
+
+.digital-card-info-value {
+    font-size: 16px;
+
+    font-weight: 700;
+
+    line-height: 1.45;
+
+    color: #ffffff;
+}
+
+.digital-card-code {
+    color: #f1d477 !important;
+
+    letter-spacing: 1.7px;
+
+    font-weight: 900;
+}
+
+/* Digital card QR */
+
+.digital-card-qr {
+    width: 250px;
+    height: 250px;
+
+    flex: 0 0 250px;
+
+    background: #ffffff;
+
+    padding: 15px;
+
+    border-radius: 18px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.22);
+}
+
+.digital-card-qr img {
+    width: 220px;
+
+    height: 220px;
+
+    display: block;
+}
+
+.digital-card-qr-caption {
+    text-align: center;
+
+    margin-top: 9px;
+
+    font-size: 8px;
+
+    color: #ffffff;
+
+    letter-spacing: 1.3px;
+
+    font-weight: 800;
+}
+
+/* Digital card footer */
+
+.digital-card-bottom {
+    margin-top: 30px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    opacity: 0.88;
+
+    color: #ffffff;
+}
+
+.digital-card-bottom strong {
+    color: #f1d477;
+}
+
+
+/* =========================================================
+   DIGITAL CARD MOBILE SAFETY
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .digital-card-title {
+        font-size: 48px;
+
+        letter-spacing: 2px;
+    }
+
+    .digital-card-content {
+        gap: 30px;
+    }
+
+    .digital-card-name {
+        font-size: 30px;
+    }
+
+    .digital-card-qr {
+        width: 220px;
+        height: 220px;
+        flex-basis: 220px;
+    }
+
+    .digital-card-qr img {
+        width: 190px;
+        height: 190px;
+    }
+}
+.theme-artwork {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px 0 10px;
+}
+
+.theme-artwork img {
+    display: block;
+    width: min(100%, 360px);
+    height: auto;
+    max-height: 150px;
+    object-fit: contain;
+}
+
+@media (max-width: 600px) {
+    .theme-artwork img {
+        width: min(100%, 300px);
+        max-height: 130px;
+    }
+}
+.ministry-logo {
+    display: block;
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+    margin: 0 auto 12px;
+}
+/* =========================================
+   CAVE CAMP MEETING HEADER
+   ========================================= */
+
+.conference-header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* CAVE ADULLAM LOGO */
+.Cave-logo {
+    position: absolute;
+    display: block;
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+/* CAVE CAMP MEETING LOGO*/
+.Camp-logo {
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    top: 40px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* CAVE ADULLAM */
+.conference-header .conference-name {
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+/* CAVE CAMP MEETING 2026 */
+.conference-header .meeting-name {
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* JESUS ARTWORK */
+.conference-header .theme-artwork {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px 0 10px;
+}
+
+.conference-header .theme-artwork img {
+    display: block;
+    width: min(100%, 360px);
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+}
+
+/* ONE NAME. ONE FOCUS. JESUS. */
+.conference-header .theme-line {
+    display: block;
+    margin-top: 5px;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .Cave-logo {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 10px;
+        top: 20px;
+        left: 5px;
+    }
+
+    .Camp-logo {
+        width: 30px;
+        height: 30px;
+        margin-bottom: 10px;
+        top: 30px;
+        right: 5px;
+    }
+
+    .conference-header .theme-artwork img {
+        width: min(100%, 300px);
+        max-height: 130px;
+    }
+
+}
+/* =================================
+   NEW REGISTRATION FORM FIELDS
+================================= */
+
+#registrationForm select,
+#registrationForm textarea {
+    width: 100%;
+    font-family: inherit;
+    font-size: 15px;
+    padding: 14px 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.06);
+    color: inherit;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+#registrationForm select {
+    cursor: pointer;
+}
+
+#registrationForm textarea {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.6;
+}
+
+#registrationForm select:focus,
+#registrationForm textarea:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* SELECT OPTIONS */
+
+#registrationForm select option {
+    background: #111;
+    color: #fff;
+}
+
+
+/* =================================
+   CONSENT SECTION
+================================= */
+
+.consent-section {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.consent-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    line-height: 1.5;
+}
+
+.consent-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.privacy-note {
+    margin-top: 10px;
+    margin-left: 28px;
+    font-size: 13px;
+    line-height: 1.6;
+    opacity: 0.75;
+}
+
+/* =========================================================
+   DESKTOP REGISTRATION EXPERIENCE
+   ========================================================= */
+
+@media (min-width: 901px) {
+
+    body {
+        align-items: flex-start;
+    }
+
+    .container {
+        padding-top: 55px;
+        padding-bottom: 55px;
+    }
+
+    .card {
+        max-width: 1000px;
+        padding: 50px 65px;
+    }
+
+    .conference-header {
+        margin-bottom: 32px;
+        padding-bottom: 25px;
+    }
+
+    .theme-artwork img {
+        width: min(100%, 430px);
+        max-height: 220px;
+    }
+
+    .theme-line {
+        font-size: 12px;
+        letter-spacing: 2.2px;
+    }
+
+    /*
+       Give the form more breathing room
+    */
+
+    #registrationForm {
+        max-width: 850px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #registrationForm input,
+    #registrationForm select,
+    #registrationForm textarea {
+        font-size: 15px;
+    }
+
+    #registrationForm input {
+        min-height: 50px;
+    }
+
+    #registrationForm textarea {
+        min-height: 150px;
+    }
+
+    /*
+       Larger section headings
+    */
+
+    .form-heading {
+        margin-top: 30px;
+        margin-bottom: 8px;
+    }
+
+    .form-heading span {
+        font-size: 11px;
+        letter-spacing: 1.8px;
+    }
+
+    /*
+       Better event information
+    */
+
+    .event-details {
+        padding: 20px 25px;
+    }
+
+    /*
+       Larger register button
+    */
+
+    #registrationForm button {
+        max-width: 500px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 16px;
+    }
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+    .container {
+        max-width: 1300px;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .card {
+        max-width: 1050px;
+        padding: 55px 75px;
+    }
+
+    #registrationForm {
+        max-width: 900px;
+    }
+
+    .theme-artwork img {
+        width: 450px;
+        max-height: 230px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 601px) and (max-width: 900px) {
+
+    body {
+        align-items: flex-start;
+    }
+
+    .container {
+        padding: 35px 25px;
+    }
+
+    .card {
+        max-width: 760px;
+        padding: 40px 45px;
+    }
+
+    #registrationForm {
+        width: 100%;
+    }
+
+    .theme-artwork img {
+        width: min(100%, 380px);
+        max-height: 190px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE — PRESERVE MOBILE EXPERIENCE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        align-items: flex-start;
+    }
+
+    .container {
+        width: 100%;
+        padding: 15px 10px;
+        margin-top: 10px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 100%;
+        padding: 24px 18px;
+        border-radius: 16px;
+    }
+
+    #registrationForm {
+        width: 100%;
+    }
+
+    .theme-artwork img {
+        width: min(100%, 300px);
+        max-height: 130px;
+    }
+}
+
+/* ==============================
+   JESUS 2026 VOLUNTEER SECTION
+============================== */
+
+.volunteer-section {
+    margin-top: 45px;
+    padding: 30px 20px;
+    border: 1px solid rgba(212, 167, 44, 0.4);
+    border-radius: 18px;
+    background: linear-gradient(145deg, #07172d, #0b2340);
+    color: #ffffff;
+}
+
+.volunteer-heading {
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto 28px;
+}
+
+.volunteer-eyebrow {
+    color: #e0b847;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.volunteer-heading h2 {
+    margin: 12px 0;
+    color: #f2cc65;
+    font-size: clamp(24px, 5vw, 32px);
+    font-weight: 800;
+}
+
+.volunteer-heading p {
+    color: #d5dfec;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.volunteer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.volunteer-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.045);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.volunteer-card:hover {
+    transform: translateY(-5px);
+    border-color: #d4a72c;
+}
+
+.volunteer-icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    background: rgba(212, 167, 44, 0.15);
+    color: #f2cc65;
+    font-size: 27px;
+}
+
+.volunteer-card h3 {
+    margin: 0 0 10px;
+    color: #f2cc65;
+    font-size: 16px;
+}
+
+.volunteer-card p {
+    flex-grow: 1;
+    margin: 0 0 20px;
+    color: #d5dfec;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.volunteer-btn {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 8px;
+    border: 1px solid #d4a72c;
+    border-radius: 8px;
+    background: #d4a72c;
+    color: #07172d;
+    text-align: center;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 800;
+    transition: background 0.2s ease;
+}
+
+.volunteer-btn:hover {
+    background: #f2cc65;
+}
+
+.volunteer-footer {
+    margin: 28px 0 0;
+    color: #f2cc65;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 650px) {
+    .volunteer-section {
+        padding: 25px 14px;
+    }
+
+    .volunteer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .volunteer-card {
+        padding: 20px;
+    }
+
+    .volunteer-btn {
+        font-size: 12px;
+    }
+}
+
+/* JESUS 2026 - Registration Form Sections */
+
+.form-section {
+    margin-top: 24px;
+    padding: 20px;
+    border: 1px solid rgba(212, 167, 44, 0.25);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.section-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin-bottom: 20px;
+}
+
+.section-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #d4a72c, #f4d77b);
+    color: #08142b;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.section-heading h3 {
+    margin: 0 0 5px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.section-heading p {
+    margin: 0;
+    color: #aebbd0;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 8px;
+}
+
+.form-field label {
+    line-height: 1.5;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+}
+
+.form-section .consent-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.7;
+}
+
+.form-section .consent-label input {
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.form-section .privacy-note {
+    margin-top: 14px;
+    line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+    .form-section {
+        padding: 16px;
+        margin-top: 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .section-heading h3 {
+        font-size: 15px;
+    }
+}
+
+/* JESUS 2026 - Registration Form Sections */
+
+.form-section {
+    margin-top: 24px;
+    padding: 20px;
+    border: 1px solid rgba(212, 167, 44, 0.25);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.section-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin-bottom: 20px;
+}
+
+.section-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #d4a72c, #f4d77b);
+    color: #08142b;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.section-heading h3 {
+    margin: 0 0 5px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.section-heading p {
+    margin: 0;
+    color: #aebbd0;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 8px;
+}
+
+.form-field label {
+    line-height: 1.5;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+}
+
+.form-section .consent-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.7;
+}
+
+.form-section .consent-label input {
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.form-section .privacy-note {
+    margin-top: 14px;
+    line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+    .form-section {
+        padding: 16px;
+        margin-top: 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .section-heading h3 {
+        font-size: 15px;
+    }
+}
+
+/* JESUS 2026 - Registration Form Sections */
+
+.form-section {
+    margin-top: 24px;
+    padding: 20px;
+    border: 1px solid rgba(212, 167, 44, 0.25);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.section-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin-bottom: 20px;
+}
+
+.section-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #d4a72c, #f4d77b);
+    color: #08142b;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.section-heading h3 {
+    margin: 0 0 5px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.section-heading p {
+    margin: 0;
+    color: #aebbd0;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 8px;
+}
+
+.form-field label {
+    line-height: 1.5;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+}
+
+.form-section .consent-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.7;
+}
+
+.form-section .consent-label input {
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.form-section .privacy-note {
+    margin-top: 14px;
+    line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+    .form-section {
+        padding: 16px;
+        margin-top: 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .section-heading h3 {
+        font-size: 15px;
+    }
+}
+
+/* Fix visibility of registration section headings */
+.form-section .section-heading h3 {
+    color: #d4a72c !important;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.form-section .section-heading p {
+    color: #374151 !important;
+}
