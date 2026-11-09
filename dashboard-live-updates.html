@@ -1,0 +1,3518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Dashboard — JESUS 2026</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+
+
+        /* ================================
+           DASHBOARD
+        ================================= */
+
+        .dashboard-card {
+            max-width: 1400px;
+            margin: 30px auto;
+        }
+
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+
+        .dashboard-header .conference-name {
+            margin-bottom: 5px;
+        }
+
+
+        .dashboard-header .meeting-name {
+            margin-bottom: 10px;
+        }
+
+
+        .dashboard-subtitle {
+            margin-top: 8px;
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+
+        /* ================================
+           STAT CARDS
+        ================================= */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+
+        .stat-card {
+            background: #ffffff;
+            border: 1px solid #e1e8f2;
+            border-radius: 16px;
+            padding: 22px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(3, 31, 88, 0.08);
+        }
+
+
+        .stat-label {
+            display: block;
+            color: #6b7280;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            margin-bottom: 10px;
+        }
+
+
+        .stat-number {
+            display: block;
+            color: #063da5;
+            font-size: 34px;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+
+        /* ================================
+           SESSION STATS
+        ================================= */
+
+        .session-stats-card {
+            background: #ffffff;
+            border: 1px solid #e1e8f2;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(3, 31, 88, 0.08);
+        }
+
+
+        .session-stats-title {
+            color: #063da5;
+            font-size: 15px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
+        }
+
+
+        .session-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(7, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+
+        .session-stat {
+            background: #f7f9fc;
+            border: 1px solid #e5ebf3;
+            border-radius: 12px;
+            padding: 15px 10px;
+            text-align: center;
+        }
+
+
+        .session-stat-number {
+            display: block;
+            color: #063da5;
+            font-size: 27px;
+            font-weight: 900;
+            margin-bottom: 6px;
+        }
+
+
+        .session-stat-label {
+            display: block;
+            color: #657184;
+            font-size: 11px;
+            font-weight: 800;
+            line-height: 1.4;
+        }
+
+
+        /* ================================
+           PROGRESS
+        ================================= */
+
+        .progress-card {
+            background: #ffffff;
+            border: 1px solid #e1e8f2;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(3, 31, 88, 0.08);
+        }
+
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+
+        .progress-title {
+            color: #063da5;
+            font-size: 15px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+
+        .progress-percentage {
+            color: #d4a72c;
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #edf2f8;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                #063da5,
+                #d4a72c
+            );
+            border-radius: 20px;
+            transition: width 0.5s ease;
+        }
+
+
+        /* ================================
+           ATTENDEE SECTION
+        ================================= */
+
+        .attendee-section {
+            background: #ffffff;
+            border: 1px solid #e1e8f2;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 8px 25px rgba(3, 31, 88, 0.08);
+        }
+
+
+        .attendee-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+
+        .search-input {
+            flex: 1;
+            padding: 13px 15px;
+            border: 1px solid #d5dfec;
+            border-radius: 9px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+
+        .search-input:focus {
+            border-color: #063da5;
+            box-shadow: 0 0 0 3px rgba(6, 61, 165, 0.08);
+        }
+
+
+        .dashboard-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+
+        .refresh-button,
+        .export-button {
+            width: auto;
+            margin: 0;
+            padding: 13px 20px;
+            color: #ffffff;
+            border: none;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: none;
+        }
+
+
+        .refresh-button {
+            background: #063da5;
+        }
+
+
+        .refresh-button:hover {
+            background: #052f80;
+        }
+
+
+        .export-button {
+            background: #d4a72c;
+        }
+
+
+        .export-button:hover {
+            background: #b98f20;
+        }
+
+
+        /* ================================
+           FILTER BUTTONS
+        ================================= */
+
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+
+        .filter-button {
+            width: auto;
+            margin: 0;
+            padding: 9px 15px;
+            background: #f3f6fa;
+            color: #596678;
+            border: 1px solid #dce4ee;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 0.7px;
+            cursor: pointer;
+            box-shadow: none;
+            transition: all 0.2s ease;
+        }
+
+
+        .filter-button:hover {
+            background: #eaf0f8;
+        }
+
+
+        .filter-button.active {
+            background: #063da5;
+            color: #ffffff;
+            border-color: #063da5;
+        }
+
+
+        /* ================================
+           TABLE
+        ================================= */
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+
+        .attendee-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1450px;
+        }
+
+
+        .attendee-table th {
+            padding: 13px 10px;
+            background: #f5f8fc;
+            color: #5d6878;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.7px;
+            border-bottom: 1px solid #e2e8f0;
+            white-space: nowrap;
+        }
+
+
+        .attendee-table th:first-child,
+        .attendee-table th:nth-child(2),
+        .attendee-table th:nth-child(3),
+        .attendee-table th:nth-child(4),
+        .attendee-table th:nth-child(5) {
+            text-align: left;
+        }
+
+
+        .attendee-table td {
+            padding: 13px 10px;
+            color: #263449;
+            font-size: 13px;
+            border-bottom: 1px solid #edf1f6;
+            text-align: center;
+        }
+
+
+        .attendee-table td:first-child,
+        .attendee-table td:nth-child(2),
+        .attendee-table td:nth-child(3),
+        .attendee-table td:nth-child(4),
+        .attendee-table td:nth-child(5) {
+            text-align: left;
+        }
+
+
+        .attendee-table tr:last-child td {
+            border-bottom: none;
+        }
+
+
+        .attendee-table tr:hover td {
+            background: #fafcff;
+        }
+
+
+        /* ================================
+           ATTENDANCE BADGE
+        ================================= */
+
+        .attendance-badge {
+            display: inline-block;
+            padding: 6px 9px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+
+        .attendance-physical {
+            background: #eaf7ee;
+            color: #188038;
+        }
+
+
+        .attendance-online {
+            background: #eef4ff;
+            color: #063da5;
+        }
+
+
+        /* ================================
+           SESSION CHECK MARKS
+        ================================= */
+
+        .session-check {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 27px;
+            height: 27px;
+            border-radius: 50%;
+            font-size: 15px;
+            font-weight: 900;
+        }
+
+
+        .session-present {
+            background: #eaf7ee;
+            color: #188038;
+        }
+
+
+        .session-absent {
+            background: #f3f5f8;
+            color: #a0a8b3;
+        }
+
+
+        /* ================================
+           STATUS
+        ================================= */
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+
+        .status-checked {
+            background: #eaf7ee;
+            color: #188038;
+        }
+
+
+        .status-pending {
+            background: #fff7df;
+            color: #a87900;
+        }
+
+
+        /* ================================
+           VIEW BUTTON
+        ================================= */
+
+        .view-button {
+            width: auto;
+            margin: 0;
+            padding: 7px 11px;
+            background: #eef4ff;
+            color: #063da5;
+            border: 1px solid #d6e3fb;
+            border-radius: 7px;
+            font-size: 11px;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: none;
+        }
+
+
+        .view-button:hover {
+            background: #063da5;
+            color: #ffffff;
+        }
+
+
+        /* ================================
+           RESULT COUNT
+        ================================= */
+
+        .result-count-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+
+        .result-count {
+            color: #5f6b7a;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        .live-status {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #188038;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #188038;
+            animation: pulse 1.5s infinite;
+        }
+
+
+        @keyframes pulse {
+
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.35;
+            }
+
+            100% {
+                opacity: 1;
+            }
+
+        }
+
+
+        /* ================================
+           TABLE MESSAGE
+        ================================= */
+
+        .table-message {
+            text-align: center !important;
+            padding: 40px !important;
+            color: #7a8595 !important;
+            font-size: 14px !important;
+        }
+
+
+        /* ================================
+           MODAL
+        ================================= */
+
+        .attendee-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(3, 18, 48, 0.68);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 9999;
+        }
+
+
+        .attendee-modal.show {
+            display: flex;
+        }
+
+
+        .attendee-modal-card {
+            width: 100%;
+            max-width: 760px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+        }
+
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid #e1e8f2;
+            background: #f7f9fc;
+            color: #657184;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+
+        .modal-header {
+            padding-right: 40px;
+            margin-bottom: 22px;
+        }
+
+
+        .modal-eyebrow {
+            color: #d4a72c;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 1.2px;
+            margin-bottom: 6px;
+        }
+
+
+        .modal-title {
+            color: #063da5;
+            font-size: 26px;
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+
+
+        .modal-subtitle {
+            color: #7a8595;
+            font-size: 12px;
+        }
+
+
+        .attendee-details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+
+        .detail-item {
+            background: #f7f9fc;
+            border: 1px solid #e5ebf3;
+            border-radius: 10px;
+            padding: 14px;
+        }
+
+
+        .detail-item.full-width {
+            grid-column: 1 / -1;
+        }
+
+
+        .detail-label {
+            display: block;
+            color: #7a8595;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+
+        .detail-value {
+            color: #263449;
+            font-size: 14px;
+            font-weight: 700;
+            word-break: break-word;
+        }
+
+
+        .expectations-value {
+            line-height: 1.6;
+            font-weight: 500;
+            white-space: pre-wrap;
+        }
+
+
+        .modal-session-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+
+        .modal-session-item {
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+
+        .modal-session-present {
+            background: #eaf7ee;
+            color: #188038;
+        }
+
+
+        .modal-session-absent {
+            background: #f3f5f8;
+            color: #7a8595;
+        }
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 900px) {
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+
+            .session-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .dashboard-card {
+                margin: 15px auto;
+            }
+
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .attendee-toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+
+            .dashboard-actions {
+                width: 100%;
+                flex-direction: column;
+            }
+
+
+            .refresh-button,
+            .export-button {
+                width: 100%;
+            }
+
+
+            .attendee-section,
+            .progress-card,
+            .session-stats-card {
+                padding: 18px;
+            }
+
+
+            .session-stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+
+            .filter-buttons {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+
+            .filter-button {
+                width: 100%;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+
+            .result-count-row {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 6px;
+            }
+
+
+            .attendee-modal {
+                padding: 12px;
+            }
+
+
+            .attendee-modal-card {
+                padding: 22px;
+                border-radius: 16px;
+            }
+
+
+            .attendee-details-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .detail-item.full-width {
+                grid-column: auto;
+            }
+
+
+            .modal-title {
+                font-size: 21px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+    <div class="card dashboard-card">
+
+
+        <!-- ================================
+             HEADER
+        ================================= -->
+
+        <div class="dashboard-header">
+
+            <div class="conference-header">
+
+                <img
+                    src="cl.png"
+                    alt="Cave Aullam Logo"
+                    class="Cave-logo"
+                >
+
+                <img
+                    src="ccm.png"
+                    alt="Cave Camp Meeting Logo"
+                    class="Camp-logo"
+                >
+
+                <p class="meeting-name">
+                    CAVE CAMP MEETING 2026
+                </p>
+
+
+                <div class="theme-artwork">
+
+                    <img
+                        src="J6.png"
+                        alt="JESUS"
+                    >
+
+                </div>
+
+
+                <p class="theme-line">
+                    ONE NAME. ONE FOCUS. JESUS.
+                </p>
+
+                
+<button
+    type="button"
+    onclick="window.location.href='admin.html'"
+    style="
+        padding: 12px 18px;
+        margin: 10px 0 18px;
+        border: 1px solid #d4a72c;
+        border-radius: 8px;
+        background: #063da5;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 800;
+        cursor: pointer;
+    "
+>
+    ← BACK TO ADMIN
+</button>
+
+            </div>
+
+
+            <p class="dashboard-subtitle">
+
+                <b>
+                    Conference Registration & Attendance Dashboard
+                </b>
+
+            </p>
+
+        </div>
+
+
+        <!-- ================================
+             MAIN STATISTICS
+        ================================= -->
+
+        <div class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    TOTAL REGISTRATIONS
+                </span>
+
+                <span
+                    class="stat-number"
+                    id="totalRegistrations"
+                >
+                    —
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    TOTAL SESSION CHECK-INS
+                </span>
+
+                <span
+                    class="stat-number"
+                    id="totalSessionCheckIns"
+                >
+                    —
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    ATTENDEES CHECKED IN
+                </span>
+
+                <span
+                    class="stat-number"
+                    id="checkedInAttendees"
+                >
+                    —
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    NOT YET CHECKED IN
+                </span>
+
+                <span
+                    class="stat-number"
+                    id="pendingAttendees"
+                >
+                    —
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================
+             SESSION STATISTICS
+        ================================= -->
+
+        <div class="session-stats-card">
+
+            <p class="session-stats-title">
+                SESSION CHECK-IN STATISTICS
+            </p>
+
+
+            <div class="session-stats-grid">
+
+
+                <div class="session-stat">
+
+                    <span
+                        class="session-stat-number"
+                        id="session1Count"
+                    >
+                        —
+                    </span>
+
+                    <span class="session-stat-label">
+                        SESSION 1<br>
+                        THURSDAY
+                    </span>
+
+                </div>
+
+
+                <div class="session-stat">
+
+                    <span
+                        class="session-stat-number"
+                        id="session2Count"
+                    >
+                        —
+                    </span>
+
+                    <span class="session-stat-label">
+                        SESSION 2<br>
+                        FRIDAY MORNING
+                    </span>
+
+                </div>
+
+
+                <div class="session-stat">
+
+                    <span
+                        class="session-stat-number"
+                        id="session3Count"
+                    >
+                        —
+                    </span>
+
+                    <span class="session-stat-label">
+                        SESSION 3<br>
+                        FRIDAY AFTERNOON
+                    </span>
+
+                </div>
+
+
+                <div class="session-stat">
+
+                    <span
+                        class="session-stat-number"
+                        id="session4Count"
+                    >
+                        —
+                    </span>
+
+                    <span class="session-stat-label">
+                        SESSION 4<br>
+                        FRIDAY NIGHT
+                    </span>
+
+                </div>
+
+
+                <div class="session-stat">
+
+                    <span
+                        class="session-stat-number"
+                        id="session5Count"
+                    >
+                        —
+                    </span>
+
+                    <span class="session-stat-label">
+                        SESSION 5<br>
+                        SATURDAY MORNING
+                    </span>
+
+                </div>
+
+
+                <div class="session-stat">
+
+                    <span
+                        class="session-stat-number"
+                        id="session6Count"
+                    >
+                        —
+                    </span>
+
+                    <span class="session-stat-label">
+                        SESSION 6<br>
+                        SATURDAY AFTERNOON
+                    </span>
+
+                </div>
+
+
+                <div class="session-stat">
+
+                    <span
+                        class="session-stat-number"
+                        id="session7Count"
+                    >
+                        —
+                    </span>
+
+                    <span class="session-stat-label">
+                        SESSION 7<br>
+                        SATURDAY NIGHT
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================
+             OVERALL PROGRESS
+        ================================= -->
+
+        <div class="progress-card">
+
+            <div class="progress-header">
+
+                <span class="progress-title">
+                    OVERALL ATTENDANCE
+                </span>
+
+                <span
+                    class="progress-percentage"
+                    id="attendancePercentage"
+                >
+                    0%
+                </span>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    id="attendanceProgress"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================
+             ATTENDEE SECTION
+        ================================= -->
+
+        <div class="attendee-section">
+
+
+            <div class="attendee-toolbar">
+
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="search-input"
+                    placeholder="Search name, email, phone, church, location or registration code..."
+                >
+
+
+                <div class="dashboard-actions">
+
+
+                    <button
+                        type="button"
+                        class="refresh-button"
+                        onclick="loadDashboard()"
+                    >
+                        REFRESH DATA
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="export-button"
+                        onclick="exportAttendees()"
+                    >
+                        EXPORT CSV
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================
+                 FILTERS
+            ================================= -->
+
+            <div class="filter-buttons">
+
+
+                <button
+                    type="button"
+                    class="filter-button active"
+                    data-filter="all"
+                    onclick="setFilter('all')"
+                >
+                    ALL
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="physical"
+                    onclick="setFilter('physical')"
+                >
+                    PHYSICAL
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="online"
+                    onclick="setFilter('online')"
+                >
+                    ONLINE
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="checked"
+                    onclick="setFilter('checked')"
+                >
+                    CHECKED IN
+                </button>
+
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="pending"
+                    onclick="setFilter('pending')"
+                >
+                    PENDING
+                </button>
+
+
+            </div>
+
+
+            <!-- ================================
+                 RESULT COUNT
+            ================================= -->
+
+            <div class="result-count-row">
+
+
+                <p
+                    class="result-count"
+                    id="resultCount"
+                >
+                    Loading attendees...
+                </p>
+
+
+                <p
+                    class="live-status"
+                    id="liveStatus"
+                >
+
+                    <span class="live-dot"></span>
+
+                    CONNECTING...
+
+                </p>
+
+
+            </div>
+
+
+            <!-- ================================
+                 TABLE
+            ================================= -->
+
+            <div class="table-wrapper">
+
+
+                <table class="attendee-table">
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>NAME</th>
+
+                            <th>EMAIL</th>
+
+                            <th>PHONE</th>
+
+                            <th>CHURCH</th>
+
+                            <th>ATTENDANCE</th>
+
+                            <th>CODE</th>
+
+                            <th>S1</th>
+                            <th>S2</th>
+                            <th>S3</th>
+                            <th>S4</th>
+                            <th>S5</th>
+                            <th>S6</th>
+                            <th>S7</th>
+
+                            <th>SESSIONS</th>
+
+                            <th>ACTION</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="attendeeTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="15"
+                                class="table-message"
+                            >
+                                Loading attendees...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+
+                </table>
+
+            </div>
+
+
+        </div>
+
+
+        <p class="dashboard-footer">
+            CAVE ADULLAM • CAVE CAMP MEETING 2026 • JESUS
+        </p>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =================================
+     ATTENDEE DETAILS MODAL
+================================= -->
+
+<div
+    id="attendeeModal"
+    class="attendee-modal"
+    onclick="handleModalBackdrop(event)"
+>
+
+
+    <div class="attendee-modal-card">
+
+
+        <button
+            type="button"
+            class="modal-close"
+            onclick="closeAttendeeModal()"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-header">
+
+
+            <p class="modal-eyebrow">
+                ATTENDEE DETAILS
+            </p>
+
+
+            <h2
+                class="modal-title"
+                id="modalAttendeeName"
+            >
+                Attendee
+            </h2>
+
+
+            <p class="modal-subtitle">
+                JESUS 2026 Conference Registration
+            </p>
+
+
+        </div>
+
+
+        <div
+            class="attendee-details-grid"
+            id="modalContent"
+        >
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+
+<script>
+
+
+/* =================================
+   SUPABASE CONFIGURATION
+================================= */
+
+const SUPABASE_URL =
+    "https://ktwvbhdxszxmmmfoxzra.supabase.co";
+
+
+const SUPABASE_KEY =
+    "sb_publishable_MysGHP42nsPZzFzp2aBR-g_VhFE0Idq";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+
+/* =================================
+   DATA
+================================= */
+
+let attendees = [];
+
+let checkIns = [];
+
+let currentFilter = "all";
+
+
+
+/* =================================
+   SESSION NAMES
+================================= */
+
+const sessionNames = {
+
+    1: "Thursday — Opening Night",
+
+    2: "Friday — Morning",
+
+    3: "Friday — Afternoon",
+
+    4: "Friday — Evening/Night",
+
+    5: "Saturday — Morning",
+
+    6: "Saturday — Afternoon",
+
+    7: "Saturday — Evening/Night"
+
+};
+
+
+
+/* =================================
+   LOAD DASHBOARD
+================================= */
+
+async function loadDashboard() {
+
+
+    const tableBody =
+        document.getElementById(
+            "attendeeTableBody"
+        );
+
+
+    tableBody.innerHTML = `
+
+        <tr>
+
+            <td
+                colspan="15"
+                class="table-message"
+            >
+                Loading attendees...
+            </td>
+
+        </tr>
+
+    `;
+
+
+    const attendeeResult =
+        await supabaseClient
+
+            .from("attendees")
+
+            .select(`
+
+                id,
+
+                name,
+
+                first_name,
+
+                last_name,
+
+                gender,
+
+                email,
+
+                phone,
+
+                residential_city_state,
+
+                church_name,
+
+                church_position,
+
+                how_heard,
+
+                expectations,
+
+                attendance_type,
+
+                consent_given,
+
+                registration_code,
+
+                checked_in,
+
+                check_in_time,
+
+                created_at
+
+            `)
+
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+
+
+    if (attendeeResult.error) {
+
+
+        console.error(
+            "Attendee loading error:",
+            attendeeResult.error
+        );
+
+
+        tableBody.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="15"
+                    class="table-message"
+                >
+                    Unable to load attendees.
+                </td>
+
+            </tr>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    attendees =
+        attendeeResult.data || [];
+
+
+    const checkInResult =
+        await supabaseClient
+
+            .from("check_ins")
+
+            .select(`
+
+                id,
+
+                attendee_id,
+
+                session_number,
+
+                check_in_time
+
+            `)
+
+            .order(
+                "check_in_time",
+                {
+                    ascending: true
+                }
+            );
+
+
+    if (checkInResult.error) {
+
+
+        console.error(
+            "Check-in loading error:",
+            checkInResult.error
+        );
+
+
+        checkIns = [];
+
+    }
+
+
+    else {
+
+        checkIns =
+            checkInResult.data || [];
+
+    }
+
+
+    updateStatistics();
+
+    applyFilters();
+
+}
+
+
+
+/* =================================
+   UPDATE STATISTICS
+================================= */
+
+function updateStatistics() {
+
+
+    const totalRegistrations =
+        attendees.length;
+
+
+    const totalSessionCheckIns =
+        checkIns.length;
+
+
+    const checkedInIds =
+        new Set(
+
+            checkIns.map(
+                item =>
+                    String(
+                        item.attendee_id
+                    )
+            )
+
+        );
+
+
+    const checkedInAttendees =
+        checkedInIds.size;
+
+
+    const pendingAttendees =
+        Math.max(
+            totalRegistrations -
+            checkedInAttendees,
+            0
+        );
+
+
+    document.getElementById(
+        "totalRegistrations"
+    ).textContent =
+        totalRegistrations;
+
+
+    document.getElementById(
+        "totalSessionCheckIns"
+    ).textContent =
+        totalSessionCheckIns;
+
+
+    document.getElementById(
+        "checkedInAttendees"
+    ).textContent =
+        checkedInAttendees;
+
+
+    document.getElementById(
+        "pendingAttendees"
+    ).textContent =
+        pendingAttendees;
+
+
+    for (
+        let session = 1;
+        session <= 7;
+        session++
+    ) {
+
+
+        const count =
+            checkIns.filter(
+                item =>
+                    Number(
+                        item.session_number
+                    ) === session
+            ).length;
+
+
+        const element =
+            document.getElementById(
+                `session${session}Count`
+            );
+
+
+        if (element) {
+
+            element.textContent =
+                count;
+
+        }
+
+    }
+
+
+    const percentage =
+        totalRegistrations > 0
+
+            ? Math.round(
+
+                (
+                    checkedInAttendees /
+                    totalRegistrations
+                ) * 100
+
+            )
+
+            : 0;
+
+
+    document.getElementById(
+        "attendancePercentage"
+    ).textContent =
+        `${percentage}%`;
+
+
+    document.getElementById(
+        "attendanceProgress"
+    ).style.width =
+        `${percentage}%`;
+
+}
+
+
+
+/* =================================
+   GET ATTENDEE SESSIONS
+================================= */
+
+function getAttendeeSessions(
+    attendeeId
+) {
+
+
+    const sessions = {};
+
+
+    checkIns
+
+        .filter(
+            item =>
+                String(
+                    item.attendee_id
+                ) ===
+                String(
+                    attendeeId
+                )
+        )
+
+        .forEach(
+            item => {
+
+                sessions[
+                    Number(
+                        item.session_number
+                    )
+                ] = item;
+
+            }
+        );
+
+
+    return sessions;
+
+}
+
+
+
+/* =================================
+   FILTERS
+================================= */
+
+function setFilter(
+    filter
+) {
+
+
+    currentFilter =
+        filter;
+
+
+    document
+
+        .querySelectorAll(
+            ".filter-button"
+        )
+
+        .forEach(
+            button => {
+
+                button.classList.toggle(
+
+                    "active",
+
+                    button.dataset.filter ===
+                    filter
+
+                );
+
+            }
+        );
+
+
+    applyFilters();
+
+}
+
+
+
+/* =================================
+   SEARCH MATCH
+================================= */
+
+function matchesSearch(
+    attendee,
+    search
+) {
+
+
+    if (!search) {
+
+        return true;
+
+    }
+
+
+    const searchableValues = [
+
+        attendee.name,
+
+        attendee.first_name,
+
+        attendee.last_name,
+
+        attendee.gender,
+
+        attendee.email,
+
+        attendee.phone,
+
+        attendee.residential_city_state,
+
+        attendee.church_name,
+
+        attendee.church_position,
+
+        attendee.how_heard,
+
+        attendee.expectations,
+
+        attendee.attendance_type,
+
+        attendee.registration_code
+
+    ];
+
+
+    return searchableValues.some(
+        value =>
+
+            String(
+                value || ""
+            )
+                .toLowerCase()
+                .includes(
+                    search
+                )
+    );
+
+}
+
+
+
+/* =================================
+   APPLY FILTERS
+================================= */
+
+function applyFilters() {
+
+
+    const searchInput =
+        document.getElementById(
+            "searchInput"
+        );
+
+
+    const search =
+        (
+            searchInput.value ||
+            ""
+        )
+            .trim()
+            .toLowerCase();
+
+
+    let filtered =
+        [...attendees];
+
+
+    /* ================================
+       ATTENDANCE TYPE
+    ================================= */
+
+    if (
+        currentFilter ===
+        "physical"
+    ) {
+
+        filtered =
+            filtered.filter(
+                attendee =>
+                    String(
+                        attendee.attendance_type ||
+                        ""
+                    ).toLowerCase() ===
+                    "physical"
+            );
+
+    }
+
+
+    if (
+        currentFilter ===
+        "online"
+    ) {
+
+        filtered =
+            filtered.filter(
+                attendee =>
+                    String(
+                        attendee.attendance_type ||
+                        ""
+                    ).toLowerCase() ===
+                    "online"
+            );
+
+    }
+
+
+    /* ================================
+       CHECK-IN STATUS
+    ================================= */
+
+    if (
+        currentFilter ===
+        "checked"
+    ) {
+
+        filtered =
+            filtered.filter(
+                attendee =>
+
+                    checkIns.some(
+                        item =>
+
+                            String(
+                                item.attendee_id
+                            ) ===
+                            String(
+                                attendee.id
+                            )
+
+                    )
+            );
+
+    }
+
+
+    if (
+        currentFilter ===
+        "pending"
+    ) {
+
+        filtered =
+            filtered.filter(
+                attendee =>
+
+                    !checkIns.some(
+                        item =>
+
+                            String(
+                                item.attendee_id
+                            ) ===
+                            String(
+                                attendee.id
+                            )
+
+                    )
+            );
+
+    }
+
+
+    /* ================================
+       SEARCH
+    ================================= */
+
+    filtered =
+        filtered.filter(
+            attendee =>
+                matchesSearch(
+                    attendee,
+                    search
+                )
+        );
+
+
+    renderTable(
+        filtered
+    );
+
+
+    document.getElementById(
+        "resultCount"
+    ).textContent =
+
+        `${filtered.length} attendee${
+            filtered.length === 1
+                ? ""
+                : "s"
+        } shown`;
+
+}
+
+
+
+/* =================================
+   RENDER TABLE
+================================= */
+
+function renderTable(
+    filtered
+) {
+
+
+    const tableBody =
+        document.getElementById(
+            "attendeeTableBody"
+        );
+
+
+    if (!filtered.length) {
+
+
+        tableBody.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="15"
+                    class="table-message"
+                >
+                    No attendees found.
+                </td>
+
+            </tr>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    tableBody.innerHTML =
+
+        filtered
+
+            .map(
+                attendee => {
+
+
+                    const sessions =
+                        getAttendeeSessions(
+                            attendee.id
+                        );
+
+
+                    const attendedCount =
+                        Object.values(
+                            sessions
+                        )
+                            .filter(
+                                Boolean
+                            )
+                            .length;
+
+
+                    const status =
+                        attendedCount > 0;
+
+
+                    const attendanceType =
+                        String(
+                            attendee.attendance_type ||
+                            ""
+                        ).toLowerCase();
+
+
+                    const attendanceBadge =
+
+                        attendanceType ===
+                        "online"
+
+                            ? `
+
+                                <span
+                                    class="attendance-badge attendance-online"
+                                >
+                                    ONLINE
+                                </span>
+
+                            `
+
+                            : `
+
+                                <span
+                                    class="attendance-badge attendance-physical"
+                                >
+                                    PHYSICAL
+                                </span>
+
+                            `;
+
+
+                    let sessionCells =
+                        "";
+
+
+                    for (
+                        let session = 1;
+                        session <= 7;
+                        session++
+                    ) {
+
+
+                        sessionCells += `
+
+                            <td>
+
+                                <span
+                                    class="session-check ${
+                                        sessions[session]
+
+                                            ? "session-present"
+
+                                            : "session-absent"
+                                    }"
+                                >
+
+                                    ${
+                                        sessions[session]
+
+                                            ? "✓"
+
+                                            : "—"
+                                    }
+
+                                </span>
+
+                            </td>
+
+                        `;
+
+                    }
+
+
+                    return `
+
+                        <tr>
+
+
+                            <td>
+
+                                ${escapeHTML(
+                                    attendee.name ||
+                                    `${attendee.first_name || ""} ${attendee.last_name || ""}`.trim()
+                                )}
+
+                            </td>
+
+
+                            <td>
+
+                                ${escapeHTML(
+                                    attendee.email ||
+                                    ""
+                                )}
+
+                            </td>
+
+
+                            <td>
+
+                                ${escapeHTML(
+                                    attendee.phone ||
+                                    ""
+                                )}
+
+                            </td>
+
+
+                            <td>
+
+                                ${escapeHTML(
+                                    attendee.church_name ||
+                                    ""
+                                )}
+
+                            </td>
+
+
+                            <td>
+
+                                ${attendanceBadge}
+
+                            </td>
+
+
+                            <td>
+
+                                ${escapeHTML(
+                                    attendee.registration_code ||
+                                    ""
+                                )}
+
+                            </td>
+
+
+                            ${sessionCells}
+
+
+                            <td>
+
+                                <span
+                                    class="status-badge ${
+                                        status
+
+                                            ? "status-checked"
+
+                                            : "status-pending"
+                                    }"
+                                >
+
+                                    ${attendedCount}/7
+
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <button
+                                    type="button"
+                                    class="view-button"
+                                    onclick="viewAttendee('${attendee.id}')"
+                                >
+                                    VIEW
+                                </button>
+
+                            </td>
+
+
+                        </tr>
+
+                    `;
+
+                }
+            )
+
+            .join("");
+
+}
+
+
+
+/* =================================
+   VIEW ATTENDEE
+================================= */
+
+function viewAttendee(
+    attendeeId
+) {
+
+
+    /*
+     * IMPORTANT:
+     * Convert both IDs to strings.
+     * This fixes the VIEW button issue
+     * caused by number/string mismatch.
+     */
+
+    const attendee =
+        attendees.find(
+            item =>
+
+                String(
+                    item.id
+                ) ===
+
+                String(
+                    attendeeId
+                )
+        );
+
+
+    if (!attendee) {
+
+        console.error(
+            "Attendee not found:",
+            attendeeId
+        );
+
+        return;
+
+    }
+
+
+    const sessions =
+        getAttendeeSessions(
+            attendee.id
+        );
+
+
+    const fullName =
+        attendee.name ||
+
+        `${attendee.first_name || ""} ${
+            attendee.last_name || ""
+        }`.trim();
+
+
+    document.getElementById(
+        "modalAttendeeName"
+    ).textContent =
+        fullName ||
+        "Attendee";
+
+
+    let sessionHTML =
+        "";
+
+
+    for (
+        let session = 1;
+        session <= 7;
+        session++
+    ) {
+
+
+        const checked =
+            sessions[session];
+
+
+        sessionHTML += `
+
+            <div
+                class="modal-session-item ${
+                    checked
+
+                        ? "modal-session-present"
+
+                        : "modal-session-absent"
+                }"
+            >
+
+                ${sessionNames[session]}
+
+                <br>
+
+                <strong>
+
+                    ${
+                        checked
+
+                            ? "CHECKED IN"
+
+                            : "NOT CHECKED IN"
+                    }
+
+                </strong>
+
+
+                ${
+                    checked &&
+                    checked.check_in_time
+
+                        ? `
+
+                            <br>
+
+                            <small>
+
+                                ${formatDate(
+                                    checked.check_in_time
+                                )}
+
+                            </small>
+
+                        `
+
+                        : ""
+                }
+
+            </div>
+
+        `;
+
+    }
+
+
+    const attendanceType =
+        attendee.attendance_type ||
+        "—";
+
+
+    document.getElementById(
+        "modalContent"
+    ).innerHTML = `
+
+
+        <!-- NAME -->
+
+        <div class="detail-item">
+
+            <span class="detail-label">
+                Full Name
+            </span>
+
+            <span class="detail-value">
+
+                ${escapeHTML(
+                    fullName
+                )}
+
+            </span>
+
+        </div>
+
+
+        <!-- REGISTRATION CODE -->
+
+        <div class="detail-item">
+
+            <span class="detail-label">
+                Registration Code
+            </span>
+
+            <span class="detail-value">
+
+                ${escapeHTML(
+                    attendee.registration_code ||
+                    ""
+                )}
+
+            </span>
+
+        </div>
+
+
+        <!-- GENDER -->
+
+        <div class="detail-item">
+
+            <span class="detail-label">
+                Gender
+            </span>
+
+            <span class="detail-value">
+
+                ${escapeHTML(
+                    attendee.gender ||
+                    "—"
+                )}
+
+            </span>
+
+        </div>
+
+
+        <!-- ATTENDANCE MODE -->
+
+        <div class="detail-item">
+
+            <span class="detail-label">
+                Attendance Mode
+            </span>
+
+            <span class="detail-value">
+
+                ${escapeHTML(
+                    attendanceType
+                )}
+
+            </span>
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="detail-item">
+
+            <span class="detail-label">
+                Email Address
+            </span>
+
+            <span class="detail-value">
+
+                ${escapeHTML(
+                    attendee.email ||
+                    ""
+                )}
+
+            </span>
+
+        </div>
+
+
+        <!-- PHONE -->
+
+        <div class="detail-item">
+
+            <span class="detail-label">
+                Phone Number
+            </span>
+
+            <span class="detail-value">
+
+                ${escapeHTML(
+                    attendee.phone ||
+                    ""
+                )}
+
+            </span>
+
+        </div>
+
+
+        <!-- RESIDENTIAL CITY / STATE -->
+
+        <div class="detail-item full-width">
+
+            <span class="detail-label">
+                Residential City / State
+            </span>
+
+            <span class="detail-value">
+
+                ${escapeHTML(
+                    attendee.residential_city_state ||
+                    "—"
+                )}
+
+            </span>
+
+        </div>
+
+
+        <!-- CHURCH -->
+
+        <div class="detail-item">
+
+            <span class="detail-label">
+                Name of Church
+            </span>
+
+            <span class="detail-value">
+
+                ${escapeHTML(
+                    attendee.church_name ||
+                    "—"
+                )}
+
+            </span>
+
+        </div>
+
+
+        <!-- POSITION -->
+
+        <div class="detail-item">
+
+            <span class="detail-label">
+                Position in Church
+            </span>
+
+            <span class="detail-value">
+
+                ${escapeHTML(
+                    attendee.church_position ||
+                    "—"
+                )}
+
+            </span>
+
+        </div>
+
+
+        <!-- HOW HEARD -->
+
+        <div class="detail-item full-width">
+
+            <span class="detail-label">
+                How They Heard About The Conference
+            </span>
+
+            <span class="detail-value">
+
+                ${escapeHTML(
+                    attendee.how_heard ||
+                    "—"
+                )}
+
+            </span>
+
+        </div>
+
+
+        <!-- EXPECTATIONS -->
+
+        <div class="detail-item full-width">
+
+            <span class="detail-label">
+                Conference Expectations
+            </span>
+
+            <span class="detail-value expectations-value">
+
+                ${escapeHTML(
+                    attendee.expectations ||
+                    "—"
+                )}
+
+            </span>
+
+        </div>
+
+
+        <!-- SESSION ATTENDANCE -->
+
+        <div class="detail-item full-width">
+
+            <span class="detail-label">
+                Session Attendance
+            </span>
+
+
+            <div class="modal-session-grid">
+
+                ${sessionHTML}
+
+            </div>
+
+        </div>
+
+
+        <!-- REGISTRATION DATE -->
+
+        <div class="detail-item">
+
+            <span class="detail-label">
+                Registration Date
+            </span>
+
+            <span class="detail-value">
+
+                ${
+                    attendee.created_at
+
+                        ? formatDate(
+                            attendee.created_at
+                        )
+
+                        : "—"
+                }
+
+            </span>
+
+        </div>
+
+
+        <!-- CURRENT STATUS -->
+
+        <div class="detail-item">
+
+            <span class="detail-label">
+                Current Status
+            </span>
+
+            <span class="detail-value">
+
+                ${
+                    Object.keys(
+                        sessions
+                    ).length > 0
+
+                        ? "Checked In"
+
+                        : "Pending"
+                }
+
+            </span>
+
+        </div>
+
+
+        <!-- CONSENT -->
+
+        <div class="detail-item">
+
+            <span class="detail-label">
+                Consent Given
+            </span>
+
+            <span class="detail-value">
+
+                ${
+                    attendee.consent_given
+                        ? "Yes"
+                        : "No"
+                }
+
+            </span>
+
+        </div>
+
+
+    `;
+
+
+    document
+        .getElementById(
+            "attendeeModal"
+        )
+        .classList.add(
+            "show"
+        );
+
+}
+
+
+
+/* =================================
+   CLOSE MODAL
+================================= */
+
+function closeAttendeeModal() {
+
+
+    document
+        .getElementById(
+            "attendeeModal"
+        )
+        .classList.remove(
+            "show"
+        );
+
+}
+
+
+
+function handleModalBackdrop(
+    event
+) {
+
+
+    if (
+        event.target.id ===
+        "attendeeModal"
+    ) {
+
+        closeAttendeeModal();
+
+    }
+
+}
+
+
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
+            closeAttendeeModal();
+
+        }
+
+    }
+);
+
+
+
+/* =================================
+   EXPORT CSV
+================================= */
+
+function exportAttendees() {
+
+
+    const searchInput =
+        document.getElementById(
+            "searchInput"
+        );
+
+
+    const search =
+        (
+            searchInput.value ||
+            ""
+        )
+            .trim()
+            .toLowerCase();
+
+
+    let filtered =
+        [...attendees];
+
+
+    /* ================================
+       ATTENDANCE FILTER
+    ================================= */
+
+    if (
+        currentFilter ===
+        "physical"
+    ) {
+
+        filtered =
+            filtered.filter(
+                attendee =>
+
+                    String(
+                        attendee.attendance_type ||
+                        ""
+                    ).toLowerCase() ===
+                    "physical"
+            );
+
+    }
+
+
+    if (
+        currentFilter ===
+        "online"
+    ) {
+
+        filtered =
+            filtered.filter(
+                attendee =>
+
+                    String(
+                        attendee.attendance_type ||
+                        ""
+                    ).toLowerCase() ===
+                    "online"
+            );
+
+    }
+
+
+    /* ================================
+       CHECK-IN FILTER
+    ================================= */
+
+    if (
+        currentFilter ===
+        "checked"
+    ) {
+
+        filtered =
+            filtered.filter(
+                attendee =>
+
+                    checkIns.some(
+                        item =>
+
+                            String(
+                                item.attendee_id
+                            ) ===
+                            String(
+                                attendee.id
+                            )
+                    )
+            );
+
+    }
+
+
+    if (
+        currentFilter ===
+        "pending"
+    ) {
+
+        filtered =
+            filtered.filter(
+                attendee =>
+
+                    !checkIns.some(
+                        item =>
+
+                            String(
+                                item.attendee_id
+                            ) ===
+                            String(
+                                attendee.id
+                            )
+                    )
+            );
+
+    }
+
+
+    /* ================================
+       SEARCH FILTER
+    ================================= */
+
+    filtered =
+        filtered.filter(
+            attendee =>
+                matchesSearch(
+                    attendee,
+                    search
+                )
+        );
+
+
+    if (!filtered.length) {
+
+        alert(
+            "There are no attendees to export."
+        );
+
+        return;
+
+    }
+
+
+    const headers = [
+
+        "Full Name",
+
+        "First Name",
+
+        "Last Name",
+
+        "Gender",
+
+        "Email",
+
+        "Phone",
+
+        "Residential City / State",
+
+        "Church",
+
+        "Position in Church",
+
+        "How Heard",
+
+        "Expectations",
+
+        "Attendance Mode",
+
+        "Registration Code",
+
+        "Session 1",
+
+        "Session 2",
+
+        "Session 3",
+
+        "Session 4",
+
+        "Session 5",
+
+        "Session 6",
+
+        "Session 7",
+
+        "Sessions Attended",
+
+        "Registration Date"
+
+    ];
+
+
+    const rows =
+        filtered.map(
+            attendee => {
+
+
+                const sessions =
+                    getAttendeeSessions(
+                        attendee.id
+                    );
+
+
+                const sessionValues = [];
+
+
+                for (
+                    let session = 1;
+                    session <= 7;
+                    session++
+                ) {
+
+
+                    sessionValues.push(
+
+                        sessions[session]
+
+                            ? "CHECKED IN"
+
+                            : "NOT CHECKED IN"
+
+                    );
+
+                }
+
+
+                const attendedCount =
+                    Object.values(
+                        sessions
+                    )
+                        .filter(
+                            Boolean
+                        )
+                        .length;
+
+
+                const fullName =
+                    attendee.name ||
+
+                    `${attendee.first_name || ""} ${
+                        attendee.last_name || ""
+                    }`.trim();
+
+
+                return [
+
+                    fullName,
+
+                    attendee.first_name ||
+                        "",
+
+                    attendee.last_name ||
+                        "",
+
+                    attendee.gender ||
+                        "",
+
+                    attendee.email ||
+                        "",
+
+                    attendee.phone ||
+                        "",
+
+                    attendee.residential_city_state ||
+                        "",
+
+                    attendee.church_name ||
+                        "",
+
+                    attendee.church_position ||
+                        "",
+
+                    attendee.how_heard ||
+                        "",
+
+                    attendee.expectations ||
+                        "",
+
+                    attendee.attendance_type ||
+                        "",
+
+                    attendee.registration_code ||
+                        "",
+
+                    ...sessionValues,
+
+                    `${attendedCount}/7`,
+
+                    attendee.created_at
+
+                        ? formatDate(
+                            attendee.created_at
+                        )
+
+                        : ""
+
+                ];
+
+            }
+        );
+
+
+
+    function csvEscape(
+        value
+    ) {
+
+        return `"${String(
+            value
+        ).replace(
+            /"/g,
+            '""'
+        )}"`;
+
+    }
+
+
+    const csvContent = [
+
+        headers
+            .map(csvEscape)
+            .join(","),
+
+        ...rows.map(
+            row =>
+                row
+                    .map(csvEscape)
+                    .join(",")
+        )
+
+    ].join("\r\n");
+
+
+    const blob =
+        new Blob(
+            [csvContent],
+            {
+                type:
+                    "text/csv;charset=utf-8;"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+
+    link.href =
+        url;
+
+
+    const date =
+        new Date()
+            .toISOString()
+            .slice(0, 10);
+
+
+    link.download =
+        `JESUS-2026-attendance-${date}.csv`;
+
+
+    document.body.appendChild(
+        link
+    );
+
+
+    link.click();
+
+
+    document.body.removeChild(
+        link
+    );
+
+
+    URL.revokeObjectURL(
+        url
+    );
+
+}
+
+
+
+/* =================================
+   SEARCH
+================================= */
+
+document
+
+    .getElementById(
+        "searchInput"
+    )
+
+    .addEventListener(
+        "input",
+        function () {
+
+            applyFilters();
+
+        }
+    );
+
+
+
+/* =================================
+   FORMAT DATE
+================================= */
+
+function formatDate(
+    dateString
+) {
+
+
+    const date =
+        new Date(
+            dateString
+        );
+
+
+    return date.toLocaleString(
+        "en-NG",
+        {
+
+            dateStyle:
+                "medium",
+
+            timeStyle:
+                "short"
+
+        }
+    );
+
+}
+
+
+
+/* =================================
+   ESCAPE HTML
+================================= */
+
+function escapeHTML(
+    value
+) {
+
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        value;
+
+
+    return div.innerHTML;
+
+}
+
+
+
+/* =================================
+   LIVE SUPABASE UPDATES
+================================= */
+
+function setLiveStatus(
+    message,
+    isLive = true
+) {
+
+
+    const status =
+        document.getElementById(
+            "liveStatus"
+        );
+
+
+    if (!status) return;
+
+
+    status.innerHTML =
+
+        isLive
+
+            ? `
+
+                <span
+                    class="live-dot"
+                ></span>
+
+                ${message}
+
+            `
+
+            : `
+
+                <span
+                    class="live-dot"
+                    style="background:#a87900;"
+                ></span>
+
+                ${message}
+
+            `;
+
+}
+
+
+
+/* =================================
+   ATTENDEE LIVE UPDATES
+================================= */
+
+const attendeeChannel =
+    supabaseClient
+
+        .channel(
+            "dashboard-attendee-updates"
+        )
+
+        .on(
+            "postgres_changes",
+            {
+                event: "*",
+                schema: "public",
+                table: "attendees"
+            },
+
+            function (payload) {
+
+                console.log(
+                    "Live attendee update:",
+                    payload.eventType
+                );
+
+
+                loadDashboard();
+
+            }
+        )
+
+        .subscribe(
+            function (status) {
+
+
+                if (
+                    status ===
+                    "SUBSCRIBED"
+                ) {
+
+                    setLiveStatus(
+                        "LIVE UPDATES ON",
+                        true
+                    );
+
+                }
+
+
+                else if (
+                    status ===
+                    "CHANNEL_ERROR"
+                    ||
+                    status ===
+                    "TIMED_OUT"
+                ) {
+
+                    setLiveStatus(
+                        "LIVE CONNECTION ISSUE",
+                        false
+                    );
+
+                }
+
+            }
+        );
+
+
+
+/* =================================
+   CHECK-IN LIVE UPDATES
+================================= */
+
+const checkInChannel =
+    supabaseClient
+
+        .channel(
+            "dashboard-checkin-updates"
+        )
+
+        .on(
+            "postgres_changes",
+            {
+                event: "*",
+                schema: "public",
+                table: "check_ins"
+            },
+
+            function (payload) {
+
+                console.log(
+                    "Live check-in update:",
+                    payload.eventType
+                );
+
+
+                loadDashboard();
+
+            }
+        )
+
+        .subscribe();
+
+
+
+/* =================================
+   START DASHBOARD
+================================= */
+
+loadDashboard();
+
+
+</script>
+
+</body>
+
+</html>

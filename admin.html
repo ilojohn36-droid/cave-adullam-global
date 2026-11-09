@@ -1,0 +1,3228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Cave Admin</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =====================================================
+           ROOT
+        ===================================================== */
+
+        :root {
+
+            --blue: #063da5;
+            --blue-dark: #031b4e;
+            --blue-deep: #020b20;
+
+            --gold: #d4a72c;
+            --gold-light: #f0d477;
+
+            --white: #ffffff;
+            --text: #edf3ff;
+            --muted: #9aa9c4;
+
+            --border:
+                rgba(255,255,255,.10);
+
+        }
+
+
+        /* =====================================================
+           BODY
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            font-family:
+                'Montserrat',
+                Arial,
+                sans-serif;
+
+            color: var(--text);
+
+            background:
+
+                radial-gradient(
+                    circle at 50% -10%,
+                    rgba(6,61,165,.35),
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at 100% 30%,
+                    rgba(212,167,44,.08),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    145deg,
+                    #010711 0%,
+                    #03132f 45%,
+                    #020a19 100%
+                );
+
+        }
+
+
+        button,
+        input,
+        textarea {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
+
+        .admin-container {
+
+            width: 100%;
+
+            max-width: 1500px;
+
+            margin: auto;
+
+            padding:
+                30px 25px 50px;
+
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .admin-header {
+
+            position: relative;
+
+            text-align: center;
+
+            padding:
+                35px 20px 25px;
+
+            overflow: hidden;
+
+        }
+
+
+        .admin-header::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+
+            height: 300px;
+
+            left: 50%;
+
+            top: -100px;
+
+            transform:
+                translateX(-50%);
+
+            background:
+                radial-gradient(
+                    ellipse,
+                    rgba(6,61,165,.28),
+                    transparent 70%
+                );
+
+            pointer-events: none;
+
+        }
+
+
+        .conference-header {
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        /* =====================================================
+           CAVE LOGO
+        ===================================================== */
+
+        .Cave-logo {
+
+            width: 150px;
+
+            height: auto;
+
+            position: absolute;
+
+            top: 2px;
+
+            left: 10px;
+
+            z-index: 20px;
+
+            display: block;
+
+            object-fit: contain;
+
+            margin-bottom: 12px;
+
+            filter:
+                drop-shadow(
+                    0 8px 25px
+                    rgba(0,0,0,.4)
+                );
+
+        }
+        .Camp-Meeting-Logo {
+
+            width: 66px;
+
+            height: auto;
+
+            position: absolute;
+
+            top: 20px;
+
+            right: 20px;
+
+            z-index: 20px;
+
+            display: block;
+
+            object-fit: contain;
+
+            margin-bottom: 12px;
+
+            filter:
+                drop-shadow(
+                    0 8px 25px
+                    rgba(0,0,0,.4)
+                );
+
+        }
+
+        /* =====================================================
+           CAMP MEETING AREA
+        ===================================================== */
+
+        .meeting-title {
+
+            position: relative;
+
+            display: inline-block;
+
+            margin: 0 auto;
+
+            padding: 0 20px;
+
+        }
+
+
+        .meeting-year {
+
+            position: absolute;
+
+            z-index: 0;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform:
+                translate(-50%,-50%);
+
+            font-size: 75px;
+
+            font-weight: 900;
+
+            letter-spacing: 5px;
+
+            color:
+                rgba(255,255,255,.035);
+
+            white-space: nowrap;
+
+            pointer-events: none;
+
+        }
+
+
+        .meeting-name {
+
+            position: relative;
+
+            z-index: 2;
+
+            margin: 0;
+
+            color:
+                var(--gold-light);
+
+            font-size: 18px;
+
+            font-weight: 900;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .meeting-small-year {
+
+            position: relative;
+
+            z-index: 2;
+
+            margin-top: 5px;
+
+            color:
+                rgba(255,255,255,.65);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 5px;
+
+        }
+
+
+        /* =====================================================
+           JESUS ARTWORK
+        ===================================================== */
+
+        .theme-artwork {
+
+            position: relative;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            margin:
+                15px auto 8px;
+
+        }
+
+
+        .theme-artwork::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 350px;
+
+            height: 180px;
+
+            background:
+                radial-gradient(
+                    ellipse,
+                    rgba(212,167,44,.13),
+                    transparent 70%
+                );
+
+            filter:
+                blur(10px);
+
+        }
+
+
+        .theme-artwork img {
+
+            position: relative;
+
+            z-index: 1;
+
+            width: 270px;
+
+            max-width: 70vw;
+
+            height: auto;
+
+            object-fit: contain;
+
+            filter:
+                drop-shadow(
+                    0 15px 35px
+                    rgba(0,0,0,.5)
+                );
+
+        }
+
+
+        /* =====================================================
+           THEME
+        ===================================================== */
+
+        .theme-line {
+
+            margin:
+                8px 0 18px;
+
+            color:
+                var(--white);
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            letter-spacing: 3px;
+
+        }
+
+
+        .dashboard-subtitle {
+
+            display: inline-block;
+
+            padding:
+                10px 20px;
+
+            border:
+                1px solid
+                rgba(212,167,44,.30);
+
+            border-radius: 30px;
+
+            color:
+                var(--gold-light);
+
+            background:
+                rgba(6,61,165,.12);
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        .admin-nav {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 14px;
+
+            margin:
+                20px 0 30px;
+
+        }
+
+
+        .admin-link {
+
+            color: inherit;
+
+            text-decoration: none;
+
+        }
+
+
+        .admin-card {
+
+            height: 100%;
+
+            padding: 20px 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(8,30,68,.95),
+                    rgba(3,17,40,.95)
+                );
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 14px;
+
+            cursor: pointer;
+
+            transition:
+                .25s ease;
+
+        }
+
+
+        .admin-card:hover,
+        .admin-card.active {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                rgba(212,167,44,.40);
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,.25);
+
+        }
+
+
+        .admin-card h2 {
+
+            margin:
+                0 0 8px;
+
+            color:
+                var(--white);
+
+            font-size: 13px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .admin-card p {
+
+            margin: 0;
+
+            color:
+                var(--muted);
+
+            font-size: 10px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =====================================================
+           VIEWS
+        ===================================================== */
+
+        .admin-view {
+
+            display: none;
+
+            padding: 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(7,28,63,.94),
+                    rgba(3,15,35,.96)
+                );
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 16px;
+
+            box-shadow:
+                0 18px 50px
+                rgba(0,0,0,.22);
+
+        }
+
+
+        .admin-view.active {
+            display: block;
+        }
+
+
+        .admin-view h2 {
+
+            margin:
+                0 0 8px;
+
+            color:
+                var(--gold-light);
+
+            font-size: 18px;
+
+            font-weight: 900;
+
+        }
+
+
+        .admin-view > p {
+
+            margin:
+                0 0 25px;
+
+            color:
+                var(--muted);
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =====================================================
+           ATTENDEE SUMMARY
+        ===================================================== */
+
+        .attendee-summary {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 12px;
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .summary-box {
+
+            padding: 20px;
+
+            text-align: center;
+
+            background:
+                rgba(255,255,255,.035);
+
+            border:
+                1px solid
+                rgba(255,255,255,.07);
+
+            border-radius: 12px;
+
+        }
+
+
+        .summary-box span {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color:
+                var(--muted);
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 1.5px;
+
+        }
+
+
+        .summary-box strong {
+
+            color:
+                var(--white);
+
+            font-size: 30px;
+
+            font-weight: 900;
+
+        }
+
+
+        /* =====================================================
+           CONTROLS
+        ===================================================== */
+
+        .attendee-controls {
+
+            display: flex;
+
+            gap: 9px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .attendee-filter {
+
+            padding:
+                10px 15px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,.04);
+
+            color:
+                var(--muted);
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+        }
+
+
+        .attendee-filter.active {
+
+            background:
+                var(--blue);
+
+            color:
+                white;
+
+            border-color:
+                var(--blue);
+
+        }
+
+
+        .attendee-search {
+
+            flex: 1;
+
+            min-width: 220px;
+
+            padding:
+                10px 14px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.10);
+
+            border-radius: 8px;
+
+            outline: none;
+
+            background:
+                rgba(255,255,255,.045);
+
+            color:
+                white;
+
+            font-size: 12px;
+
+        }
+
+
+        .attendee-search:focus {
+
+            border-color:
+                rgba(212,167,44,.60);
+
+        }
+
+
+        /* =====================================================
+           TABLE
+        ===================================================== */
+
+        .attendee-table-wrapper {
+
+            width: 100%;
+
+            overflow-x: auto;
+
+            border:
+                1px solid
+                rgba(255,255,255,.07);
+
+            border-radius: 12px;
+
+        }
+
+
+        .attendee-table {
+
+            width: 100%;
+
+            min-width: 1100px;
+
+            border-collapse: collapse;
+
+        }
+
+
+        .attendee-table th {
+
+            padding:
+                13px 10px;
+
+            background:
+                rgba(255,255,255,.035);
+
+            color:
+                #aebbd0;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-align: left;
+
+            white-space: nowrap;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.08);
+
+        }
+
+
+        .attendee-table td {
+
+            padding:
+                13px 10px;
+
+            color:
+                #dce5f5;
+
+            font-size: 11px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.055);
+
+            white-space: nowrap;
+
+        }
+
+
+        .attendee-table tr:hover td {
+
+            background:
+                rgba(6,61,165,.07);
+
+        }
+
+
+        .no-attendees {
+
+            text-align: center !important;
+
+            padding: 40px !important;
+
+            color:
+                #71809a !important;
+
+        }
+
+
+        /* =====================================================
+           ATTENDANCE
+        ===================================================== */
+
+        .attendance-badge {
+
+            display: inline-block;
+
+            padding:
+                5px 9px;
+
+            border-radius: 20px;
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+        }
+
+
+        .attendance-physical {
+
+            background:
+                rgba(58,190,104,.12);
+
+            color:
+                #69db91;
+
+        }
+
+
+        .attendance-online {
+
+            background:
+                rgba(6,61,165,.15);
+
+            color:
+                #7daaff;
+
+        }
+
+
+        .checkin-yes {
+
+            color:
+                #69db91;
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+        }
+
+
+        .checkin-no {
+
+            color:
+                #71809a;
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+        }
+
+
+        .registration-code {
+
+            color:
+                var(--gold-light);
+
+            font-weight: 800;
+
+            letter-spacing: .5px;
+
+        }
+
+
+        /* =====================================================
+           TESTIMONIES / PARTNERSHIPS
+        ===================================================== */
+
+        .testimonies-list,
+        .partnership-list {
+
+            display: grid;
+
+            gap: 15px;
+
+        }
+
+
+        .testimony-item,
+        .partnership-item {
+
+            padding: 20px;
+
+            background:
+                rgba(255,255,255,.035);
+
+            border:
+                1px solid
+                rgba(255,255,255,.07);
+
+            border-radius: 12px;
+
+        }
+
+
+        .testimony-item h3,
+        .partnership-item h3 {
+
+            margin:
+                0 0 12px;
+
+            color:
+                var(--white);
+
+            font-size: 15px;
+
+        }
+
+
+        .testimony-item p,
+        .partnership-item p {
+
+            color:
+                var(--muted);
+
+            font-size: 11px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .testimony-status {
+
+            display: inline-block;
+
+            margin-top: 8px;
+
+            padding:
+                5px 9px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(212,167,44,.12);
+
+            color:
+                var(--gold-light);
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+        }
+
+
+        .testimony-actions {
+
+            display: flex;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+
+            margin-top: 18px;
+
+        }
+
+
+        .action-button {
+
+            padding:
+                8px 12px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            color: white;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+        }
+
+
+        .edit-button {
+            background: #315caa;
+        }
+
+
+        .approve-button {
+            background: #23864d;
+        }
+
+
+        .reject-button {
+            background: #9b7121;
+        }
+
+
+        .delete-button {
+            background: #8d3030;
+        }
+
+
+        .edit-form {
+
+            display: grid;
+
+            gap: 10px;
+
+        }
+
+
+        .edit-form label {
+
+            color:
+                var(--muted);
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+        }
+
+
+        .edit-form input,
+        .edit-form textarea {
+
+            width: 100%;
+
+            padding: 11px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.10);
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,.04);
+
+            color: white;
+
+            outline: none;
+
+        }
+
+
+        .edit-form textarea {
+
+            min-height: 150px;
+
+            resize: vertical;
+
+        }
+
+
+        .edit-form-actions {
+
+            display: flex;
+
+            gap: 8px;
+
+            margin-top: 8px;
+
+        }
+
+
+        .save-button {
+            background: #23864d;
+        }
+
+
+        .cancel-button {
+            background: #555f70;
+        }
+
+
+        /* =====================================================
+           LOGOUT
+        ===================================================== */
+
+        .logout-button {
+
+            display: block;
+
+            margin:
+                25px auto 0;
+
+            padding:
+                11px 25px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.10);
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,.04);
+
+            color:
+                #aebbd0;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 1.5px;
+
+            cursor: pointer;
+
+        }
+
+
+        .logout-button:hover {
+
+            background:
+                #8d3030;
+
+            color: white;
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .admin-nav {
+
+                grid-template-columns:
+                    repeat(3,1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .admin-container {
+
+                padding:
+                    20px 12px 35px;
+
+            }
+
+
+            .admin-header {
+
+                padding:
+                    25px 10px 20px;
+
+            }
+
+
+            .Cave-logo {
+
+                width: 70px;
+
+            }
+
+
+            .meeting-name {
+
+                font-size: 13px;
+
+                letter-spacing: 2.5px;
+
+            }
+
+
+            .meeting-year {
+
+                font-size: 55px;
+
+            }
+
+
+            .theme-artwork img {
+
+                width: 220px;
+
+            }
+
+
+            .theme-line {
+
+                font-size: 9px;
+
+                letter-spacing: 2px;
+
+            }
+
+
+            .admin-nav {
+
+                grid-template-columns:
+                    1fr 1fr;
+
+                gap: 9px;
+
+            }
+
+
+            .admin-card {
+
+                padding:
+                    16px 13px;
+
+            }
+
+
+            .admin-card h2 {
+
+                font-size: 11px;
+
+            }
+
+
+            .admin-card p {
+
+                font-size: 8px;
+
+            }
+
+
+            .admin-view {
+
+                padding: 17px;
+
+            }
+
+
+            .attendee-summary {
+
+                grid-template-columns:
+                    1fr 1fr;
+
+            }
+
+
+            .summary-box:first-child {
+
+                grid-column:
+                    1 / -1;
+
+            }
+
+
+            .attendee-controls {
+
+                display: grid;
+
+                grid-template-columns:
+                    1fr 1fr;
+
+            }
+
+
+            .attendee-search {
+
+                grid-column:
+                    1 / -1;
+
+                min-width: 0;
+
+            }
+
+
+            .attendee-filter {
+
+                width: 100%;
+
+            }
+
+        }
+
+
+        @media (max-width: 450px) {
+
+            .admin-nav {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .attendee-summary {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .summary-box:first-child {
+
+                grid-column:
+                    auto;
+
+            }
+
+
+            .attendee-controls {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .attendee-search {
+
+                grid-column:
+                    auto;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         CONFERENCE HEADER
+    ====================================================== -->
+
+    <header class="admin-header">
+
+        <div class="conference-header">
+
+
+            <!-- CAVE LOGO -->
+
+            <img
+                src="CAVE NEW LOGO.png"
+                alt="Cave"
+                class="Cave-logo"
+            >
+
+            <!-- CAVE CAMP MEETING -->
+             <img
+                 src="ccm w.png"
+                 alt="Cave Meeting"
+                 class="Camp-Meeting-Logo"
+                 >
+
+            <!-- CAVE CAMP MEETING + 2026 -->
+
+            <div class="meeting-title">
+
+                <div class="meeting-year">
+                    2026
+                </div>
+
+                <h1 class="meeting-name">
+                    Cave Camp Meeting 2026
+                </h1>
+
+
+            </div>
+
+
+            <!-- JESUS -->
+
+            <div class="theme-artwork">
+
+                <img
+                    src="J6.png"
+                    alt="JESUS"
+                >
+
+            </div>
+
+
+            <div class="theme-line">
+                ONE NAME. ONE FOCUS. JESUS.
+            </div>
+
+
+            <div class="dashboard-subtitle">
+
+                ADMIN CONTROL CENTER
+
+            </div>
+
+
+            <p
+                id="adminEmail"
+                style="
+                    margin:14px 0 0;
+                    color:#71809a;
+                    font-size:10px;
+                "
+            >
+                Checking admin session...
+            </p>
+
+
+        </div>
+
+    </header>
+
+
+
+    <main class="admin-container">
+
+
+        <!-- =================================================
+             ADMIN NAVIGATION
+        ================================================== -->
+
+        <section class="admin-nav">
+
+
+            <!-- DASHBOARD -->
+
+            <a
+                href="dashboard-live-updates.html"
+                class="admin-link"
+            >
+
+                <div class="admin-card">
+
+                    <h2>
+                        Dashboard
+                    </h2>
+
+                    <p>
+                        View registrations, check-ins and attendance.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+            <!-- ATTENDEES -->
+
+            <div
+                class="admin-card"
+                id="attendeeCard"
+            >
+
+                <h2>
+                    Attendees
+                </h2>
+
+                <p>
+                    View physical and online conference registrations.
+                </p>
+
+            </div>
+
+
+            <!-- SCANNER -->
+
+            <a
+                href="scanner.html"
+                class="admin-link"
+            >
+
+                <div class="admin-card">
+
+                    <h2>
+                        Scanner
+                    </h2>
+
+                    <p>
+                        Scan registration QR codes and check in attendees.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+            <!-- TESTIMONIES -->
+
+            <div
+                class="admin-card"
+                id="testimonyCard"
+            >
+
+                <h2>
+                    Testimonies
+                </h2>
+
+                <p>
+                    Review and manage submitted testimonies.
+                </p>
+
+            </div>
+
+
+            <!-- PARTNERSHIPS -->
+
+            <div
+                class="admin-card"
+                id="partnershipCard"
+            >
+
+                <h2>
+                    Partnerships
+                </h2>
+
+                <p>
+                    View partnership requests.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             ATTENDEES
+        ================================================== -->
+
+        <section
+            class="admin-view"
+            id="attendeesView"
+        >
+
+            <h2>
+                Attendees
+            </h2>
+
+            <p>
+                View registered attendees and separate physical
+                attendance from online attendance.
+            </p>
+
+
+            <div class="attendee-summary">
+
+
+                <div class="summary-box">
+
+                    <span>
+                        TOTAL ATTENDEES
+                    </span>
+
+                    <strong id="totalAttendees">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-box">
+
+                    <span>
+                        PHYSICAL
+                    </span>
+
+                    <strong id="physicalAttendees">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-box">
+
+                    <span>
+                        ONLINE
+                    </span>
+
+                    <strong id="onlineAttendees">
+                        0
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="attendee-controls">
+
+
+                <button
+                    type="button"
+                    class="attendee-filter active"
+                    id="allAttendeesButton"
+                >
+                    ALL ATTENDEES
+                </button>
+
+
+                <button
+                    type="button"
+                    class="attendee-filter"
+                    id="physicalAttendeesButton"
+                >
+                    PHYSICAL
+                </button>
+
+
+                <button
+                    type="button"
+                    class="attendee-filter"
+                    id="onlineAttendeesButton"
+                >
+                    ONLINE
+                </button>
+
+
+                <input
+                    type="search"
+                    id="attendeeSearch"
+                    class="attendee-search"
+                    placeholder="Search name, email, phone, church or code..."
+                >
+
+
+            </div>
+
+
+            <div class="attendee-table-wrapper">
+
+                <table class="attendee-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Name</th>
+
+                            <th>Email</th>
+
+                            <th>Phone</th>
+
+                            <th>Gender</th>
+
+                            <th>Church</th>
+
+                            <th>Attendance</th>
+
+                            <th>Registration Code</th>
+
+                            <th>Check-in</th>
+
+                            <th>Registered</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="attendeesTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="9"
+                                class="no-attendees"
+                            >
+                                Loading attendees...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             TESTIMONIES
+        ================================================== -->
+
+        <section
+            class="admin-view"
+            id="testimoniesView"
+        >
+
+            <h2>
+                Pending Testimonies
+            </h2>
+
+            <p>
+                Review, edit and manage submitted testimonies.
+            </p>
+
+
+            <div
+                class="testimonies-list"
+                id="testimoniesList"
+            >
+
+                <p>
+                    Loading testimonies...
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PARTNERSHIPS
+        ================================================== -->
+
+        <section
+            class="admin-view"
+            id="partnershipsView"
+        >
+
+            <h2>
+                Partnership Requests
+            </h2>
+
+            <p>
+                View partnership requests submitted through the ministry website.
+            </p>
+
+
+            <div
+                class="partnership-list"
+                id="partnershipsList"
+            >
+
+                <p>
+                    Loading partnership requests...
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- LOGOUT -->
+
+        <button
+            class="logout-button"
+            id="logoutButton"
+        >
+            LOG OUT
+        </button>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         SUPABASE
+    ====================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <script>
+
+        /* =========================================
+           SUPABASE
+        ========================================= */
+
+        const SUPABASE_URL =
+            "https://ktwvbhdxszxmmmfoxzra.supabase.co";
+
+
+        const SUPABASE_KEY =
+            "sb_publishable_MysGHP42nsPZzFzp2aBR-g_VhFE0Idq";
+
+
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+
+        /* =========================================
+           ADMIN SESSION
+        ========================================= */
+
+        async function checkAdminAccess() {
+
+            const {
+                data: {
+                    session
+                }
+            } =
+                await supabaseClient.auth.getSession();
+
+
+            if (!session) {
+
+                window.location.href =
+                    "admin-login.html";
+
+                return false;
+
+            }
+
+
+            document.getElementById(
+                "adminEmail"
+            ).textContent =
+                "Logged in as: " +
+                session.user.email;
+
+
+            return true;
+
+        }
+
+
+
+        /* =========================================
+           LOGOUT
+        ========================================= */
+
+        document
+            .getElementById("logoutButton")
+            .addEventListener(
+                "click",
+                async function() {
+
+                    await supabaseClient.auth.signOut();
+
+                    window.location.href =
+                        "admin-login.html";
+
+                }
+            );
+
+
+
+        /* =========================================
+           NAVIGATION
+        ========================================= */
+
+        const cards = {
+
+            attendees:
+                document.getElementById(
+                    "attendeeCard"
+                ),
+
+            testimonies:
+                document.getElementById(
+                    "testimonyCard"
+                ),
+
+            partnerships:
+                document.getElementById(
+                    "partnershipCard"
+                )
+
+        };
+
+
+        const views = {
+
+            attendees:
+                document.getElementById(
+                    "attendeesView"
+                ),
+
+            testimonies:
+                document.getElementById(
+                    "testimoniesView"
+                ),
+
+            partnerships:
+                document.getElementById(
+                    "partnershipsView"
+                )
+
+        };
+
+
+        let currentAttendeeFilter =
+            "all";
+
+
+        let allAttendees =
+            [];
+
+
+
+        /* =========================================
+           SHOW VIEW
+        ========================================= */
+
+        function showView(viewName) {
+
+            Object.values(views).forEach(
+                function(view) {
+
+                    view.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+            Object.values(cards).forEach(
+                function(card) {
+
+                    card.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+            views[viewName].classList.add(
+                "active"
+            );
+
+
+            cards[viewName].classList.add(
+                "active"
+            );
+
+
+            if (viewName === "attendees") {
+
+                loadAttendees();
+
+            }
+
+
+            if (viewName === "testimonies") {
+
+                loadPendingTestimonies();
+
+            }
+
+
+            if (viewName === "partnerships") {
+
+                loadPartnerships();
+
+            }
+
+        }
+
+
+
+        cards.attendees.addEventListener(
+            "click",
+            function() {
+
+                showView("attendees");
+
+            }
+        );
+
+
+        cards.testimonies.addEventListener(
+            "click",
+            function() {
+
+                showView("testimonies");
+
+            }
+        );
+
+
+        cards.partnerships.addEventListener(
+            "click",
+            function() {
+
+                showView("partnerships");
+
+            }
+        );
+
+
+
+        /* =========================================
+           LOAD ATTENDEES
+        ========================================= */
+
+        async function loadAttendees() {
+
+            const tableBody =
+                document.getElementById(
+                    "attendeesTableBody"
+                );
+
+
+            tableBody.innerHTML = `
+
+                <tr>
+
+                    <td
+                        colspan="9"
+                        class="no-attendees"
+                    >
+                        Loading attendees...
+                    </td>
+
+                </tr>
+
+            `;
+
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+                    .from("attendees")
+                    .select("*")
+                    .order(
+                        "created_at",
+                        {
+                            ascending: false
+                        }
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    "Attendees error:",
+                    error
+                );
+
+
+                tableBody.innerHTML = `
+
+                    <tr>
+
+                        <td
+                            colspan="9"
+                            class="no-attendees"
+                        >
+                            Unable to load attendees.
+                            <br><br>
+                            ${escapeHTML(
+                                error.message
+                            )}
+                        </td>
+
+                    </tr>
+
+                `;
+
+                return;
+
+            }
+
+
+            allAttendees =
+                data || [];
+
+
+            updateAttendeeCounts();
+
+            renderAttendees();
+
+        }
+
+
+
+        /* =========================================
+           COUNTS
+        ========================================= */
+
+        function updateAttendeeCounts() {
+
+            const total =
+                allAttendees.length;
+
+
+            const physical =
+                allAttendees.filter(
+                    attendee =>
+                        attendee.attendance_type ===
+                        "Physical"
+                ).length;
+
+
+            const online =
+                allAttendees.filter(
+                    attendee =>
+                        attendee.attendance_type ===
+                        "Online"
+                ).length;
+
+
+            document.getElementById(
+                "totalAttendees"
+            ).textContent = total;
+
+
+            document.getElementById(
+                "physicalAttendees"
+            ).textContent = physical;
+
+
+            document.getElementById(
+                "onlineAttendees"
+            ).textContent = online;
+
+        }
+
+
+
+        /* =========================================
+           RENDER ATTENDEES
+        ========================================= */
+
+        function renderAttendees() {
+
+            const tableBody =
+                document.getElementById(
+                    "attendeesTableBody"
+                );
+
+
+            const search =
+                document.getElementById(
+                    "attendeeSearch"
+                )
+                .value
+                .trim()
+                .toLowerCase();
+
+
+            let filtered =
+                allAttendees.filter(
+                    function(attendee) {
+
+
+                        if (
+                            currentAttendeeFilter ===
+                            "physical" &&
+                            attendee.attendance_type !==
+                            "Physical"
+                        ) {
+
+                            return false;
+
+                        }
+
+
+                        if (
+                            currentAttendeeFilter ===
+                            "online" &&
+                            attendee.attendance_type !==
+                            "Online"
+                        ) {
+
+                            return false;
+
+                        }
+
+
+                        if (!search) {
+
+                            return true;
+
+                        }
+
+
+                        const searchableText = [
+
+                            attendee.name,
+
+                            attendee.first_name,
+
+                            attendee.last_name,
+
+                            attendee.email,
+
+                            attendee.phone,
+
+                            attendee.church_name,
+
+                            attendee.residential_city_state,
+
+                            attendee.registration_code
+
+                        ]
+                        .filter(Boolean)
+                        .join(" ")
+                        .toLowerCase();
+
+
+                        return searchableText.includes(
+                            search
+                        );
+
+                    }
+                );
+
+
+            if (!filtered.length) {
+
+                tableBody.innerHTML = `
+
+                    <tr>
+
+                        <td
+                            colspan="9"
+                            class="no-attendees"
+                        >
+                            No attendees found.
+                        </td>
+
+                    </tr>
+
+                `;
+
+                return;
+
+            }
+
+
+            tableBody.innerHTML = "";
+
+
+            filtered.forEach(
+                function(attendee) {
+
+                    const row =
+                        document.createElement(
+                            "tr"
+                        );
+
+
+                    const attendance =
+                        attendee.attendance_type ||
+                        "Not specified";
+
+
+                    const attendanceClass =
+                        attendance === "Online"
+                            ? "attendance-online"
+                            : "attendance-physical";
+
+
+                    const checkin =
+                        attendee.checked_in
+                            ? `<span class="checkin-yes">
+                                    CHECKED IN
+                               </span>`
+                            : `<span class="checkin-no">
+                                    NOT CHECKED IN
+                               </span>`;
+
+
+                    const createdAt =
+                        attendee.created_at
+                            ? new Date(
+                                attendee.created_at
+                            ).toLocaleString()
+                            : "—";
+
+
+                    row.innerHTML = `
+
+                        <td>
+                            <strong>
+                                ${escapeHTML(
+                                    attendee.name || "—"
+                                )}
+                            </strong>
+                        </td>
+
+                        <td>
+                            ${escapeHTML(
+                                attendee.email || "—"
+                            )}
+                        </td>
+
+                        <td>
+                            ${escapeHTML(
+                                attendee.phone || "—"
+                            )}
+                        </td>
+
+                        <td>
+                            ${escapeHTML(
+                                attendee.gender || "—"
+                            )}
+                        </td>
+
+                        <td>
+                            ${escapeHTML(
+                                attendee.church_name ||
+                                attendee.institution ||
+                                "—"
+                            )}
+                        </td>
+
+                        <td>
+
+                            <span
+                                class="attendance-badge
+                                ${attendanceClass}"
+                            >
+                                ${escapeHTML(
+                                    attendance
+                                )}
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <span class="registration-code">
+                                ${escapeHTML(
+                                    attendee.registration_code ||
+                                    "—"
+                                )}
+                            </span>
+
+                        </td>
+
+                        <td>
+                            ${checkin}
+                        </td>
+
+                        <td>
+                            ${escapeHTML(createdAt)}
+                        </td>
+
+                    `;
+
+
+                    tableBody.appendChild(
+                        row
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        /* =========================================
+           FILTERS
+        ========================================= */
+
+        const allAttendeesButton =
+            document.getElementById(
+                "allAttendeesButton"
+            );
+
+
+        const physicalAttendeesButton =
+            document.getElementById(
+                "physicalAttendeesButton"
+            );
+
+
+        const onlineAttendeesButton =
+            document.getElementById(
+                "onlineAttendeesButton"
+            );
+
+
+        function setAttendeeFilter(
+            filter
+        ) {
+
+            currentAttendeeFilter =
+                filter;
+
+
+            [
+                allAttendeesButton,
+                physicalAttendeesButton,
+                onlineAttendeesButton
+            ]
+            .forEach(
+                button =>
+                    button.classList.remove(
+                        "active"
+                    )
+            );
+
+
+            if (filter === "all") {
+
+                allAttendeesButton
+                    .classList
+                    .add("active");
+
+            }
+
+
+            if (filter === "physical") {
+
+                physicalAttendeesButton
+                    .classList
+                    .add("active");
+
+            }
+
+
+            if (filter === "online") {
+
+                onlineAttendeesButton
+                    .classList
+                    .add("active");
+
+            }
+
+
+            renderAttendees();
+
+        }
+
+
+        allAttendeesButton.addEventListener(
+            "click",
+            () => setAttendeeFilter("all")
+        );
+
+
+        physicalAttendeesButton.addEventListener(
+            "click",
+            () => setAttendeeFilter("physical")
+        );
+
+
+        onlineAttendeesButton.addEventListener(
+            "click",
+            () => setAttendeeFilter("online")
+        );
+
+
+        document
+            .getElementById("attendeeSearch")
+            .addEventListener(
+                "input",
+                renderAttendees
+            );
+
+
+
+        /* =========================================
+           TESTIMONIES
+        ========================================= */
+
+        async function loadPendingTestimonies() {
+
+            const list =
+                document.getElementById(
+                    "testimoniesList"
+                );
+
+
+            list.innerHTML =
+                "<p>Loading testimonies...</p>";
+
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+                    .from("testimonies")
+                    .select("*")
+                    .eq(
+                        "status",
+                        "pending"
+                    )
+                    .order(
+                        "created_at",
+                        {
+                            ascending: false
+                        }
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    error
+                );
+
+                list.innerHTML =
+                    "<p>Unable to load testimonies.</p>";
+
+                return;
+
+            }
+
+
+            if (!data || !data.length) {
+
+                list.innerHTML =
+                    "<p>No pending testimonies.</p>";
+
+                return;
+
+            }
+
+
+            list.innerHTML = "";
+
+
+            data.forEach(
+                testimony =>
+                    createTestimonyCard(
+                        testimony,
+                        list
+                    )
+            );
+
+        }
+
+
+
+        function createTestimonyCard(
+            testimony,
+            list
+        ) {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "testimony-item";
+
+
+            item.dataset.id =
+                testimony.id;
+
+
+            item.innerHTML = `
+
+                <div class="testimony-content">
+
+                    <h3>
+                        ${escapeHTML(
+                            testimony.title ||
+                            "Untitled Testimony"
+                        )}
+                    </h3>
+
+                    <p>
+                        <strong>Name:</strong>
+                        ${escapeHTML(
+                            testimony.full_name ||
+                            "Not provided"
+                        )}
+                    </p>
+
+                    <p>
+                        <strong>Email:</strong>
+                        ${escapeHTML(
+                            testimony.email ||
+                            "Not provided"
+                        )}
+                    </p>
+
+                    <p>
+                        <strong>Testimony:</strong>
+                        ${escapeHTML(
+                            testimony.edited_testimony ||
+                            testimony.original_testimony ||
+                            "No testimony provided"
+                        )}
+                    </p>
+
+                    <span class="testimony-status">
+                        ${escapeHTML(
+                            testimony.status ||
+                            "pending"
+                        )}
+                    </span>
+
+                </div>
+
+
+                <div class="testimony-actions">
+
+                    <button
+                        class="action-button edit-button"
+                        onclick="editTestimony('${testimony.id}')"
+                    >
+                        EDIT
+                    </button>
+
+                    <button
+                        class="action-button approve-button"
+                        onclick="approveTestimony('${testimony.id}')"
+                    >
+                        APPROVE
+                    </button>
+
+                    <button
+                        class="action-button reject-button"
+                        onclick="rejectTestimony('${testimony.id}')"
+                    >
+                        REJECT
+                    </button>
+
+                    <button
+                        class="action-button delete-button"
+                        onclick="deleteTestimony('${testimony.id}')"
+                    >
+                        DELETE
+                    </button>
+
+                </div>
+
+            `;
+
+
+            list.appendChild(item);
+
+        }
+
+
+
+        /* =========================================
+           EDIT TESTIMONY
+        ========================================= */
+
+        async function editTestimony(id) {
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+                    .from("testimonies")
+                    .select("*")
+                    .eq("id", id)
+                    .single();
+
+
+            if (error) {
+
+                alert(
+                    "Unable to open this testimony."
+                );
+
+                return;
+
+            }
+
+
+            const item =
+                document.querySelector(
+                    `.testimony-item[data-id="${id}"]`
+                );
+
+
+            if (!item) return;
+
+
+            item.innerHTML = `
+
+                <div class="edit-form">
+
+                    <label>Full Name</label>
+
+                    <input
+                        type="text"
+                        id="edit-name-${id}"
+                        value="${escapeAttribute(
+                            data.full_name || ""
+                        )}"
+                    >
+
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="edit-email-${id}"
+                        value="${escapeAttribute(
+                            data.email || ""
+                        )}"
+                    >
+
+
+                    <label>Testimony Title</label>
+
+                    <input
+                        type="text"
+                        id="edit-title-${id}"
+                        value="${escapeAttribute(
+                            data.title || ""
+                        )}"
+                    >
+
+
+                    <label>Testimony</label>
+
+                    <textarea
+                        id="edit-testimony-${id}"
+                    >${escapeHTML(
+                        data.edited_testimony ||
+                        data.original_testimony ||
+                        ""
+                    )}</textarea>
+
+                    <div class="edit-form-actions">
+
+                        <button
+                            class="action-button save-button"
+                            onclick="saveTestimony('${id}')"
+                        >
+                            SAVE CHANGES
+                        </button>
+
+
+                        <button
+                            class="action-button cancel-button"
+                            onclick="loadPendingTestimonies()"
+                        >
+                            CANCEL
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+
+
+        /* =========================================
+           SAVE TESTIMONY
+        ========================================= */
+
+        async function saveTestimony(id) {
+
+    const name =
+        document.getElementById(
+            `edit-name-${id}`
+        ).value.trim();
+
+    const email =
+        document.getElementById(
+            `edit-email-${id}`
+        ).value.trim();
+
+    const title =
+        document.getElementById(
+            `edit-title-${id}`
+        ).value.trim();
+
+    const testimony =
+        document.getElementById(
+            `edit-testimony-${id}`
+        ).value.trim();
+
+    if (!name || !title || !testimony) {
+
+        alert(
+            "Please fill in the name, title and testimony."
+        );
+
+        return;
+    }
+
+    const {
+        error
+    } =
+        await supabaseClient
+            .from("testimonies")
+            .update({
+
+                full_name: name,
+
+                email: email || null,
+
+                title: title,
+
+                edited_testimony: testimony,
+
+                updated_at: new Date().toISOString()
+
+            })
+            .eq("id", id);
+
+    if (error) {
+
+        console.error(
+            "Save testimony error:",
+            error
+        );
+
+        alert(
+            "Unable to save changes.\n\n" +
+            error.message
+        );
+
+        return;
+    }
+
+    alert(
+        "Testimony updated successfully."
+    );
+
+    await loadPendingTestimonies();
+
+}
+
+
+
+        /* =========================================
+           APPROVE
+        ========================================= */
+
+        async function approveTestimony(id) {
+
+            if (
+                !confirm(
+                    "Approve this testimony?"
+                )
+            ) return;
+
+
+            const {
+                error
+            } =
+                await supabaseClient
+                    .from("testimonies")
+                    .update({
+                        status: "approved"
+                    })
+                    .eq("id", id);
+
+
+            if (error) {
+
+                alert(
+                    "Unable to approve testimony.\n\n" +
+                    error.message
+                );
+
+                return;
+
+            }
+
+
+            alert(
+                "Testimony approved successfully."
+            );
+
+
+            await loadPendingTestimonies();
+
+        }
+
+
+
+        /* =========================================
+           REJECT
+        ========================================= */
+
+        async function rejectTestimony(id) {
+
+            if (
+                !confirm(
+                    "Reject this testimony?"
+                )
+            ) return;
+
+
+            const {
+                error
+            } =
+                await supabaseClient
+                    .from("testimonies")
+                    .update({
+                        status: "rejected"
+                    })
+                    .eq("id", id);
+
+
+            if (error) {
+
+                alert(
+                    "Unable to reject testimony.\n\n" +
+                    error.message
+                );
+
+                return;
+
+            }
+
+
+            alert(
+                "Testimony rejected successfully."
+            );
+
+
+            await loadPendingTestimonies();
+
+        }
+
+
+
+        /* =========================================
+           DELETE
+        ========================================= */
+
+        async function deleteTestimony(id) {
+
+            if (
+                !confirm(
+                    "Delete this testimony permanently? This action cannot be undone."
+                )
+            ) return;
+
+
+            const {
+                error
+            } =
+                await supabaseClient
+                    .from("testimonies")
+                    .delete()
+                    .eq("id", id);
+
+
+            if (error) {
+
+                alert(
+                    "Unable to delete testimony.\n\n" +
+                    error.message
+                );
+
+                return;
+
+            }
+
+
+            alert(
+                "Testimony deleted successfully."
+            );
+
+
+            await loadPendingTestimonies();
+
+        }
+
+
+
+        /* =========================================
+           PARTNERSHIPS
+        ========================================= */
+
+        async function loadPartnerships() {
+
+            const list =
+                document.getElementById(
+                    "partnershipsList"
+                );
+
+
+            list.innerHTML =
+                "<p>Loading partnership requests...</p>";
+
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+                    .from("partnerships")
+                    .select("*")
+                    .order(
+                        "created_at",
+                        {
+                            ascending: false
+                        }
+                    );
+
+
+            if (error) {
+
+                console.error(error);
+
+                list.innerHTML =
+                    "<p>Unable to load partnership requests.</p>";
+
+                return;
+
+            }
+
+
+            if (!data || !data.length) {
+
+                list.innerHTML =
+                    "<p>No partnership requests yet.</p>";
+
+                return;
+
+            }
+
+
+            list.innerHTML = "";
+
+
+            data.forEach(
+                function(partnership) {
+
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    item.className =
+                        "partnership-item";
+
+
+                    item.innerHTML = `
+
+                        <h3>
+                            ${escapeHTML(
+                                partnership.full_name ||
+                                "Partnership Request"
+                            )}
+                        </h3>
+
+                        <p>
+                            <strong>Email:</strong>
+                            ${escapeHTML(
+                                partnership.email ||
+                                "Not provided"
+                            )}
+                        </p>
+
+                        <p>
+                            <strong>Phone:</strong>
+                            ${escapeHTML(
+                                partnership.phone ||
+                                "Not provided"
+                            )}
+                        </p>
+
+                        <p>
+                            <strong>Message:</strong>
+                            ${escapeHTML(
+                                partnership.message ||
+                                "No message provided"
+                            )}
+                        </p>
+
+                    `;
+
+
+                    list.appendChild(item);
+
+                }
+            );
+
+        }
+
+
+
+        /* =========================================
+           SAFETY
+        ========================================= */
+
+        function escapeHTML(value) {
+
+            const div =
+                document.createElement("div");
+
+
+            div.textContent =
+                value ?? "";
+
+
+            return div.innerHTML;
+
+        }
+
+
+        function escapeAttribute(value) {
+
+            return String(value ?? "")
+
+                .replace(
+                    /&/g,
+                    "&amp;"
+                )
+
+                .replace(
+                    /"/g,
+                    "&quot;"
+                )
+
+                .replace(
+                    /</g,
+                    "&lt;"
+                )
+
+                .replace(
+                    />/g,
+                    "&gt;"
+                );
+
+        }
+
+
+
+        /* =========================================
+           START
+        ========================================= */
+
+        checkAdminAccess();
+
+    </script>
+
+
+</body>
+
+</html>

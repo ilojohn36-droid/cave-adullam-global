@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Cave Admin Login</title>
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+>
+
+<style>
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    /* =====================================================
+       BODY
+    ===================================================== */
+
+    body {
+
+        min-height: 100vh;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 20px;
+
+        font-family:
+            'Montserrat',
+            Arial,
+            sans-serif;
+
+        color: #edf3ff;
+
+        background:
+
+            radial-gradient(
+                circle at 50% -10%,
+                rgba(6,61,165,.35),
+                transparent 35%
+            ),
+
+            radial-gradient(
+                circle at 100% 30%,
+                rgba(212,167,44,.08),
+                transparent 30%
+            ),
+
+            linear-gradient(
+                145deg,
+                #010711 0%,
+                #03132f 45%,
+                #020a19 100%
+            );
+
+    }
+
+
+    /* =====================================================
+       LOGIN WRAPPER
+    ===================================================== */
+
+    .login-wrapper {
+
+        width: 100%;
+
+        max-width: 460px;
+
+    }
+
+
+    /* =====================================================
+       LOGIN CARD
+    ===================================================== */
+
+    .login-card {
+
+        padding: 45px 40px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(7,28,63,.96),
+                rgba(3,15,35,.98)
+            );
+
+        border:
+            1px solid
+            rgba(255,255,255,.10);
+
+        border-radius: 18px;
+
+        box-shadow:
+            0 25px 70px
+            rgba(0,0,0,.45);
+
+        backdrop-filter: blur(12px);
+
+    }
+
+
+    /* =====================================================
+       LOGO
+    ===================================================== */
+
+    .login-logo {
+
+        display: block;
+
+        width: 115px;
+
+        height: auto;
+
+        margin:
+            0 auto 22px;
+
+        object-fit: contain;
+
+        filter:
+            drop-shadow(
+                0 8px 25px
+                rgba(0,0,0,.45)
+            );
+
+    }
+
+
+    /* =====================================================
+       TITLE
+    ===================================================== */
+
+    .login-title {
+
+        text-align: center;
+
+        margin-bottom: 8px;
+
+        color: #f0d477;
+
+        font-size: 24px;
+
+        font-weight: 900;
+
+        letter-spacing: 2px;
+
+        text-transform: uppercase;
+
+    }
+
+
+    /* =====================================================
+       SUBTITLE
+    ===================================================== */
+
+    .login-subtitle {
+
+        text-align: center;
+
+        margin-bottom: 35px;
+
+        color:
+            rgba(255,255,255,.55);
+
+        font-size: 10px;
+
+        font-weight: 600;
+
+        letter-spacing: 2px;
+
+    }
+
+
+    /* =====================================================
+       FORM GROUP
+    ===================================================== */
+
+    .form-group {
+
+        margin-bottom: 20px;
+
+    }
+
+
+    /* =====================================================
+       LABEL
+    ===================================================== */
+
+    .form-group label {
+
+        display: block;
+
+        margin-bottom: 8px;
+
+        color: #aebbd0;
+
+        font-size: 10px;
+
+        font-weight: 800;
+
+        letter-spacing: 1.3px;
+
+        text-transform: uppercase;
+
+    }
+
+
+    /* =====================================================
+       INPUTS
+    ===================================================== */
+
+    .form-group input {
+
+        width: 100%;
+
+        padding: 14px 15px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.10);
+
+        border-radius: 9px;
+
+        outline: none;
+
+        background:
+            rgba(255,255,255,.045);
+
+        color: white;
+
+        font-family: inherit;
+
+        font-size: 13px;
+
+        transition:
+            .25s ease;
+
+    }
+
+
+    .form-group input::placeholder {
+
+        color:
+            rgba(255,255,255,.28);
+
+    }
+
+
+    .form-group input:focus {
+
+        border-color:
+            rgba(212,167,44,.65);
+
+        background:
+            rgba(255,255,255,.06);
+
+        box-shadow:
+            0 0 0 3px
+            rgba(212,167,44,.08);
+
+    }
+
+
+    /* =====================================================
+       LOGIN BUTTON
+    ===================================================== */
+
+    .login-button {
+
+        width: 100%;
+
+        margin-top: 8px;
+
+        padding: 15px;
+
+        border: none;
+
+        border-radius: 9px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #d4a72c,
+                #f0d477
+            );
+
+        color: #06132d;
+
+        font-family: inherit;
+
+        font-size: 11px;
+
+        font-weight: 900;
+
+        letter-spacing: 2px;
+
+        cursor: pointer;
+
+        transition:
+            .25s ease;
+
+    }
+
+
+    .login-button:hover {
+
+        transform:
+            translateY(-2px);
+
+        box-shadow:
+            0 12px 30px
+            rgba(212,167,44,.18);
+
+    }
+
+
+    .login-button:disabled {
+
+        opacity: .6;
+
+        cursor: not-allowed;
+
+        transform: none;
+
+    }
+
+
+    /* =====================================================
+       MESSAGE
+    ===================================================== */
+
+    #message {
+
+        min-height: 20px;
+
+        margin-top: 18px;
+
+        text-align: center;
+
+        color:
+            rgba(255,255,255,.70);
+
+        font-size: 11px;
+
+        line-height: 1.6;
+
+    }
+
+
+    #message.error {
+
+        color: #ff8d8d;
+
+    }
+
+
+    #message.success {
+
+        color: #69db91;
+
+    }
+
+
+    /* =====================================================
+       BACK HOME
+    ===================================================== */
+
+    .back-home {
+
+        margin-top: 25px;
+
+        text-align: center;
+
+    }
+
+
+    .back-home a {
+
+        color:
+            rgba(255,255,255,.45);
+
+        text-decoration: none;
+
+        font-size: 9px;
+
+        font-weight: 700;
+
+        letter-spacing: 1.5px;
+
+        transition:
+            .25s ease;
+
+    }
+
+
+    .back-home a:hover {
+
+        color: white;
+
+    }
+
+
+    /* =====================================================
+       BRAND
+    ===================================================== */
+
+    .login-brand {
+
+        margin-top: 25px;
+
+        text-align: center;
+
+        color:
+            rgba(255,255,255,.25);
+
+        font-size: 8px;
+
+        font-weight: 600;
+
+        letter-spacing: 1.5px;
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 500px) {
+
+        body {
+
+            padding: 15px;
+
+        }
+
+
+        .login-card {
+
+            padding:
+                35px 23px;
+
+        }
+
+
+        .login-title {
+
+            font-size: 20px;
+
+        }
+
+    }
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-wrapper">
+
+    <div class="login-card">
+
+
+        <!-- =================================================
+             LOGO
+        ================================================== -->
+
+        <img
+            src="CAVE NEW LOGO.png"
+            alt="Cave Adullam Logo"
+            class="login-logo"
+        >
+
+
+        <!-- =================================================
+             TITLE
+        ================================================== -->
+
+        <h1 class="login-title">
+            Cave Admin
+        </h1>
+
+
+        <p class="login-subtitle">
+            ADMIN CONTROL CENTER
+        </p>
+
+
+        <!-- =================================================
+             LOGIN FORM
+        ================================================== -->
+
+        <form id="loginForm">
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label for="email">
+                    Admin Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter admin email"
+                    autocomplete="email"
+                    required
+                >
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter password"
+                    autocomplete="current-password"
+                    required
+                >
+
+            </div>
+
+
+            <!-- LOGIN -->
+
+            <button
+                type="submit"
+                class="login-button"
+                id="loginButton"
+            >
+                LOGIN
+            </button>
+
+
+        </form>
+
+
+        <!-- =================================================
+             MESSAGE
+        ================================================== -->
+
+        <p id="message"></p>
+
+
+        <!-- =================================================
+             BACK HOME
+        ================================================== -->
+
+        <div class="back-home">
+
+            <a href="homepage-index.html">
+                ← BACK TO HOMEPAGE
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             BRAND
+        ================================================== -->
+
+        <p class="login-brand">
+            CAVE ADULLAM • ONE NAME. ONE FOCUS. JESUS.
+        </p>
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SUPABASE
+====================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+    /* =====================================================
+       SUPABASE CONFIGURATION
+    ===================================================== */
+
+    const SUPABASE_URL =
+        "https://ktwvbhdxszxmmmfoxzra.supabase.co";
+
+
+    const SUPABASE_KEY =
+        "sb_publishable_MysGHP42nsPZzFzp2aBR-g_VhFE0Idq";
+
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+    /* =====================================================
+       FORM ELEMENTS
+    ===================================================== */
+
+    const loginForm =
+        document.getElementById("loginForm");
+
+    const message =
+        document.getElementById("message");
+
+    const loginButton =
+        document.getElementById("loginButton");
+
+
+    /* =====================================================
+       LOGIN
+    ===================================================== */
+
+    loginForm.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
+
+
+            const password =
+                document
+                    .getElementById("password")
+                    .value;
+
+
+            if (!email || !password) {
+
+                message.textContent =
+                    "Please enter your email and password.";
+
+                message.className =
+                    "error";
+
+                return;
+
+            }
+
+
+            /* =============================================
+               DISABLE LOGIN
+            ============================================= */
+
+            loginButton.disabled = true;
+
+            loginButton.textContent =
+                "LOGGING IN...";
+
+
+            message.textContent =
+                "Authenticating...";
+
+            message.className = "";
+
+
+            /* =============================================
+               SIGN IN
+            ============================================= */
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient.auth
+                    .signInWithPassword({
+
+                        email: email,
+
+                        password: password
+
+                    });
+
+
+            /* =============================================
+               ERROR
+            ============================================= */
+
+            if (error) {
+
+                console.error(
+                    "Admin login error:",
+                    error
+                );
+
+
+                message.textContent =
+                    "Invalid email or password.";
+
+                message.className =
+                    "error";
+
+
+                loginButton.disabled =
+                    false;
+
+                loginButton.textContent =
+                    "LOGIN";
+
+
+                return;
+
+            }
+
+
+            /* =============================================
+               SUCCESS
+            ============================================= */
+
+            console.log(
+                "Admin logged in:",
+                data.user
+            );
+
+
+            message.textContent =
+                "Login successful. Opening admin panel...";
+
+            message.className =
+                "success";
+
+
+            /* =============================================
+               REDIRECT
+            ============================================= */
+
+            setTimeout(
+                function() {
+
+                    window.location.href =
+                        "admin.html";
+
+                },
+                500
+            );
+
+        }
+    );
+
+</script>
+
+</body>
+
+</html>

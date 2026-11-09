@@ -1,0 +1,1691 @@
+/* =========================================
+   CAVE ADULLAM — HOMEPAGE
+   HOME.CSS
+   BRAND TYPOGRAPHY: MONTSERRAT
+========================================= */
+
+
+/* =========================================
+   GOOGLE FONT — MONTSERRAT
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+
+/* =========================================
+   GENERAL RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #05070d;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   GLOBAL TYPOGRAPHY
+========================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+a {
+    font-family: 'Montserrat', sans-serif;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    width: 100%;
+    min-height: 85px;
+
+    padding: 18px 7%;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    background: rgba(5, 7, 13, 0.95);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    position: relative;
+    z-index: 10;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 200px;
+    height: 200px;
+
+    object-fit: contain;
+}
+
+
+/* =========================================
+   BRAND NAME
+========================================= */
+
+.brand-name h1 {
+    font-size: 18px;
+
+    font-weight: 800;
+
+    letter-spacing: 2.5px;
+
+    line-height: 1.2;
+}
+
+.brand-name p {
+    font-size: 9px;
+
+    font-weight: 500;
+
+    letter-spacing: 2px;
+
+    opacity: 0.65;
+
+    margin-top: 4px;
+}
+
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero {
+    min-height: 680px;
+
+    padding: 80px 7%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 60px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(24, 83, 170, 0.35),
+            transparent 40%
+        ),
+
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(111, 70, 190, 0.25),
+            transparent 40%
+        ),
+
+        #05070d;
+}
+
+
+/* =========================================
+   HERO CONTENT
+========================================= */
+
+.hero-content {
+    max-width: 600px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   JESUS ARTWORK
+========================================= */
+
+.jesus-artwork {
+    width: min(430px, 42vw);
+
+    max-height: 500px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 20px 50px rgba(0, 0, 0, 0.6)
+        );
+}
+
+
+/* =========================================
+   SMALL HERO TEXT
+========================================= */
+
+.small-heading {
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    opacity: 0.65;
+
+    margin-bottom: 14px;
+}
+
+
+/* =========================================
+   JESUS TITLE
+========================================= */
+
+.hero h2 {
+    font-size: clamp(55px, 8vw, 100px);
+
+    font-weight: 900;
+
+    line-height: 0.9;
+
+    letter-spacing: -4px;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================
+   TAGLINE
+========================================= */
+
+.tagline {
+    font-size: 16px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   HERO DESCRIPTION
+========================================= */
+
+.hero-description {
+    max-width: 500px;
+
+    color: rgba(255, 255, 255, 0.68);
+
+    font-size: 15px;
+
+    font-weight: 400;
+
+    line-height: 1.8;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.main-button,
+.outline-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 15px 25px;
+
+    text-decoration: none;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    transition: 0.3s ease;
+}
+
+
+/* =========================================
+   MAIN BUTTON
+========================================= */
+
+.main-button {
+
+    background: #ffffff;
+
+    color: #05070d;
+
+    border: 1px solid #ffffff;
+}
+
+
+/* =========================================
+   MAIN BUTTON HOVER
+========================================= */
+
+.main-button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================================
+   OUTLINE BUTTON
+========================================= */
+
+.outline-button {
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.3);
+
+    color: #ffffff;
+}
+
+
+/* =========================================
+   OUTLINE BUTTON HOVER
+========================================= */
+
+.outline-button:hover {
+
+    background: #ffffff;
+
+    color: #05070d;
+
+    border-color: #ffffff;
+}
+
+
+/* =========================================
+   ACTION CARDS
+========================================= */
+
+.actions {
+
+    padding: 80px 7%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    background: #080b13;
+}
+
+
+/* =========================================
+   ACTION CARD
+========================================= */
+
+.action-card {
+
+    padding: 40px 30px;
+
+    text-decoration: none;
+
+    color: #ffffff;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.1);
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    transition: 0.3s ease;
+}
+
+
+/* =========================================
+   CARD HOVER
+========================================= */
+
+.action-card:hover {
+
+    transform: translateY(-7px);
+
+    border-color:
+        rgba(255, 255, 255, 0.3);
+
+    background:
+        rgba(255, 255, 255, 0.05);
+}
+
+
+/* =========================================
+   ICON
+========================================= */
+
+.action-icon {
+
+    font-size: 30px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   CARD TITLE
+========================================= */
+
+.action-card h3 {
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================================
+   CARD DESCRIPTION
+========================================= */
+
+.action-card p {
+
+    color:
+        rgba(255, 255, 255, 0.55);
+
+    font-size: 13px;
+
+    font-weight: 400;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   ABOUT SECTION
+========================================= */
+
+.about-preview {
+
+    padding: 100px 7%;
+
+    max-width: 850px;
+}
+
+
+/* =========================================
+   SECTION LABEL
+========================================= */
+
+.section-label {
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    opacity: 0.5;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================
+   SECTION HEADINGS
+========================================= */
+
+.about-preview h2,
+.testimony-preview h2,
+.partner-preview h2 {
+
+    font-size:
+        clamp(35px, 5vw, 60px);
+
+    font-weight: 800;
+
+    line-height: 1.05;
+
+    letter-spacing: -1.5px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   SECTION TEXT
+========================================= */
+
+.about-preview p,
+.testimony-preview p,
+.partner-preview p {
+
+    color:
+        rgba(255, 255, 255, 0.65);
+
+    max-width: 650px;
+
+    font-size: 15px;
+
+    font-weight: 400;
+
+    line-height: 1.8;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================
+   JESUS 2026 CONFERENCE SECTION
+========================================= */
+
+.conference {
+
+    padding: 100px 7%;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(20, 65, 130, 0.35),
+            rgba(10, 10, 25, 0.9)
+        );
+}
+
+
+.conference-content {
+
+    max-width: 700px;
+}
+
+
+.conference h2 {
+
+    font-size:
+        clamp(50px, 8vw, 90px);
+
+    font-weight: 900;
+
+    line-height: 0.95;
+
+    letter-spacing: -3px;
+
+    margin: 10px 0 18px;
+}
+
+
+.conference-content > p {
+
+    margin-bottom: 10px;
+
+    font-weight: 500;
+}
+
+
+.location {
+
+    color:
+        rgba(255, 255, 255, 0.6);
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    line-height: 1.7;
+
+    margin-bottom: 30px !important;
+}
+
+
+/* =========================================
+   TESTIMONY SECTION
+========================================= */
+
+.testimony-preview {
+
+    padding: 100px 7%;
+
+    background: #080b13;
+}
+
+
+.testimony-buttons {
+
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================
+   PARTNERSHIP SECTION
+========================================= */
+
+.partner-preview {
+
+    padding: 100px 7%;
+}
+
+
+/* =========================================
+   CAVE ARMY PREVIEW
+========================================= */
+
+.cave-army-preview {
+
+    padding: 110px 7%;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 90, 255, 0.12),
+            rgba(255, 255, 255, 0.02)
+        );
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+}
+
+
+.cave-army-preview h2 {
+
+    font-size:
+        clamp(35px, 6vw, 65px);
+
+    font-weight: 800;
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+
+    margin: 15px auto 20px;
+
+    max-width: 800px;
+}
+
+
+.cave-army-preview p {
+
+    max-width: 680px;
+
+    margin: 0 auto;
+
+    color:
+        rgba(255, 255, 255, 0.62);
+
+    font-size: 15px;
+
+    font-weight: 400;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   CAVE ARMY BUTTON
+========================================= */
+
+.cave-army-button {
+
+    display: inline-block;
+
+    margin-top: 32px;
+
+    padding: 15px 30px;
+
+    background: #ffffff;
+
+    color: #05070d;
+
+    text-decoration: none;
+
+    border-radius: 30px;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s ease;
+}
+
+
+.cave-army-button:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    padding: 60px 7% 25px;
+
+    background: #03050a;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================
+   FOOTER LOGO
+========================================= */
+
+.footer-logo img {
+
+    width: 150px;
+
+    margin-bottom: 10px;
+}
+
+
+.footer-logo h3 {
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.footer-logo p {
+
+    font-size: 9px;
+
+    font-weight: 500;
+
+    letter-spacing: 2px;
+
+    opacity: 0.5;
+}
+
+
+/* =========================================
+   SOCIAL MEDIA
+========================================= */
+
+.socials {
+
+    margin-top: 35px;
+}
+
+
+.socials p {
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    opacity: 0.5;
+
+    margin-bottom: 10px;
+}
+
+
+.socials a {
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    margin-right: 20px;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    transition: 0.3s ease;
+}
+
+
+.socials a:hover {
+
+    opacity: 0.6;
+}
+
+
+/* =========================================
+   FOOTER BOTTOM
+========================================= */
+
+.footer-bottom {
+
+    margin-top: 50px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    font-size: 10px;
+
+    font-weight: 400;
+
+    color:
+        rgba(255, 255, 255, 0.35);
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
+
+@media (max-width: 800px) {
+
+
+    /* =====================================
+       HEADER
+    ===================================== */
+
+    .header {
+
+        padding: 15px 5%;
+
+        gap: 10px;
+    }
+
+
+    .logo {
+
+        width: 130px;
+
+        height: 130px;
+    }
+
+
+    .brand-name h1 {
+
+        font-size: 15px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .brand-name p {
+
+        font-size: 8px;
+
+        letter-spacing: 1.5px;
+    }
+
+
+    /* =====================================
+       HERO
+    ===================================== */
+
+    .hero {
+
+        min-height: auto;
+
+        padding: 70px 6%;
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+
+    /* =====================================
+       ARTWORK
+    ===================================== */
+
+    .jesus-artwork {
+
+        width:
+            min(330px, 80vw);
+
+        order: -1;
+    }
+
+
+    /* =====================================
+       DESCRIPTION
+    ===================================== */
+
+    .hero-description {
+
+        margin-left: auto;
+
+        margin-right: auto;
+    }
+
+
+    /* =====================================
+       HERO TITLE
+    ===================================== */
+
+    .hero h2 {
+
+        letter-spacing: -2px;
+    }
+
+
+    /* =====================================
+       ACTIONS
+    ===================================== */
+
+    .actions {
+
+        grid-template-columns: 1fr;
+
+        padding: 50px 6%;
+    }
+
+
+    /* =====================================
+       CARDS
+    ===================================== */
+
+    .action-card {
+
+        text-align: center;
+    }
+
+
+    /* =====================================
+       SECTIONS
+    ===================================== */
+
+    .about-preview,
+    .conference,
+    .testimony-preview,
+    .partner-preview {
+
+        padding: 70px 6%;
+    }
+
+
+    /* =====================================
+       CONFERENCE
+    ===================================== */
+
+    .conference {
+
+        text-align: center;
+    }
+
+
+    .conference-content {
+
+        margin: auto;
+    }
+
+
+    /* =====================================
+       TESTIMONIES
+    ===================================== */
+
+    .testimony-buttons {
+
+        justify-content: center;
+    }
+
+
+    /* =====================================
+       BUTTONS
+    ===================================== */
+
+    .main-button,
+    .outline-button {
+
+        width: 100%;
+
+        max-width: 330px;
+    }
+
+
+    /* =====================================
+       CAVE ARMY
+    ===================================== */
+
+    .cave-army-preview {
+
+        padding: 80px 6%;
+    }
+
+
+    .cave-army-preview h2 {
+
+        font-size: 38px;
+
+        letter-spacing: -1px;
+    }
+
+
+    .cave-army-preview p {
+
+        font-size: 14px;
+    }
+
+
+    .cave-army-button {
+
+        width: 100%;
+
+        max-width: 330px;
+
+        padding: 14px 20px;
+    }
+
+
+    /* =====================================
+       FOOTER
+    ===================================== */
+
+    .footer {
+
+        padding: 50px 6% 25px;
+    }
+
+}
+
+.admin-login-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.admin-login-link a {
+    color: rgba(255, 255, 255, 0.45);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    transition: 0.3s ease;
+}
+
+.admin-login-link a:hover {
+    color: #ffffff;
+}
+/* =========================================
+   VOLUNTEER DEPARTMENTS
+   JESUS 2026 HOMEPAGE
+========================================= */
+
+.volunteer-preview {
+    padding: 100px 7%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 50%,
+            rgba(0, 90, 255, 0.12),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 85% 50%,
+            rgba(111, 70, 190, 0.10),
+            transparent 38%
+        ),
+        #05070d;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.volunteer-preview .section-label {
+    color: #d7c18a;
+    opacity: 0.8;
+}
+
+.volunteer-preview > h2 {
+    max-width: 800px;
+    margin: 10px auto 20px;
+
+    font-size: clamp(35px, 5vw, 60px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+}
+
+.volunteer-intro {
+    max-width: 680px;
+    margin: 0 auto 45px;
+
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.volunteer-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 20px;
+    max-width: 1150px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.volunteer-card {
+    min-width: 0;
+    padding: 32px 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+.volunteer-card:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.045);
+    border-color: rgba(215, 193, 138, 0.55);
+}
+
+.volunteer-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.welfare-card .volunteer-icon {
+    color: #91d8a4;
+    background: rgba(54, 160, 87, 0.13);
+}
+
+.prayer-card .volunteer-icon {
+    color: #e5c77b;
+    background: rgba(212, 167, 44, 0.13);
+}
+
+.media-card .volunteer-icon {
+    color: #8eb8ff;
+    background: rgba(0, 90, 255, 0.14);
+}
+
+.volunteer-card h3 {
+    margin-bottom: 12px;
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.volunteer-card > p {
+    flex-grow: 1;
+    margin-bottom: 28px;
+
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.volunteer-button {
+    width: 100%;
+    min-height: 46px;
+    padding: 13px 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    background: #ffffff;
+    color: #05070d;
+    border: 1px solid #ffffff;
+
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+
+    transition: 0.3s ease;
+}
+
+.volunteer-button span {
+    font-size: 16px;
+}
+
+.volunteer-button:hover {
+    background: transparent;
+    color: #ffffff;
+}
+
+.volunteer-motto {
+    margin-top: 45px;
+    color: #d7c18a;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+/* TABLETS */
+
+@media (max-width: 900px) {
+    .volunteer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .volunteer-card:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+    .volunteer-preview {
+        padding: 80px 6%;
+    }
+
+    .volunteer-intro {
+        font-size: 13px;
+        margin-bottom: 35px;
+    }
+
+    .volunteer-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .volunteer-card:last-child {
+        grid-column: auto;
+    }
+
+    .volunteer-card {
+        padding: 28px 24px;
+    }
+
+    .volunteer-card h3 {
+        font-size: 15px;
+    }
+
+    .volunteer-motto {
+        font-size: 9px;
+        letter-spacing: 1.8px;
+    }
+}
+
+/* =========================================
+   CAVE CAMP MEETING 2025 RECAP
+========================================= */
+
+.recap-preview {
+    padding: 100px 7%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(24, 83, 170, 0.22),
+            transparent 55%
+        ),
+        #080b13;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.recap-preview .section-label {
+    color: #d7c18a;
+    opacity: 0.85;
+}
+
+.recap-preview h2 {
+    margin: 12px auto 20px;
+    font-size: clamp(38px, 6vw, 68px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+}
+
+.recap-description {
+    max-width: 680px;
+    margin: 0 auto 30px;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.recap-highlights {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 auto 35px;
+}
+
+.recap-highlights span {
+    padding: 9px 13px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.recap-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    padding: 16px 24px;
+
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    color: #05070d;
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+
+    transition: 0.3s ease;
+}
+
+.recap-button span {
+    font-size: 17px;
+}
+
+.recap-button:hover {
+    background: transparent;
+    color: #ffffff;
+    transform: translateY(-3px);
+}
+
+.recap-motto {
+    margin-top: 35px;
+    color: #d7c18a;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.3px;
+}
+
+@media (max-width: 800px) {
+    .recap-preview {
+        padding: 75px 6%;
+    }
+
+    .recap-preview h2 {
+        letter-spacing: -1px;
+    }
+
+    .recap-description {
+        font-size: 13px;
+    }
+
+    .recap-highlights {
+        gap: 8px;
+    }
+
+    .recap-highlights span {
+        font-size: 8px;
+    }
+
+    .recap-button {
+        width: 100%;
+        max-width: 330px;
+    }
+}
+/* =========================================
+   RECAP PHOTO PREVIEW
+========================================= */
+
+.recap-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 35px;
+}
+
+.recap-photo {
+    height: 230px;
+    overflow: hidden;
+
+    background: #080b13;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    position: relative;
+}
+
+.recap-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.recap-photo:hover img {
+    transform: scale(1.06);
+}
+
+@media (max-width: 800px) {
+    .recap-photo-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        max-width: 500px;
+    }
+
+    .recap-photo {
+        height: 250px;
+    }
+}
+
+/* =========================================
+   SCROLL REVEAL ANIMATIONS
+   CAVE ADULLAM HOMEPAGE
+========================================= */
+
+.recap-photo,
+.volunteer-card {
+    opacity: 0;
+    transform: translateY(25px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+/* Applied when the element enters the viewport */
+
+.recap-photo.reveal-visible,
+.volunteer-card.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Respect visitors who prefer reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+    .recap-photo,
+    .volunteer-card {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* =========================================
+   JESUS 2026 VOLUNTEERS — CLEAN ROW DESIGN
+   Paste this at the END of home.css
+========================================= */
+
+.volunteer-preview {
+    padding: 100px 7%;
+    text-align: center;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(215, 193, 138, 0.08), transparent 45%),
+        #05070d;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.volunteer-preview .section-label {
+    color: #d7c18a;
+    opacity: 0.9;
+}
+
+.volunteer-preview > h2 {
+    max-width: 800px;
+    margin: 10px auto 18px;
+    font-size: clamp(35px, 5vw, 60px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+}
+
+.volunteer-intro {
+    max-width: 680px;
+    margin: 0 auto 42px;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.volunteer-list {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.volunteer-row {
+    display: grid;
+    grid-template-columns: 54px minmax(0, 1fr) 32px;
+    align-items: center;
+    gap: 20px;
+    padding: 23px 16px;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    transition:
+        background 0.25s ease,
+        padding 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.volunteer-row:hover {
+    padding-left: 23px;
+    padding-right: 23px;
+    background: rgba(255, 255, 255, 0.035);
+    border-bottom-color: rgba(215, 193, 138, 0.55);
+}
+
+.volunteer-number {
+    color: #d7c18a;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.volunteer-row-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.volunteer-row-copy strong {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+}
+
+.volunteer-row-copy small {
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.volunteer-arrow {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(215, 193, 138, 0.45);
+    border-radius: 50%;
+    color: #d7c18a;
+    font-size: 17px;
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.volunteer-row:hover .volunteer-arrow {
+    color: #05070d;
+    background: #d7c18a;
+    transform: translate(2px, -2px);
+}
+
+.volunteer-motto {
+    margin-top: 38px;
+    color: #d7c18a;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 800px) {
+    .volunteer-preview {
+        padding: 75px 6%;
+    }
+
+    .volunteer-intro {
+        margin-bottom: 30px;
+        font-size: 13px;
+    }
+
+    .volunteer-row {
+        grid-template-columns: 34px minmax(0, 1fr) 30px;
+        gap: 12px;
+        padding: 19px 8px;
+    }
+
+    .volunteer-row:hover {
+        padding-left: 11px;
+        padding-right: 11px;
+    }
+
+    .volunteer-row-copy strong {
+        font-size: 14px;
+    }
+
+    .volunteer-row-copy small {
+        font-size: 11px;
+    }
+
+    .volunteer-arrow {
+        width: 29px;
+        height: 29px;
+    }
+
+    .volunteer-motto {
+        font-size: 9px;
+        letter-spacing: 1.8px;
+    }
+}
+
+/* SCROLL REVEAL ANIMATION */
+
+.volunteer-row {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease,
+        background 0.25s ease,
+        padding 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.volunteer-row.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+    .volunteer-row {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
